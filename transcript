@@ -3,3 +3,6 @@
 # Error opening C:/Users/Chennex/Documents/FPGA/Ethernet Switch/fcs_check_parallel.vhd
 # Path name 'C:/Users/Chennex/Documents/FPGA/Ethernet Switch/fcs_check_parallel.vhd' doesn't exist.
 # Compile of fcs_check_parallel.vhd was successful.
+# Compile of FCSBlockTop.vhd failed with 1 errors.
+# Compile of FCSBlockTop.vhd failed with 1 errors.
+# Compile of FCSBlockTop.vhd failed with 1 errors.
