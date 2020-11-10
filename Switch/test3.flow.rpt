@@ -1,0 +1,125 @@
+Flow report for test3
+Wed Oct 21 13:17:40 2020
+Quartus Prime Version 15.1.2 Build 193 02/01/2016 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------------------+
+; Flow Summary                                                                        ;
++-----------------------------------+-------------------------------------------------+
+; Flow Status                       ; Successful - Wed Oct 21 13:17:31 2020           ;
+; Quartus Prime Version             ; 15.1.2 Build 193 02/01/2016 SJ Standard Edition ;
+; Revision Name                     ; test3                                           ;
+; Top-level Entity Name             ; switch_top                                      ;
+; Family                            ; Stratix IV                                      ;
+; Device                            ; EP4SGX230KF40C2                                 ;
+; Timing Models                     ; Final                                           ;
+; Logic utilization                 ; 4 %                                             ;
+;     Combinational ALUTs           ; 3,522 / 182,400 ( 2 % )                         ;
+;     Memory ALUTs                  ; 32 / 91,200 ( < 1 % )                           ;
+;     Dedicated logic registers     ; 5,805 / 182,400 ( 3 % )                         ;
+; Total registers                   ; 5805                                            ;
+; Total pins                        ; 33 / 888 ( 4 % )                                ;
+; Total virtual pins                ; 18                                              ;
+; Total block memory bits           ; 49,408 / 14,625,792 ( < 1 % )                   ;
+; DSP block 18-bit elements         ; 0 / 1,288 ( 0 % )                               ;
+; Total GXB Receiver Channel PCS    ; 0 / 24 ( 0 % )                                  ;
+; Total GXB Receiver Channel PMA    ; 0 / 36 ( 0 % )                                  ;
+; Total GXB Transmitter Channel PCS ; 0 / 24 ( 0 % )                                  ;
+; Total GXB Transmitter Channel PMA ; 0 / 36 ( 0 % )                                  ;
+; Total PLLs                        ; 2 / 8 ( 25 % )                                  ;
+; Total DLLs                        ; 0 / 4 ( 0 % )                                   ;
++-----------------------------------+-------------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 10/21/2020 13:14:52 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; test3               ;
++-------------------+---------------------+
+
+
++--------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                   ;
++-----------------+-------+---------------+-------------+------------+
+; Assignment Name ; Value ; Default Value ; Entity Name ; Section Id ;
++-----------------+-------+---------------+-------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:48     ; 1.9                     ; 1076 MB             ; 00:01:10                           ;
+; Partition Merge           ; 00:00:03     ; 1.0                     ; 940 MB              ; 00:00:02                           ;
+; Fitter                    ; 00:00:54     ; 1.1                     ; 2507 MB             ; 00:01:33                           ;
+; Assembler                 ; 00:00:16     ; 1.0                     ; 1082 MB             ; 00:00:12                           ;
+; TimeQuest Timing Analyzer ; 00:00:08     ; 1.0                     ; 1218 MB             ; 00:00:05                           ;
+; Total                     ; 00:02:09     ; --                      ; --                  ; 00:03:02                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; DTU-CZC8338FCB   ; Windows 8 ; 6.2        ; x86_64         ;
+; Partition Merge           ; DTU-CZC8338FCB   ; Windows 8 ; 6.2        ; x86_64         ;
+; Fitter                    ; DTU-CZC8338FCB   ; Windows 8 ; 6.2        ; x86_64         ;
+; Assembler                 ; DTU-CZC8338FCB   ; Windows 8 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; DTU-CZC8338FCB   ; Windows 8 ; 6.2        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_sh --restore -output M:\FPGADESIGN\Switch/ C:/Users/s183933/Downloads/de4_switch.qar
+quartus_map --read_settings_files=on --write_settings_files=off de4_switch -c test3
+quartus_cdb --read_settings_files=off --write_settings_files=off de4_switch -c test3 --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off de4_switch -c test3
+quartus_asm --read_settings_files=off --write_settings_files=off de4_switch -c test3
+quartus_sta de4_switch -c test3
+
+
+

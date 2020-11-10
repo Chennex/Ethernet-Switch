@@ -1,0 +1,272 @@
+Restore Archived Project report for test3
+Wed Oct 21 13:14:52 2020
+Quartus Prime Version 15.1.2 Build 193 02/01/2016 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Restore Archived Project Summary
+  3. Restore Archived Project Messages
+  4. Files Restored
+  5. Files Not Restored
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Restore Archived Project Summary                                        ;
++---------------------------------+---------------------------------------+
+; Restore Archived Project Status ; Successful - Wed Oct 21 13:14:52 2020 ;
+; Revision Name                   ; test3                                 ;
+; Top-level Entity Name           ; switch_top                            ;
+; Family                          ; Stratix IV                            ;
++---------------------------------+---------------------------------------+
+
+
++-----------------------------------+
+; Restore Archived Project Messages ;
++-----------------------------------+
+Info: Successfully restored 'C:/Users/s183933/Downloads/de4_switch.qar' into the 'M:\\FPGADESIGN\\Switch/' directory
+Info: Generated report 'test3.restore.rpt'
+Info (23030): Evaluation of Tcl script c:/altera/15.1/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 695 megabytes
+    Info: Processing ended: Wed Oct 21 13:14:53 2020
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:01
+
+
++-----------------------------------------------------------------------+
+; Files Restored                                                        ;
++-----------------------------------------------------------------------+
+; File Name                                                             ;
++-----------------------------------------------------------------------+
+; Spf1.spf                                                              ;
+; Spf2.spf                                                              ;
+; assignment_defaults.qdf                                               ;
+; clk_decoup.vhd                                                        ;
+; clkgen.cmp                                                            ;
+; clkgen.ppf                                                            ;
+; clkgen.qip                                                            ;
+; clkgen.vhd                                                            ;
+; clksync.bsf                                                           ;
+; clksync.qip                                                           ;
+; clksync.vhd                                                           ;
+; clksync_inst.vhd                                                      ;
+; de4_switch.qpf                                                        ;
+; incremental_db/compiled_partitions/test3.db_info                      ;
+; m_scheduler.out.sdc                                                   ;
+; m_scheduler.sdc                                                       ;
+; mdio.vhd                                                              ;
+; phy_setup.vhd                                                         ;
+; prb.cmp                                                               ;
+; prb.qip                                                               ;
+; prb.vhd                                                               ;
+; switch_top.vhd                                                        ;
+; switchcore.vhd                                                        ;
+; test3.qsf                                                             ;
+; test3.sdc                                                             ;
+; transceivers.vhd                                                      ;
+; triple_speed_ethernet-library/altera_tse_a_fifo_13.v                  ;
+; triple_speed_ethernet-library/altera_tse_a_fifo_24.v                  ;
+; triple_speed_ethernet-library/altera_tse_a_fifo_34.v                  ;
+; triple_speed_ethernet-library/altera_tse_a_fifo_opt_1246.v            ;
+; triple_speed_ethernet-library/altera_tse_a_fifo_opt_14_44.v           ;
+; triple_speed_ethernet-library/altera_tse_a_fifo_opt_36_10.v           ;
+; triple_speed_ethernet-library/altera_tse_align_sync.v                 ;
+; triple_speed_ethernet-library/altera_tse_alt2gxb_arriagx.v            ;
+; triple_speed_ethernet-library/altera_tse_alt2gxb_basic.v              ;
+; triple_speed_ethernet-library/altera_tse_alt2gxb_gige.v               ;
+; triple_speed_ethernet-library/altera_tse_alt2gxb_gige_wo_rmfifo.v     ;
+; triple_speed_ethernet-library/altera_tse_alt4gxb_gige.v               ;
+; triple_speed_ethernet-library/altera_tse_alt4gxb_gige_wo_rmfifo.v     ;
+; triple_speed_ethernet-library/altera_tse_altgx_civgx_gige.v           ;
+; triple_speed_ethernet-library/altera_tse_altgx_civgx_gige_wo_rmfifo.v ;
+; triple_speed_ethernet-library/altera_tse_altshifttaps.v               ;
+; triple_speed_ethernet-library/altera_tse_altsyncram_dpm_fifo.v        ;
+; triple_speed_ethernet-library/altera_tse_bin_cnt.v                    ;
+; triple_speed_ethernet-library/altera_tse_carrier_sense.v              ;
+; triple_speed_ethernet-library/altera_tse_clk_cntl.v                   ;
+; triple_speed_ethernet-library/altera_tse_clk_gen.v                    ;
+; triple_speed_ethernet-library/altera_tse_colision_detect.v            ;
+; triple_speed_ethernet-library/altera_tse_crc328checker.v              ;
+; triple_speed_ethernet-library/altera_tse_crc328generator.v            ;
+; triple_speed_ethernet-library/altera_tse_crc32ctl8.v                  ;
+; triple_speed_ethernet-library/altera_tse_crc32galois8.v               ;
+; triple_speed_ethernet-library/altera_tse_dc_fifo.v                    ;
+; triple_speed_ethernet-library/altera_tse_dec10b8b.v                   ;
+; triple_speed_ethernet-library/altera_tse_dec_func.v                   ;
+; triple_speed_ethernet-library/altera_tse_dpram_16x32.v                ;
+; triple_speed_ethernet-library/altera_tse_dpram_8x32.v                 ;
+; triple_speed_ethernet-library/altera_tse_enc8b10b.v                   ;
+; triple_speed_ethernet-library/altera_tse_fifoless_mac_rx.v            ;
+; triple_speed_ethernet-library/altera_tse_fifoless_mac_tx.v            ;
+; triple_speed_ethernet-library/altera_tse_fifoless_retransmit_cntl.v   ;
+; triple_speed_ethernet-library/altera_tse_geth_pcs_wo_ratematch.v      ;
+; triple_speed_ethernet-library/altera_tse_gige_reset_ctrl.v            ;
+; triple_speed_ethernet-library/altera_tse_gmii_io.v                    ;
+; triple_speed_ethernet-library/altera_tse_gray_cnt.v                   ;
+; triple_speed_ethernet-library/altera_tse_gxb_aligned_rxsync.v         ;
+; triple_speed_ethernet-library/altera_tse_gxb_gige_inst.v              ;
+; triple_speed_ethernet-library/altera_tse_hashing.v                    ;
+; triple_speed_ethernet-library/altera_tse_host_control.v               ;
+; triple_speed_ethernet-library/altera_tse_host_control_small.v         ;
+; triple_speed_ethernet-library/altera_tse_lb_read_cntl.v               ;
+; triple_speed_ethernet-library/altera_tse_lb_wrt_cntl.v                ;
+; triple_speed_ethernet-library/altera_tse_lfsr_10.v                    ;
+; triple_speed_ethernet-library/altera_tse_loopback_ff.v                ;
+; triple_speed_ethernet-library/altera_tse_lvds_reset_sequencer.v       ;
+; triple_speed_ethernet-library/altera_tse_mac.v                        ;
+; triple_speed_ethernet-library/altera_tse_mac_control.v                ;
+; triple_speed_ethernet-library/altera_tse_mac_pcs.v                    ;
+; triple_speed_ethernet-library/altera_tse_mac_pcs_gige_woff.v          ;
+; triple_speed_ethernet-library/altera_tse_mac_pcs_pma.v                ;
+; triple_speed_ethernet-library/altera_tse_mac_pcs_pma_ena.v            ;
+; triple_speed_ethernet-library/altera_tse_mac_pcs_pma_gige.v           ;
+; triple_speed_ethernet-library/altera_tse_mac_pcs_pma_strx_gx_ena.v    ;
+; triple_speed_ethernet-library/altera_tse_mac_pcs_woff.v               ;
+; triple_speed_ethernet-library/altera_tse_mac_rx.v                     ;
+; triple_speed_ethernet-library/altera_tse_mac_tx.v                     ;
+; triple_speed_ethernet-library/altera_tse_mac_woff.ocp                 ;
+; triple_speed_ethernet-library/altera_tse_mac_woff.v                   ;
+; triple_speed_ethernet-library/altera_tse_magic_detection.v            ;
+; triple_speed_ethernet-library/altera_tse_mdio.v                       ;
+; triple_speed_ethernet-library/altera_tse_mdio_clk_gen.v               ;
+; triple_speed_ethernet-library/altera_tse_mdio_cntl.v                  ;
+; triple_speed_ethernet-library/altera_tse_mdio_reg.v                   ;
+; triple_speed_ethernet-library/altera_tse_mii_rx_if.v                  ;
+; triple_speed_ethernet-library/altera_tse_mii_rx_if_pcs.v              ;
+; triple_speed_ethernet-library/altera_tse_mii_tx_if.v                  ;
+; triple_speed_ethernet-library/altera_tse_mii_tx_if_pcs.v              ;
+; triple_speed_ethernet-library/altera_tse_multi_channel_arbiter.v      ;
+; triple_speed_ethernet-library/altera_tse_multi_mac.v                  ;
+; triple_speed_ethernet-library/altera_tse_multi_mac_pcs.v              ;
+; triple_speed_ethernet-library/altera_tse_multi_mac_pcs_pma.v          ;
+; triple_speed_ethernet-library/altera_tse_multi_mac_pcs_pma_gige.v     ;
+; triple_speed_ethernet-library/altera_tse_pcs.v                        ;
+; triple_speed_ethernet-library/altera_tse_pcs_control.v                ;
+; triple_speed_ethernet-library/altera_tse_pcs_host_control.v           ;
+; triple_speed_ethernet-library/altera_tse_pcs_pma.v                    ;
+; triple_speed_ethernet-library/altera_tse_pcs_pma_gige.v               ;
+; triple_speed_ethernet-library/altera_tse_pma_lvds_rx.v                ;
+; triple_speed_ethernet-library/altera_tse_pma_lvds_tx.v                ;
+; triple_speed_ethernet-library/altera_tse_quad_16x32.v                 ;
+; triple_speed_ethernet-library/altera_tse_quad_8x32.v                  ;
+; triple_speed_ethernet-library/altera_tse_register_map.v               ;
+; triple_speed_ethernet-library/altera_tse_register_map_small.v         ;
+; triple_speed_ethernet-library/altera_tse_reset_ctrl_lego.sv           ;
+; triple_speed_ethernet-library/altera_tse_reset_sequencer.sv           ;
+; triple_speed_ethernet-library/altera_tse_reset_synchronizer.v         ;
+; triple_speed_ethernet-library/altera_tse_retransmit_cntl.v            ;
+; triple_speed_ethernet-library/altera_tse_rgmii_in1.v                  ;
+; triple_speed_ethernet-library/altera_tse_rgmii_in4.v                  ;
+; triple_speed_ethernet-library/altera_tse_rgmii_module.v               ;
+; triple_speed_ethernet-library/altera_tse_rgmii_out1.v                 ;
+; triple_speed_ethernet-library/altera_tse_rgmii_out4.v                 ;
+; triple_speed_ethernet-library/altera_tse_rx_converter.v               ;
+; triple_speed_ethernet-library/altera_tse_rx_counter_cntl.v            ;
+; triple_speed_ethernet-library/altera_tse_rx_encapsulation.v           ;
+; triple_speed_ethernet-library/altera_tse_rx_encapsulation_strx_gx.v   ;
+; triple_speed_ethernet-library/altera_tse_rx_ff.v                      ;
+; triple_speed_ethernet-library/altera_tse_rx_ff_cntrl.v                ;
+; triple_speed_ethernet-library/altera_tse_rx_ff_cntrl_32.v             ;
+; triple_speed_ethernet-library/altera_tse_rx_ff_cntrl_32_shift16.v     ;
+; triple_speed_ethernet-library/altera_tse_rx_ff_length.v               ;
+; triple_speed_ethernet-library/altera_tse_rx_fifo_rd.v                 ;
+; triple_speed_ethernet-library/altera_tse_rx_min_ff.v                  ;
+; triple_speed_ethernet-library/altera_tse_rx_stat_extract.v            ;
+; triple_speed_ethernet-library/altera_tse_rx_sync.v                    ;
+; triple_speed_ethernet-library/altera_tse_sdpm_altsyncram.v            ;
+; triple_speed_ethernet-library/altera_tse_sdpm_gen.v                   ;
+; triple_speed_ethernet-library/altera_tse_sgmii_clk_cntl.v             ;
+; triple_speed_ethernet-library/altera_tse_sgmii_clk_div.v              ;
+; triple_speed_ethernet-library/altera_tse_sgmii_clk_enable.v           ;
+; triple_speed_ethernet-library/altera_tse_sgmii_clk_scheduler.v        ;
+; triple_speed_ethernet-library/altera_tse_shared_mac_control.v         ;
+; triple_speed_ethernet-library/altera_tse_shared_register_map.v        ;
+; triple_speed_ethernet-library/altera_tse_timing_adapter32.v           ;
+; triple_speed_ethernet-library/altera_tse_timing_adapter8.v            ;
+; triple_speed_ethernet-library/altera_tse_timing_adapter_fifo32.v      ;
+; triple_speed_ethernet-library/altera_tse_timing_adapter_fifo8.v       ;
+; triple_speed_ethernet-library/altera_tse_top_1000_base_x.ocp          ;
+; triple_speed_ethernet-library/altera_tse_top_1000_base_x.v            ;
+; triple_speed_ethernet-library/altera_tse_top_1000_base_x_strx_gx.ocp  ;
+; triple_speed_ethernet-library/altera_tse_top_1000_base_x_strx_gx.v    ;
+; triple_speed_ethernet-library/altera_tse_top_1geth.v                  ;
+; triple_speed_ethernet-library/altera_tse_top_autoneg.v                ;
+; triple_speed_ethernet-library/altera_tse_top_fifoless_1geth.v         ;
+; triple_speed_ethernet-library/altera_tse_top_gen_host.ocp             ;
+; triple_speed_ethernet-library/altera_tse_top_gen_host.v               ;
+; triple_speed_ethernet-library/altera_tse_top_mdio.v                   ;
+; triple_speed_ethernet-library/altera_tse_top_multi_mac.v              ;
+; triple_speed_ethernet-library/altera_tse_top_multi_mac_pcs.v          ;
+; triple_speed_ethernet-library/altera_tse_top_multi_mac_pcs_gige.v     ;
+; triple_speed_ethernet-library/altera_tse_top_pcs.v                    ;
+; triple_speed_ethernet-library/altera_tse_top_pcs_strx_gx.v            ;
+; triple_speed_ethernet-library/altera_tse_top_rx.v                     ;
+; triple_speed_ethernet-library/altera_tse_top_rx_converter.v           ;
+; triple_speed_ethernet-library/altera_tse_top_sgmii.v                  ;
+; triple_speed_ethernet-library/altera_tse_top_sgmii_strx_gx.v          ;
+; triple_speed_ethernet-library/altera_tse_top_tx.v                     ;
+; triple_speed_ethernet-library/altera_tse_top_tx_converter.v           ;
+; triple_speed_ethernet-library/altera_tse_top_w_fifo.v                 ;
+; triple_speed_ethernet-library/altera_tse_top_w_fifo_10_100_1000.v     ;
+; triple_speed_ethernet-library/altera_tse_top_wo_fifo.v                ;
+; triple_speed_ethernet-library/altera_tse_top_wo_fifo_10_100_1000.v    ;
+; triple_speed_ethernet-library/altera_tse_tx_converter.v               ;
+; triple_speed_ethernet-library/altera_tse_tx_counter_cntl.v            ;
+; triple_speed_ethernet-library/altera_tse_tx_encapsulation.v           ;
+; triple_speed_ethernet-library/altera_tse_tx_ff.v                      ;
+; triple_speed_ethernet-library/altera_tse_tx_ff_cntrl.v                ;
+; triple_speed_ethernet-library/altera_tse_tx_ff_cntrl_32.v             ;
+; triple_speed_ethernet-library/altera_tse_tx_ff_cntrl_32_shift16.v     ;
+; triple_speed_ethernet-library/altera_tse_tx_ff_length.v               ;
+; triple_speed_ethernet-library/altera_tse_tx_ff_read_cntl.v            ;
+; triple_speed_ethernet-library/altera_tse_tx_min_ff.v                  ;
+; triple_speed_ethernet-library/altera_tse_tx_stat_extract.v            ;
+; tse.bsf                                                               ;
+; tse.cmp                                                               ;
+; tse.html                                                              ;
+; tse.qip                                                               ;
+; tse.vhd                                                               ;
+; tse_constraints.sdc                                                   ;
+; tse_constraints.tcl                                                   ;
+; tse_nativelink.tcl                                                    ;
+; m_scheduler.out.sdc                                                   ;
+; m_scheduler.sdc                                                       ;
+; stp1.stp                                                              ;
+; test3/test3.dpf                                                       ;
+; test3/tse_constraints.sdc                                             ;
+; test3/tse_constraints.tcl                                             ;
+; test3/tse_nativelink.tcl                                              ;
++-----------------------------------------------------------------------+
+
+
++--------------------+
+; Files Not Restored ;
++--------------------+
+; File Name          ;
++--------------------+
+
+

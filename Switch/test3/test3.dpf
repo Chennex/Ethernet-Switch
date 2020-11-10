@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pin_planner>
+	<pin_info>
+		<pin name="rx[3..0]" direction="Input Group" source="Hierarchy Database" diff_pair_node="rx(n)" >
+		</pin>
+		<pin name="rx[3]" direction="Input" source="Hierarchy Database" diff_pair_node="rx[3](n)" >
+		</pin>
+		<pin name="rx[2]" direction="Input" source="Hierarchy Database" diff_pair_node="rx[2](n)" >
+		</pin>
+		<pin name="rx[1]" direction="Input" source="Hierarchy Database" diff_pair_node="rx[1](n)" >
+		</pin>
+		<pin name="rx[0]" direction="Input" source="Hierarchy Database" diff_pair_node="rx[0](n)" >
+		</pin>
+		<pin name="tx[3..0]" direction="Output Group" source="Hierarchy Database" diff_pair_node="tx(n)" >
+		</pin>
+		<pin name="tx[3]" direction="Output" source="Hierarchy Database" diff_pair_node="tx[3](n)" >
+		</pin>
+		<pin name="tx[2]" direction="Output" source="Hierarchy Database" diff_pair_node="tx[2](n)" >
+		</pin>
+		<pin name="tx[1]" direction="Output" source="Hierarchy Database" diff_pair_node="tx[1](n)" >
+		</pin>
+		<pin name="tx[0]" direction="Output" source="Hierarchy Database" diff_pair_node="tx[0](n)" >
+		</pin>
+		<pin name="tx[0](n)" direction="Output" source="Assignments" diff_pair_node="tx[0]" >
+		</pin>
+		<pin name="tx[1](n)" direction="Output" source="Assignments" diff_pair_node="tx[1]" >
+		</pin>
+		<pin name="tx[2](n)" direction="Output" source="Assignments" diff_pair_node="tx[2]" >
+		</pin>
+		<pin name="tx[3](n)" direction="Output" source="Assignments" diff_pair_node="tx[3]" >
+		</pin>
+		<pin name="rx[0](n)" direction="Input" source="Assignments" diff_pair_node="rx[0]" >
+		</pin>
+		<pin name="rx[1](n)" direction="Input" source="Assignments" diff_pair_node="rx[1]" >
+		</pin>
+		<pin name="rx[2](n)" direction="Input" source="Assignments" diff_pair_node="rx[2]" >
+		</pin>
+		<pin name="rx[3](n)" direction="Input" source="Assignments" diff_pair_node="rx[3]" >
+		</pin>
+	</pin_info>
+	<buses>
+	</buses>
+	<group_file_association>
+	</group_file_association>
+	<pin_planner_file_specifies>
+	</pin_planner_file_specifies>
+</pin_planner>

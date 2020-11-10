@@ -1,0 +1,411 @@
+--altlvds_rx BUFFER_IMPLEMENTATION="RAM" CBX_DECLARE_ALL_CONNECTED_PORTS="OFF" COMMON_RX_TX_PLL="ON" CYCLONEII_M4K_COMPATIBILITY="ON" DATA_ALIGN_ROLLOVER=10 DATA_RATE="1250.0 Mbps" DESERIALIZATION_FACTOR=10 DEVICE_FAMILY="STRATIXIV" DPA_INITIAL_PHASE_VALUE=0 DPLL_LOCK_COUNT=0 DPLL_LOCK_WINDOW=0 ENABLE_DPA_ALIGN_TO_RISING_EDGE_ONLY="OFF" ENABLE_DPA_CALIBRATION="ON" ENABLE_DPA_INITIAL_PHASE_SELECTION="OFF" ENABLE_DPA_MODE="ON" ENABLE_DPA_PLL_CALIBRATION="OFF" ENABLE_SOFT_CDR_MODE="ON" IMPLEMENT_IN_LES="OFF" INCLOCK_BOOST=0 INCLOCK_DATA_ALIGNMENT="EDGE_ALIGNED" INCLOCK_PERIOD=8000 INCLOCK_PHASE_SHIFT=0 INPUT_DATA_RATE=1250 NUMBER_OF_CHANNELS=1 OUTCLOCK_RESOURCE="AUTO" PORT_RX_CHANNEL_DATA_ALIGN="PORT_USED" PORT_RX_DATA_ALIGN="PORT_UNUSED" REFCLK_FREQUENCY="125.00 MHz" REGISTERED_OUTPUT="ON" SIM_DPA_IS_NEGATIVE_PPM_DRIFT="OFF" SIM_DPA_NET_PPM_VARIATION=0 SIM_DPA_OUTPUT_CLOCK_PHASE_SHIFT=0 STRATIXIV_DPA_COMPATIBILITY="OFF" USE_CORECLOCK_INPUT="OFF" USE_DPLL_RAWPERROR="OFF" USE_EXTERNAL_PLL="OFF" USE_NO_PHASE_SHIFT="ON" X_ON_BITSLIP="ON" pll_areset rx_cda_reset rx_channel_data_align rx_divfwdclk rx_in rx_inclock rx_locked rx_out rx_outclock rx_reset ACF_BLOCK_RAM_AND_MLAB_EQUIVALENT_PAUSED_READ_CAPABILITIES="CARE" CARRY_CHAIN="MANUAL" CARRY_CHAIN_LENGTH=48 LOW_POWER_MODE="AUTO" ALTERA_INTERNAL_OPTIONS=AUTO_SHIFT_REGISTER_RECOGNITION=OFF
+--VERSION_BEGIN 15.1 cbx_altaccumulate 2016:02:01:19:04:59:SJ cbx_altclkbuf 2016:02:01:19:04:59:SJ cbx_altddio_in 2016:02:01:19:04:59:SJ cbx_altddio_out 2016:02:01:19:04:59:SJ cbx_altera_syncram_nd_impl 2016:02:01:19:04:59:SJ cbx_altiobuf_bidir 2016:02:01:19:04:59:SJ cbx_altiobuf_in 2016:02:01:19:04:59:SJ cbx_altiobuf_out 2016:02:01:19:04:59:SJ cbx_altlvds_rx 2016:02:01:19:04:59:SJ cbx_altpll 2016:02:01:19:04:59:SJ cbx_altsyncram 2016:02:01:19:04:59:SJ cbx_arriav 2016:02:01:19:04:56:SJ cbx_cyclone 2016:02:01:19:04:59:SJ cbx_cycloneii 2016:02:01:19:04:59:SJ cbx_lpm_add_sub 2016:02:01:19:04:59:SJ cbx_lpm_compare 2016:02:01:19:04:59:SJ cbx_lpm_counter 2016:02:01:19:04:59:SJ cbx_lpm_decode 2016:02:01:19:04:59:SJ cbx_lpm_mux 2016:02:01:19:04:59:SJ cbx_lpm_shiftreg 2016:02:01:19:04:59:SJ cbx_maxii 2016:02:01:19:04:59:SJ cbx_mgl 2016:02:01:19:07:00:SJ cbx_nadder 2016:02:01:19:04:59:SJ cbx_stratix 2016:02:01:19:05:00:SJ cbx_stratixii 2016:02:01:19:05:00:SJ cbx_stratixiii 2016:02:01:19:05:00:SJ cbx_stratixv 2016:02:01:19:05:00:SJ cbx_util_mgl 2016:02:01:19:04:59:SJ  VERSION_END
+
+
+-- Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+--  Your use of Altera Corporation's design tools, logic functions 
+--  and other software and tools, and its AMPP partner logic 
+--  functions, and any output files from any of the foregoing 
+--  (including device programming or simulation files), and any 
+--  associated documentation or information are expressly subject 
+--  to the terms and conditions of the Altera Program License 
+--  Subscription Agreement, the Altera Quartus Prime License Agreement,
+--  the Altera MegaCore Function License Agreement, or other 
+--  applicable license agreement, including, without limitation, 
+--  that your use is for the sole purpose of programming logic 
+--  devices manufactured by Altera and sold by Altera or its 
+--  authorized distributors.  Please refer to the applicable 
+--  agreement for further details.
+
+
+FUNCTION accum_0tf (aclr, clken, clock, data[3..0])
+RETURNS ( cout, result[7..0]);
+FUNCTION altclkctrl_30a (inclk[3..0])
+RETURNS ( outclk);
+FUNCTION soft (in)
+RETURNS ( out);
+FUNCTION stratixiv_lvds_receiver (bitslip, bitslipreset, clk0, datain, dpahold, dpareset, dpaswitch, enable0, fiforeset, serialfbk)
+WITH ( ALIGN_TO_RISING_EDGE_ONLY, CHANNEL_WIDTH, DATA_ALIGN_ROLLOVER, DPA_DEBUG, DPA_INITIAL_PHASE_VALUE, DPA_OUTPUT_CLOCK_PHASE_SHIFT, ENABLE_DPA, ENABLE_DPA_ALIGN_TO_RISING_EDGE_ONLY, ENABLE_DPA_INITIAL_PHASE_SELECTION, ENABLE_SOFT_CDR, IS_NEGATIVE_PPM_DRIFT, LOSE_LOCK_ON_ONE_CHANGE, NET_PPM_VARIATION, RESET_FIFO_AT_FIRST_LOCK, RX_INPUT_PATH_DELAY_ENGINEERING_BITS, USE_SERIAL_FEEDBACK_INPUT, X_ON_BITSLIP)
+RETURNS ( bitslipmax, dataout[CHANNEL_WIDTH-1..0], divfwdclk, dpaclkout, dpalock, postdpaserialdataout, serialdataout);
+FUNCTION stratixiv_pll (areset, clkswitch, configupdate, fbin, inclk[1..0], pfdena, phasecounterselect[phasecounterselect_width-1..0], phasestep, phaseupdown, scanclk, scanclkena, scandata)
+WITH ( AUTO_SETTINGS, BANDWIDTH, BANDWIDTH_TYPE, C0_HIGH, C0_INITIAL, C0_LOW, C0_MODE, C0_PH, C0_TEST_SOURCE, C1_HIGH, C1_INITIAL, C1_LOW, C1_MODE, C1_PH, C1_TEST_SOURCE, C1_USE_CASC_IN, C2_HIGH, C2_INITIAL, C2_LOW, C2_MODE, C2_PH, C2_TEST_SOURCE, C2_USE_CASC_IN, C3_HIGH, C3_INITIAL, C3_LOW, C3_MODE, C3_PH, C3_TEST_SOURCE, C3_USE_CASC_IN, C4_HIGH, C4_INITIAL, C4_LOW, C4_MODE, C4_PH, C4_TEST_SOURCE, C4_USE_CASC_IN, C5_HIGH, C5_INITIAL, C5_LOW, C5_MODE, C5_PH, C5_TEST_SOURCE, C5_USE_CASC_IN, c6_high, C6_INITIAL, C6_LOW, C6_MODE, C6_PH, C6_TEST_SOURCE, C6_USE_CASC_IN, c7_high, C7_INITIAL, C7_LOW, C7_MODE, C7_PH, C7_TEST_SOURCE, C7_USE_CASC_IN, c8_high, C8_INITIAL, C8_LOW, C8_MODE, C8_PH, C8_TEST_SOURCE, C8_USE_CASC_IN, c9_high, C9_INITIAL, C9_LOW, C9_MODE, C9_PH, C9_TEST_SOURCE, C9_USE_CASC_IN, CHARGE_PUMP_CURRENT, CHARGE_PUMP_CURRENT_BITS, CLK0_COUNTER, CLK0_DIVIDE_BY, CLK0_DUTY_CYCLE, CLK0_MULTIPLY_BY, CLK0_OUTPUT_FREQUENCY, CLK0_PHASE_SHIFT, CLK0_PHASE_SHIFT_NUM, clk0_use_even_counter_mode, clk0_use_even_counter_value, CLK1_COUNTER, CLK1_DIVIDE_BY, CLK1_DUTY_CYCLE, CLK1_MULTIPLY_BY, CLK1_OUTPUT_FREQUENCY, CLK1_PHASE_SHIFT, CLK1_PHASE_SHIFT_NUM, clk1_use_even_counter_mode, clk1_use_even_counter_value, CLK2_COUNTER, CLK2_DIVIDE_BY, CLK2_DUTY_CYCLE, CLK2_MULTIPLY_BY, CLK2_OUTPUT_FREQUENCY, CLK2_PHASE_SHIFT, CLK2_PHASE_SHIFT_NUM, clk2_use_even_counter_mode, clk2_use_even_counter_value, CLK3_COUNTER, CLK3_DIVIDE_BY, CLK3_DUTY_CYCLE, CLK3_MULTIPLY_BY, CLK3_OUTPUT_FREQUENCY, CLK3_PHASE_SHIFT, CLK3_PHASE_SHIFT_NUM, clk3_use_even_counter_mode, clk3_use_even_counter_value, CLK4_COUNTER, CLK4_DIVIDE_BY, CLK4_DUTY_CYCLE, CLK4_MULTIPLY_BY, CLK4_OUTPUT_FREQUENCY, CLK4_PHASE_SHIFT, CLK4_PHASE_SHIFT_NUM, clk4_use_even_counter_mode, clk4_use_even_counter_value, CLK5_COUNTER, CLK5_DIVIDE_BY, CLK5_DUTY_CYCLE, CLK5_MULTIPLY_BY, CLK5_OUTPUT_FREQUENCY, CLK5_PHASE_SHIFT, clk5_use_even_counter_mode, clk5_use_even_counter_value, CLK6_COUNTER, clk6_divide_by, clk6_duty_cycle, clk6_multiply_by, CLK6_OUTPUT_FREQUENCY, clk6_phase_shift, clk6_use_even_counter_mode, clk6_use_even_counter_value, CLK7_COUNTER, clk7_divide_by, clk7_duty_cycle, clk7_multiply_by, CLK7_OUTPUT_FREQUENCY, clk7_phase_shift, clk7_use_even_counter_mode, clk7_use_even_counter_value, CLK8_COUNTER, clk8_divide_by, clk8_duty_cycle, clk8_multiply_by, CLK8_OUTPUT_FREQUENCY, clk8_phase_shift, clk8_use_even_counter_mode, clk8_use_even_counter_value, CLK9_COUNTER, clk9_divide_by, clk9_duty_cycle, clk9_multiply_by, CLK9_OUTPUT_FREQUENCY, clk9_phase_shift, clk9_use_even_counter_mode, clk9_use_even_counter_value, CLKOUT_WIDTH = 10, COMPENSATE_CLOCK, DPA_DIVIDE_BY, DPA_DIVIDER, DPA_MULTIPLY_BY, ENABLE_SWITCH_OVER_COUNTER, INCLK0_INPUT_FREQUENCY, INCLK1_INPUT_FREQUENCY, LOCK_HIGH, LOCK_LOW, lock_window_ui, lock_window_ui_bits, LOOP_FILTER_C, LOOP_FILTER_C_BITS, LOOP_FILTER_R, LOOP_FILTER_R_BITS, M, M_INITIAL, M_PH, M_TEST_SOURCE, N, OPERATION_MODE, PFD_MAX, PFD_MIN, PHASECOUNTERSELECT_WIDTH = 4, PLL_COMPENSATION_DELAY, PLL_TYPE, SCAN_CHAIN_MIF_FILE, self_reset_on_loss_lock, SIMULATION_TYPE, SWITCH_OVER_COUNTER, SWITCH_OVER_TYPE, TEST_BYPASS_LOCK_DETECT, USE_DC_COUPLING, VCO_CENTER, VCO_DIVIDE_BY, vco_frequency_control, VCO_MAX, VCO_MIN, VCO_MULTIPLY_BY, vco_phase_shift_step, VCO_POST_SCALE, VCO_RANGE_DETECTOR_HIGH_BITS, VCO_RANGE_DETECTOR_LOW_BITS)
+RETURNS ( activeclock, clk[CLKOUT_WIDTH-1..0], clkbad[1..0], fbout, locked, phasedone, scandataout, scandone, vcooverrange, vcounderrange);
+
+--synthesis_resources = clkctrl 1 lut 34 reg 68 stratixiv_lvds_receiver 1 stratixiv_pll 1 
+OPTIONS ALTERA_INTERNAL_OPTION = "AUTO_SHIFT_REGISTER_RECOGNITION=OFF;REMOVE_DUPLICATE_REGISTERS=OFF;SUPPRESS_DA_RULE_INTERNAL=C104;{-to dffe10} POWER_UP_LEVEL=LOW;{-to dffe11} POWER_UP_LEVEL=LOW;{-to dffe12} POWER_UP_LEVEL=LOW;{-to dffe13} POWER_UP_LEVEL=LOW;{-to dffe14} POWER_UP_LEVEL=LOW;{-to dffe15} POWER_UP_LEVEL=LOW;{-to dffe16} POWER_UP_LEVEL=LOW;{-to dffe17} POWER_UP_LEVEL=LOW;{-to dffe18} POWER_UP_LEVEL=LOW;{-to dffe19} POWER_UP_LEVEL=LOW;{-to dffe20} POWER_UP_LEVEL=LOW;{-to dffe21} POWER_UP_LEVEL=LOW;{-to dffe22} POWER_UP_LEVEL=LOW;{-to dffe23} POWER_UP_LEVEL=LOW;{-to dffe24} POWER_UP_LEVEL=LOW;{-to dffe25} POWER_UP_LEVEL=LOW;{-to dffe26} POWER_UP_LEVEL=LOW;{-to dffe27} POWER_UP_LEVEL=LOW;{-to dffe3} POWER_UP_LEVEL=LOW;{-to dffe4} POWER_UP_LEVEL=LOW;{-to dffe5} POWER_UP_LEVEL=LOW;{-to dffe6} POWER_UP_LEVEL=LOW;{-to dffe7} POWER_UP_LEVEL=LOW;{-to dffe8} POWER_UP_LEVEL=LOW;{-to dffe9} POWER_UP_LEVEL=LOW;{-to lock_out_reg54a} POWER_UP_LEVEL=LOW;{-to pll_lock_sync} SUPPRESS_DA_RULE_INTERNAL=D103;{-to rxreg} PRESERVE_REGISTER=ON;{-to pll} AUTO_MERGE_PLLS=ON;-name SOURCE_MULTICYCLE 10 -from rx* -to rxreg*;-name SOURCE_MULTICYCLE_HOLD 10 -from rx* -to rxreg*";
+
+SUBDESIGN lvds_rx_qpv3
+( 
+	pll_areset	:	input;
+	rx_cda_reset[0..0]	:	input;
+	rx_channel_data_align[0..0]	:	input;
+	rx_divfwdclk[0..0]	:	output;
+	rx_in[0..0]	:	input;
+	rx_inclock	:	input;
+	rx_locked	:	output;
+	rx_out[9..0]	:	output;
+	rx_outclock	:	output;
+	rx_reset[0..0]	:	input;
+) 
+VARIABLE
+	add28_result[1..0]	:	WIRE;
+	add33_result[2..0]	:	WIRE;
+	add38_result[1..0]	:	WIRE;
+	add43_result[1..0]	:	WIRE;
+	add48_result[3..0]	:	WIRE;
+	lock_cnt_accum53a : accum_0tf;
+	rx_outclock_buf : altclkctrl_30a;
+	dffe10 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe11 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe12 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe13 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe14 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe15 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe16 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe17 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe18 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe19 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe20 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe21 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe22 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe23 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe24 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe25 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe26 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe27 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe3 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe4 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe5 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe6 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe7 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe8 : dffe
+		WITH (
+			power_up = "low"
+		);
+	dffe9 : dffe
+		WITH (
+			power_up = "low"
+		);
+	extra_reg2a : dffe;
+	lock_out_reg54a : dffe
+		WITH (
+			power_up = "low"
+		);
+	lock_state_mc55a[1..0] : dffe;
+	pad_regr1a[9..0] : dffe;
+	pll_lock_sync : dffe;
+	rx_soft_cdr_sync_reg[9..0] : dffe;
+	rxreg[9..0] : dffe;
+	sft29a[1..0] : soft;
+	sft30a[1..0] : soft;
+	sft31a[1..0] : soft;
+	sft32a[1..0] : soft;
+	sft34a[2..0] : soft;
+	sft35a[2..0] : soft;
+	sft36a[2..0] : soft;
+	sft37a[2..0] : soft;
+	sft39a[1..0] : soft;
+	sft40a[1..0] : soft;
+	sft41a[1..0] : soft;
+	sft42a[1..0] : soft;
+	sft44a[1..0] : soft;
+	sft45a[1..0] : soft;
+	sft46a[1..0] : soft;
+	sft47a[1..0] : soft;
+	sft49a[3..0] : soft;
+	sft50a[3..0] : soft;
+	sft51a[3..0] : soft;
+	sft52a[3..0] : soft;
+	rx[0..0] : stratixiv_lvds_receiver
+		WITH (
+			CHANNEL_WIDTH = 10,
+			DATA_ALIGN_ROLLOVER = 10,
+			DPA_OUTPUT_CLOCK_PHASE_SHIFT = 0,
+			ENABLE_DPA = "on",
+			ENABLE_DPA_ALIGN_TO_RISING_EDGE_ONLY = "OFF",
+			ENABLE_DPA_INITIAL_PHASE_SELECTION = "OFF",
+			ENABLE_SOFT_CDR = "on",
+			IS_NEGATIVE_PPM_DRIFT = "OFF",
+			NET_PPM_VARIATION = 0,
+			RESET_FIFO_AT_FIRST_LOCK = "off",
+			RX_INPUT_PATH_DELAY_ENGINEERING_BITS = 2,
+			X_ON_BITSLIP = "on"
+		);
+	pll : stratixiv_pll
+		WITH (
+			CLK0_DIVIDE_BY = 1,
+			CLK0_MULTIPLY_BY = 10,
+			CLK0_PHASE_SHIFT = "-400",
+			CLK1_DIVIDE_BY = 10,
+			CLK1_DUTY_CYCLE = 10,
+			CLK1_MULTIPLY_BY = 10,
+			CLK1_PHASE_SHIFT = "6400",
+			CLK2_DIVIDE_BY = 10,
+			CLK2_MULTIPLY_BY = 10,
+			CLK2_PHASE_SHIFT = "-400",
+			COMPENSATE_CLOCK = "lvdsclk",
+			DPA_DIVIDE_BY = 1,
+			DPA_MULTIPLY_BY = 10,
+			INCLK0_INPUT_FREQUENCY = 8000,
+			OPERATION_MODE = "source_synchronous",
+			PLL_TYPE = "fast"
+		);
+	chnl_clk[0..0]	: WIRE;
+	dpa_lock_fifo_reset[0..0]	: WIRE;
+	dpaswitch_wire[0..0]	: WIRE;
+	int_dpa_locked_out_wire[0..0]	: WIRE;
+	int_pll_kick_reset[0..0]	: WIRE;
+	outclock	: WIRE;
+	pll_locked_out	: WIRE;
+	rx_out_wire[9..0]	: WIRE;
+	w16w[0..0]	: WIRE;
+	w20w[0..0]	: WIRE;
+	w24w[0..0]	: WIRE;
+	w28w[0..0]	: WIRE;
+	w33w[0..0]	: WIRE;
+	w37w[0..0]	: WIRE;
+	w42w[0..0]	: WIRE;
+	w46w[0..0]	: WIRE;
+	w51w[0..0]	: WIRE;
+	w54w[0..0]	: WIRE;
+	w65w	: WIRE;
+	w6w[0..0]	: WIRE;
+	w_sm_0113w	: WIRE;
+	w_sm_1114w	: WIRE;
+	w_sm_2115w	: WIRE;
+
+BEGIN 
+	add28_result[] = sft29a[].out + sft30a[].out + sft31a[].out;
+	add33_result[] = sft34a[].out + sft35a[].out + sft36a[].out;
+	add38_result[] = sft39a[].out + sft40a[].out + sft41a[].out;
+	add43_result[] = sft44a[].out + sft45a[].out + sft46a[].out;
+	add48_result[] = sft49a[].out + sft50a[].out + sft51a[].out;
+	lock_cnt_accum53a.aclr = ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]);
+	lock_cnt_accum53a.clken = (! int_dpa_locked_out_wire[0..0]);
+	lock_cnt_accum53a.clock = chnl_clk[0..0];
+	lock_cnt_accum53a.data[] = ( dffe27.q, dffe24.q, dffe18.q, dffe4.q);
+	rx_outclock_buf.inclk[] = ( B"000", pll.clk[2..2]);
+	dffe10.clk = chnl_clk[0..0];
+	dffe10.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe10.d = w37w[0..0];
+	dffe11.clk = chnl_clk[0..0];
+	dffe11.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe11.d = w20w[0..0];
+	dffe12.clk = chnl_clk[0..0];
+	dffe12.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe12.d = w42w[0..0];
+	dffe13.clk = chnl_clk[0..0];
+	dffe13.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe13.d = sft47a[0..0].out;
+	dffe14.clk = chnl_clk[0..0];
+	dffe14.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe14.d = w46w[0..0];
+	dffe15.clk = chnl_clk[0..0];
+	dffe15.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe15.d = w16w[0..0];
+	dffe16.clk = chnl_clk[0..0];
+	dffe16.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe16.d = w51w[0..0];
+	dffe17.clk = chnl_clk[0..0];
+	dffe17.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe17.d = sft52a[1..1].out;
+	dffe18.clk = chnl_clk[0..0];
+	dffe18.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe18.d = dffe17.q;
+	dffe19.clk = chnl_clk[0..0];
+	dffe19.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe19.d = sft37a[1..1].out;
+	dffe20.clk = chnl_clk[0..0];
+	dffe20.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe20.d = sft32a[1..1].out;
+	dffe21.clk = chnl_clk[0..0];
+	dffe21.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe21.d = sft42a[1..1].out;
+	dffe22.clk = chnl_clk[0..0];
+	dffe22.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe22.d = sft47a[1..1].out;
+	dffe23.clk = chnl_clk[0..0];
+	dffe23.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe23.d = sft52a[2..2].out;
+	dffe24.clk = chnl_clk[0..0];
+	dffe24.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe24.d = dffe23.q;
+	dffe25.clk = chnl_clk[0..0];
+	dffe25.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe25.d = sft37a[2..2].out;
+	dffe26.clk = chnl_clk[0..0];
+	dffe26.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe26.d = sft52a[3..3].out;
+	dffe27.clk = chnl_clk[0..0];
+	dffe27.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe27.d = dffe26.q;
+	dffe3.clk = chnl_clk[0..0];
+	dffe3.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe3.d = sft52a[0..0].out;
+	dffe4.clk = chnl_clk[0..0];
+	dffe4.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe4.d = dffe3.q;
+	dffe5.clk = chnl_clk[0..0];
+	dffe5.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe5.d = sft37a[0..0].out;
+	dffe6.clk = chnl_clk[0..0];
+	dffe6.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe6.d = w28w[0..0];
+	dffe7.clk = chnl_clk[0..0];
+	dffe7.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe7.d = w24w[0..0];
+	dffe8.clk = chnl_clk[0..0];
+	dffe8.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe8.d = sft32a[0..0].out;
+	dffe9.clk = chnl_clk[0..0];
+	dffe9.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	dffe9.d = sft42a[0..0].out;
+	extra_reg2a.clk = chnl_clk[0..0];
+	extra_reg2a.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	extra_reg2a.d = pad_regr1a[0..0].q;
+	lock_out_reg54a.clk = chnl_clk[0..0];
+	lock_out_reg54a.clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	lock_out_reg54a.d = B"1";
+	lock_out_reg54a.ena = lock_cnt_accum53a.cout;
+	lock_state_mc55a[].clk = chnl_clk[0..0];
+	lock_state_mc55a[].clrn = (! (rx_reset[] # (! pll_locked_out)));
+	lock_state_mc55a[].d = ( ((w_sm_2115w # (((! lock_state_mc55a[0..0].q) & (! lock_state_mc55a[1..1].q)) & int_dpa_locked_out_wire[0..0])) & (! (w_sm_0113w # w_sm_1114w))), ((w_sm_1114w # (((! lock_state_mc55a[0..0].q) & (! lock_state_mc55a[1..1].q)) & int_dpa_locked_out_wire[0..0])) & (! (w_sm_0113w # w_sm_2115w))));
+	lock_state_mc55a[].ena = (((w_sm_0113w # w_sm_1114w) # w_sm_2115w) # (((! lock_state_mc55a[0..0].q) & (! lock_state_mc55a[1..1].q)) & int_dpa_locked_out_wire[0..0]));
+	pad_regr1a[].clk = chnl_clk[0..0];
+	pad_regr1a[].clrn = (! ((rx_reset[] # (! pll_locked_out)) # int_pll_kick_reset[0..0]));
+	pad_regr1a[].d = rx_out_wire[9..0];
+	pll_lock_sync.clk = pll.locked;
+	pll_lock_sync.clrn = (! pll_areset);
+	pll_lock_sync.d = B"1";
+	rx_soft_cdr_sync_reg[].clk = ( rx[0..0].divfwdclk, rx[0..0].divfwdclk, rx[0..0].divfwdclk, rx[0..0].divfwdclk, rx[0..0].divfwdclk, rx[0..0].divfwdclk, rx[0..0].divfwdclk, rx[0..0].divfwdclk, rx[0..0].divfwdclk, rx[0..0].divfwdclk);
+	rx_soft_cdr_sync_reg[].d = rx[].dataout[];
+	rxreg[].clk = ( (! rx[0..0].divfwdclk), (! rx[0..0].divfwdclk), (! rx[0..0].divfwdclk), (! rx[0..0].divfwdclk), (! rx[0..0].divfwdclk), (! rx[0..0].divfwdclk), (! rx[0..0].divfwdclk), (! rx[0..0].divfwdclk), (! rx[0..0].divfwdclk), (! rx[0..0].divfwdclk));
+	rxreg[].d = rx_soft_cdr_sync_reg[].q;
+	sft29a[].in = ( w65w, w54w[0..0]);
+	sft30a[].in = ( w65w, w33w[0..0]);
+	sft31a[].in = ( w65w, w65w);
+	sft32a[].in = add28_result[];
+	sft34a[].in = ( w65w, ( dffe20.q, dffe6.q));
+	sft35a[].in = ( w65w, ( w65w, dffe7.q));
+	sft36a[].in = ( w65w, ( w65w, dffe8.q));
+	sft37a[].in = add33_result[];
+	sft39a[].in = ( w65w, dffe10.q);
+	sft40a[].in = ( w65w, dffe11.q);
+	sft41a[].in = ( w65w, dffe12.q);
+	sft42a[].in = add38_result[];
+	sft44a[].in = ( w65w, dffe14.q);
+	sft45a[].in = ( w65w, dffe15.q);
+	sft46a[].in = ( w65w, dffe16.q);
+	sft47a[].in = add43_result[];
+	sft49a[].in = ( w65w, ( dffe25.q, ( dffe19.q, dffe5.q)));
+	sft50a[].in = ( w65w, ( w65w, ( dffe21.q, dffe9.q)));
+	sft51a[].in = ( w65w, ( w65w, ( dffe22.q, dffe13.q)));
+	sft52a[].in = add48_result[];
+	rx[].bitslip = rx_channel_data_align[];
+	rx[].bitslipreset = rx_cda_reset[];
+	rx[].clk0 = pll.clk[0..0];
+	rx[].datain = rx_in[];
+	rx[].dpareset = rx_reset[];
+	rx[].dpaswitch = dpaswitch_wire[];
+	rx[].enable0 = pll.clk[1..1];
+	rx[].fiforeset = dpa_lock_fifo_reset[];
+	pll.areset = pll_areset;
+	pll.fbin = pll.fbout;
+	pll.inclk[] = ( GND, rx_inclock);
+	chnl_clk[] = ( w6w[0..0]);
+	dpaswitch_wire[] = ( (! ((! lock_state_mc55a[0..0].q) & (! lock_state_mc55a[1..1].q))));
+	int_dpa_locked_out_wire[] = ( lock_out_reg54a.q);
+	int_pll_kick_reset[] = ( (lock_state_mc55a[0..0].q & (! lock_state_mc55a[1..1].q)));
+	outclock = rx_outclock_buf.outclk;
+	pll_locked_out = (pll.locked & pll_lock_sync.q);
+	rx_divfwdclk[] = (! rx[].divfwdclk);
+	rx_locked = pll_locked_out;
+	rx_out[] = rxreg[].q;
+	rx_out_wire[] = rxreg[].q;
+	rx_outclock = outclock;
+	w16w[] = (extra_reg2a.q $ pad_regr1a[9..9].q);
+	w20w[] = (pad_regr1a[1..1].q $ pad_regr1a[0..0].q);
+	w24w[] = (pad_regr1a[2..2].q $ pad_regr1a[1..1].q);
+	w28w[] = (pad_regr1a[3..3].q $ pad_regr1a[2..2].q);
+	w33w[] = (pad_regr1a[4..4].q $ pad_regr1a[3..3].q);
+	w37w[] = (pad_regr1a[5..5].q $ pad_regr1a[4..4].q);
+	w42w[] = (pad_regr1a[6..6].q $ pad_regr1a[5..5].q);
+	w46w[] = (pad_regr1a[7..7].q $ pad_regr1a[6..6].q);
+	w51w[] = (pad_regr1a[8..8].q $ pad_regr1a[7..7].q);
+	w54w[] = (pad_regr1a[9..9].q $ pad_regr1a[8..8].q);
+	w65w = B"0";
+	w6w[] = (! rx[].divfwdclk);
+	w_sm_0113w = B"0";
+	w_sm_1114w = B"0";
+	w_sm_2115w = B"0";
+END;
+--VALID FILE

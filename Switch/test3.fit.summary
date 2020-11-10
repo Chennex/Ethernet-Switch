@@ -1,0 +1,22 @@
+Fitter Status : Successful - Wed Oct 21 13:17:07 2020
+Quartus Prime Version : 15.1.2 Build 193 02/01/2016 SJ Standard Edition
+Revision Name : test3
+Top-level Entity Name : switch_top
+Family : Stratix IV
+Device : EP4SGX230KF40C2
+Timing Models : Final
+Logic utilization : 4 %
+    Combinational ALUTs : 3,522 / 182,400 ( 2 % )
+    Memory ALUTs : 32 / 91,200 ( < 1 % )
+    Dedicated logic registers : 5,805 / 182,400 ( 3 % )
+Total registers : 5805
+Total pins : 33 / 888 ( 4 % )
+Total virtual pins : 18
+Total block memory bits : 49,408 / 14,625,792 ( < 1 % )
+DSP block 18-bit elements : 0 / 1,288 ( 0 % )
+Total GXB Receiver Channel PCS : 0 / 24 ( 0 % )
+Total GXB Receiver Channel PMA : 0 / 36 ( 0 % )
+Total GXB Transmitter Channel PCS : 0 / 24 ( 0 % )
+Total GXB Transmitter Channel PMA : 0 / 36 ( 0 % )
+Total PLLs : 2 / 8 ( 25 % )
+Total DLLs : 0 / 4 ( 0 % )

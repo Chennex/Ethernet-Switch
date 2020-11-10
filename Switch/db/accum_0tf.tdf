@@ -1,0 +1,55 @@
+--altaccumulate CARRY_CHAIN="MANUAL" CARRY_CHAIN_LENGTH=48 CBX_DECLARE_ALL_CONNECTED_PORTS="OFF" DEVICE_FAMILY="STRATIXIV" WIDTH_IN=4 WIDTH_OUT=8 aclr clken clock cout data
+--VERSION_BEGIN 15.1 cbx_altaccumulate 2016:02:01:19:04:59:SJ cbx_cycloneii 2016:02:01:19:04:59:SJ cbx_lpm_add_sub 2016:02:01:19:04:59:SJ cbx_mgl 2016:02:01:19:07:00:SJ cbx_nadder 2016:02:01:19:04:59:SJ cbx_stratix 2016:02:01:19:05:00:SJ cbx_stratixii 2016:02:01:19:05:00:SJ  VERSION_END
+
+
+-- Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+--  Your use of Altera Corporation's design tools, logic functions 
+--  and other software and tools, and its AMPP partner logic 
+--  functions, and any output files from any of the foregoing 
+--  (including device programming or simulation files), and any 
+--  associated documentation or information are expressly subject 
+--  to the terms and conditions of the Altera Program License 
+--  Subscription Agreement, the Altera Quartus Prime License Agreement,
+--  the Altera MegaCore Function License Agreement, or other 
+--  applicable license agreement, including, without limitation, 
+--  that your use is for the sole purpose of programming logic 
+--  devices manufactured by Altera and sold by Altera or its 
+--  authorized distributors.  Please refer to the applicable 
+--  agreement for further details.
+
+
+FUNCTION stratixiv_lcell_comb (cin, dataa, datab, datac, datad, datae, dataf, datag, sharein)
+WITH ( DONT_TOUCH, EXTENDED_LUT, LUT_MASK, SHARED_ARITH)
+RETURNS ( combout, cout, shareout, sumout);
+
+--synthesis_resources = lut 8 reg 8 
+SUBDESIGN accum_0tf
+( 
+	aclr	:	input;
+	clken	:	input;
+	clock	:	input;
+	cout	:	output;
+	data[3..0]	:	input;
+	result[7..0]	:	output;
+) 
+VARIABLE 
+	acc_ffa[7..0] : dffe;
+	acc_cella[7..0] : stratixiv_lcell_comb
+		WITH (
+			LUT_MASK = "000033330000AAAA"
+		);
+	sload	: NODE;
+
+BEGIN 
+	acc_ffa[].clk = clock;
+	acc_ffa[].clrn = (! aclr);
+	acc_ffa[].d = acc_cella[].sumout;
+	acc_ffa[].ena = clken;
+	acc_cella[].cin = ( acc_cella[6..0].cout, B"0");
+	acc_cella[].dataa = acc_ffa[].q;
+	acc_cella[].datab = ( B"0000", data[]);
+	cout = ((! sload) & acc_cella[7].cout);
+	result[] = acc_ffa[].q;
+	sload = GND;
+END;
+--VALID FILE

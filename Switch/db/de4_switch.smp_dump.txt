@@ -1,0 +1,470 @@
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:3:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_lvds_reset_sequencer:the_altera_tse_lvds_reset_sequencer|state
+Name state.stm_rx_cda_reset state.stm_rx_reset state.stm_idle state.stm_pll_areset state.stm_word_alignment 
+state.stm_pll_areset 0 0 0 0 0 
+state.stm_idle 0 0 1 1 0 
+state.stm_rx_reset 0 1 0 1 0 
+state.stm_rx_cda_reset 1 0 0 1 0 
+state.stm_word_alignment 0 0 0 1 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:2:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_lvds_reset_sequencer:the_altera_tse_lvds_reset_sequencer|state
+Name state.stm_rx_cda_reset state.stm_rx_reset state.stm_idle state.stm_pll_areset state.stm_word_alignment 
+state.stm_pll_areset 0 0 0 0 0 
+state.stm_idle 0 0 1 1 0 
+state.stm_rx_reset 0 1 0 1 0 
+state.stm_rx_cda_reset 1 0 0 1 0 
+state.stm_word_alignment 0 0 0 1 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:1:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_lvds_reset_sequencer:the_altera_tse_lvds_reset_sequencer|state
+Name state.stm_rx_cda_reset state.stm_rx_reset state.stm_idle state.stm_pll_areset state.stm_word_alignment 
+state.stm_pll_areset 0 0 0 0 0 
+state.stm_idle 0 0 1 1 0 
+state.stm_rx_reset 0 1 0 1 0 
+state.stm_rx_cda_reset 1 0 0 1 0 
+state.stm_word_alignment 0 0 0 1 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:0:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_lvds_reset_sequencer:the_altera_tse_lvds_reset_sequencer|state
+Name state.stm_rx_cda_reset state.stm_rx_reset state.stm_idle state.stm_pll_areset state.stm_word_alignment 
+state.stm_pll_areset 0 0 0 0 0 
+state.stm_idle 0 0 1 1 0 
+state.stm_rx_reset 0 1 0 1 0 
+state.stm_rx_cda_reset 1 0 0 1 0 
+state.stm_word_alignment 0 0 0 1 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:3:rx|wrstate
+Name wrstate.passthrough wrstate.modifyIFG wrstate.huntIFG 
+wrstate.huntIFG 0 0 0 
+wrstate.modifyIFG 0 1 1 
+wrstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:3:rx|rdstate
+Name rdstate.passthrough rdstate.modifyIFG rdstate.huntIFG 
+rdstate.huntIFG 0 0 0 
+rdstate.modifyIFG 0 1 1 
+rdstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:3:tx|wrstate
+Name wrstate.passthrough wrstate.modifyIFG wrstate.huntIFG 
+wrstate.huntIFG 0 0 0 
+wrstate.modifyIFG 0 1 1 
+wrstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:3:tx|rdstate
+Name rdstate.passthrough rdstate.modifyIFG rdstate.huntIFG 
+rdstate.huntIFG 0 0 0 
+rdstate.modifyIFG 0 1 1 
+rdstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:2:rx|wrstate
+Name wrstate.passthrough wrstate.modifyIFG wrstate.huntIFG 
+wrstate.huntIFG 0 0 0 
+wrstate.modifyIFG 0 1 1 
+wrstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:2:rx|rdstate
+Name rdstate.passthrough rdstate.modifyIFG rdstate.huntIFG 
+rdstate.huntIFG 0 0 0 
+rdstate.modifyIFG 0 1 1 
+rdstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:2:tx|wrstate
+Name wrstate.passthrough wrstate.modifyIFG wrstate.huntIFG 
+wrstate.huntIFG 0 0 0 
+wrstate.modifyIFG 0 1 1 
+wrstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:2:tx|rdstate
+Name rdstate.passthrough rdstate.modifyIFG rdstate.huntIFG 
+rdstate.huntIFG 0 0 0 
+rdstate.modifyIFG 0 1 1 
+rdstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:1:rx|wrstate
+Name wrstate.passthrough wrstate.modifyIFG wrstate.huntIFG 
+wrstate.huntIFG 0 0 0 
+wrstate.modifyIFG 0 1 1 
+wrstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:1:rx|rdstate
+Name rdstate.passthrough rdstate.modifyIFG rdstate.huntIFG 
+rdstate.huntIFG 0 0 0 
+rdstate.modifyIFG 0 1 1 
+rdstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:1:tx|wrstate
+Name wrstate.passthrough wrstate.modifyIFG wrstate.huntIFG 
+wrstate.huntIFG 0 0 0 
+wrstate.modifyIFG 0 1 1 
+wrstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:1:tx|rdstate
+Name rdstate.passthrough rdstate.modifyIFG rdstate.huntIFG 
+rdstate.huntIFG 0 0 0 
+rdstate.modifyIFG 0 1 1 
+rdstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:0:rx|wrstate
+Name wrstate.passthrough wrstate.modifyIFG wrstate.huntIFG 
+wrstate.huntIFG 0 0 0 
+wrstate.modifyIFG 0 1 1 
+wrstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:0:rx|rdstate
+Name rdstate.passthrough rdstate.modifyIFG rdstate.huntIFG 
+rdstate.huntIFG 0 0 0 
+rdstate.modifyIFG 0 1 1 
+rdstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:0:tx|wrstate
+Name wrstate.passthrough wrstate.modifyIFG wrstate.huntIFG 
+wrstate.huntIFG 0 0 0 
+wrstate.modifyIFG 0 1 1 
+wrstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|clk_decoup:\decoup:0:tx|rdstate
+Name rdstate.passthrough rdstate.modifyIFG rdstate.huntIFG 
+rdstate.huntIFG 0 0 0 
+rdstate.modifyIFG 0 1 1 
+rdstate.passthrough 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|phy_setup:setup_phy|state
+Name state.finished state.wait_mdio state.go 
+state.go 0 0 0 
+state.wait_mdio 0 1 1 
+state.finished 1 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|phy_setup:setup_phy|mdio:mdio3|state
+Name state.write state.read state.accs state.idle 
+state.idle 0 0 0 0 
+state.accs 0 0 1 1 
+state.read 0 1 0 1 
+state.write 1 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|phy_setup:setup_phy|mdio:mdio2|state
+Name state.write state.read state.accs state.idle 
+state.idle 0 0 0 0 
+state.accs 0 0 1 1 
+state.read 0 1 0 1 
+state.write 1 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|phy_setup:setup_phy|mdio:mdio1|state
+Name state.write state.read state.accs state.idle 
+state.idle 0 0 0 0 
+state.accs 0 0 1 1 
+state.read 0 1 0 1 
+state.write 1 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|phy_setup:setup_phy|mdio:mdio0|state
+Name state.write state.read state.accs state.idle 
+state.idle 0 0 0 0 
+state.accs 0 0 1 1 
+state.read 0 1 0 1 
+state.write 1 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:0:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_pcs_control:U_REG|altera_tse_pcs_host_control:U_CTRL|state
+Name state.STM_TYPE_TX_READ state.STM_TYPE_RX_READ state.STM_TYPE_WAIT_CYCLE state.STM_TYPE_END_READ state.STM_TYPE_NEXT_CYCLE state.STM_TYPE_IDLE 
+state.STM_TYPE_IDLE 0 0 0 0 0 0 
+state.STM_TYPE_NEXT_CYCLE 0 0 0 0 1 1 
+state.STM_TYPE_END_READ 0 0 0 1 0 1 
+state.STM_TYPE_WAIT_CYCLE 0 0 1 0 0 1 
+state.STM_TYPE_RX_READ 0 1 0 0 0 1 
+state.STM_TYPE_TX_READ 1 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:0:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_tx:U_TX|altera_tse_tx_encapsulation:U_FRM|state
+Name state.STM_TYP_CF_C2D state.STM_TYP_CF_C2C state.STM_TYP_CF_C2B state.STM_TYP_CF_C2A state.STM_TYP_CF_C1D state.STM_TYP_CF_C1C state.STM_TYP_CF_C1B state.STM_TYP_CF_C1A state.STM_TYP_FRM_END3 state.STM_TYP_FRM_DATA_ERR state.STM_TYP_FRM_START_ERR state.STM_TYP_FRM_END2 state.STM_TYP_FRM_END state.STM_TYP_FRM state.STM_TYP_FRM_START state.STM_TYP_IDLE 
+state.STM_TYP_IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_FRM_START 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_FRM 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_FRM_END 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_FRM_END2 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_FRM_START_ERR 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_FRM_DATA_ERR 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_FRM_END3 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1A 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1B 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1C 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1D 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2A 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2B 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2C 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2D 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:0:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_rx:U_RX|altera_tse_rx_sync:U_SYNC|state
+Name state.STM_TYP_SYNC_ACQU_4A state.STM_TYP_SYNC_ACQU_3A state.STM_TYP_SYNC_ACQU_2A state.STM_TYP_SYNC_ACQU_4 state.STM_TYP_SYNC_ACQU_3 state.STM_TYP_SYNC_ACQU_2 state.STM_TYP_SYNC_ACQU_1 state.STM_TYP_ACQU_SYNC_2 state.STM_TYP_ACQU_SYNC_1 state.STM_TYP_COMMA_3 state.STM_TYP_COMMA_2 state.STM_TYP_COMMA_1 state.STM_TYP_LOSS_OF_SYNC 
+state.STM_TYP_LOSS_OF_SYNC 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_COMMA_1 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_COMMA_2 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_COMMA_3 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_ACQU_SYNC_1 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_ACQU_SYNC_2 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_1 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_2 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_3 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_4 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_2A 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_3A 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_4A 1 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:0:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_rx:U_RX|altera_tse_rx_encapsulation:U_FRM|state
+Name state.STM_TYP_EARLY_END_EXTEND3 state.STM_TYP_EARLY_END_EXTEND2 state.STM_TYP_EARLY_END_EXTEND1 state.STM_TYP_FRM_END_EXTEND2 state.STM_TYP_FRM_END_EXTEND1 state.STM_TYP_RX_FAULT state.STM_TYP_RX_INVAL state.STM_TYP_AN_CD state.STM_TYP_AN_CC state.STM_TYP_AN_CB state.STM_TYP_EARLY_END state.STM_TYP_FALSE_CAR state.STM_TYP_FRM_END2 state.STM_TYP_FRM_END1 state.STM_TYP_FRM state.STM_TYP_FRM_START state.STM_TYP_RX_K state.STM_TYP_IDLE_D state.STM_TYP_K_WAIT 
+state.STM_TYP_K_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_IDLE_D 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_RX_K 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_FRM_START 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_FRM 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_FRM_END1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_FRM_END2 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_FALSE_CAR 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CB 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CC 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CD 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_RX_INVAL 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_RX_FAULT 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_FRM_END_EXTEND1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_FRM_END_EXTEND2 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND3 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:0:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_autoneg:U_AUTONEG|state
+Name state.STM_TYP_NO_AN_LINK state.STM_TYP_LINK_OK state.STM_TYP_IDLE_DETECT state.STM_TYP_COMPLETE_ACK state.STM_TYP_ACK_DETECT state.STM_TYP_ABILITY_DETECT state.STM_TYP_AUTONEG_RESTART state.STM_TYP_AUTONEG_ENA 
+state.STM_TYP_AUTONEG_ENA 0 0 0 0 0 0 0 0 
+state.STM_TYP_AUTONEG_RESTART 0 0 0 0 0 0 1 1 
+state.STM_TYP_ABILITY_DETECT 0 0 0 0 0 1 0 1 
+state.STM_TYP_ACK_DETECT 0 0 0 0 1 0 0 1 
+state.STM_TYP_COMPLETE_ACK 0 0 0 1 0 0 0 1 
+state.STM_TYP_IDLE_DETECT 0 0 1 0 0 0 0 1 
+state.STM_TYP_LINK_OK 0 1 0 0 0 0 0 1 
+state.STM_TYP_NO_AN_LINK 1 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:1:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_pcs_control:U_REG|altera_tse_pcs_host_control:U_CTRL|state
+Name state.STM_TYPE_TX_READ state.STM_TYPE_RX_READ state.STM_TYPE_WAIT_CYCLE state.STM_TYPE_END_READ state.STM_TYPE_NEXT_CYCLE state.STM_TYPE_IDLE 
+state.STM_TYPE_IDLE 0 0 0 0 0 0 
+state.STM_TYPE_NEXT_CYCLE 0 0 0 0 1 1 
+state.STM_TYPE_END_READ 0 0 0 1 0 1 
+state.STM_TYPE_WAIT_CYCLE 0 0 1 0 0 1 
+state.STM_TYPE_RX_READ 0 1 0 0 0 1 
+state.STM_TYPE_TX_READ 1 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:1:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_tx:U_TX|altera_tse_tx_encapsulation:U_FRM|state
+Name state.STM_TYP_CF_C2D state.STM_TYP_CF_C2C state.STM_TYP_CF_C2B state.STM_TYP_CF_C2A state.STM_TYP_CF_C1D state.STM_TYP_CF_C1C state.STM_TYP_CF_C1B state.STM_TYP_CF_C1A state.STM_TYP_FRM_END3 state.STM_TYP_FRM_DATA_ERR state.STM_TYP_FRM_START_ERR state.STM_TYP_FRM_END2 state.STM_TYP_FRM_END state.STM_TYP_FRM state.STM_TYP_FRM_START state.STM_TYP_IDLE 
+state.STM_TYP_IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_FRM_START 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_FRM 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_FRM_END 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_FRM_END2 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_FRM_START_ERR 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_FRM_DATA_ERR 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_FRM_END3 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1A 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1B 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1C 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1D 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2A 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2B 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2C 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2D 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:1:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_rx:U_RX|altera_tse_rx_sync:U_SYNC|state
+Name state.STM_TYP_SYNC_ACQU_4A state.STM_TYP_SYNC_ACQU_3A state.STM_TYP_SYNC_ACQU_2A state.STM_TYP_SYNC_ACQU_4 state.STM_TYP_SYNC_ACQU_3 state.STM_TYP_SYNC_ACQU_2 state.STM_TYP_SYNC_ACQU_1 state.STM_TYP_ACQU_SYNC_2 state.STM_TYP_ACQU_SYNC_1 state.STM_TYP_COMMA_3 state.STM_TYP_COMMA_2 state.STM_TYP_COMMA_1 state.STM_TYP_LOSS_OF_SYNC 
+state.STM_TYP_LOSS_OF_SYNC 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_COMMA_1 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_COMMA_2 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_COMMA_3 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_ACQU_SYNC_1 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_ACQU_SYNC_2 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_1 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_2 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_3 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_4 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_2A 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_3A 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_4A 1 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:1:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_rx:U_RX|altera_tse_rx_encapsulation:U_FRM|state
+Name state.STM_TYP_EARLY_END_EXTEND3 state.STM_TYP_EARLY_END_EXTEND2 state.STM_TYP_EARLY_END_EXTEND1 state.STM_TYP_FRM_END_EXTEND2 state.STM_TYP_FRM_END_EXTEND1 state.STM_TYP_RX_FAULT state.STM_TYP_RX_INVAL state.STM_TYP_AN_CD state.STM_TYP_AN_CC state.STM_TYP_AN_CB state.STM_TYP_EARLY_END state.STM_TYP_FALSE_CAR state.STM_TYP_FRM_END2 state.STM_TYP_FRM_END1 state.STM_TYP_FRM state.STM_TYP_FRM_START state.STM_TYP_RX_K state.STM_TYP_IDLE_D state.STM_TYP_K_WAIT 
+state.STM_TYP_K_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_IDLE_D 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_RX_K 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_FRM_START 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_FRM 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_FRM_END1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_FRM_END2 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_FALSE_CAR 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CB 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CC 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CD 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_RX_INVAL 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_RX_FAULT 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_FRM_END_EXTEND1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_FRM_END_EXTEND2 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND3 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:1:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_autoneg:U_AUTONEG|state
+Name state.STM_TYP_NO_AN_LINK state.STM_TYP_LINK_OK state.STM_TYP_IDLE_DETECT state.STM_TYP_COMPLETE_ACK state.STM_TYP_ACK_DETECT state.STM_TYP_ABILITY_DETECT state.STM_TYP_AUTONEG_RESTART state.STM_TYP_AUTONEG_ENA 
+state.STM_TYP_AUTONEG_ENA 0 0 0 0 0 0 0 0 
+state.STM_TYP_AUTONEG_RESTART 0 0 0 0 0 0 1 1 
+state.STM_TYP_ABILITY_DETECT 0 0 0 0 0 1 0 1 
+state.STM_TYP_ACK_DETECT 0 0 0 0 1 0 0 1 
+state.STM_TYP_COMPLETE_ACK 0 0 0 1 0 0 0 1 
+state.STM_TYP_IDLE_DETECT 0 0 1 0 0 0 0 1 
+state.STM_TYP_LINK_OK 0 1 0 0 0 0 0 1 
+state.STM_TYP_NO_AN_LINK 1 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:2:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_pcs_control:U_REG|altera_tse_pcs_host_control:U_CTRL|state
+Name state.STM_TYPE_TX_READ state.STM_TYPE_RX_READ state.STM_TYPE_WAIT_CYCLE state.STM_TYPE_END_READ state.STM_TYPE_NEXT_CYCLE state.STM_TYPE_IDLE 
+state.STM_TYPE_IDLE 0 0 0 0 0 0 
+state.STM_TYPE_NEXT_CYCLE 0 0 0 0 1 1 
+state.STM_TYPE_END_READ 0 0 0 1 0 1 
+state.STM_TYPE_WAIT_CYCLE 0 0 1 0 0 1 
+state.STM_TYPE_RX_READ 0 1 0 0 0 1 
+state.STM_TYPE_TX_READ 1 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:2:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_tx:U_TX|altera_tse_tx_encapsulation:U_FRM|state
+Name state.STM_TYP_CF_C2D state.STM_TYP_CF_C2C state.STM_TYP_CF_C2B state.STM_TYP_CF_C2A state.STM_TYP_CF_C1D state.STM_TYP_CF_C1C state.STM_TYP_CF_C1B state.STM_TYP_CF_C1A state.STM_TYP_FRM_END3 state.STM_TYP_FRM_DATA_ERR state.STM_TYP_FRM_START_ERR state.STM_TYP_FRM_END2 state.STM_TYP_FRM_END state.STM_TYP_FRM state.STM_TYP_FRM_START state.STM_TYP_IDLE 
+state.STM_TYP_IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_FRM_START 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_FRM 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_FRM_END 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_FRM_END2 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_FRM_START_ERR 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_FRM_DATA_ERR 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_FRM_END3 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1A 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1B 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1C 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1D 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2A 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2B 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2C 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2D 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:2:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_rx:U_RX|altera_tse_rx_sync:U_SYNC|state
+Name state.STM_TYP_SYNC_ACQU_4A state.STM_TYP_SYNC_ACQU_3A state.STM_TYP_SYNC_ACQU_2A state.STM_TYP_SYNC_ACQU_4 state.STM_TYP_SYNC_ACQU_3 state.STM_TYP_SYNC_ACQU_2 state.STM_TYP_SYNC_ACQU_1 state.STM_TYP_ACQU_SYNC_2 state.STM_TYP_ACQU_SYNC_1 state.STM_TYP_COMMA_3 state.STM_TYP_COMMA_2 state.STM_TYP_COMMA_1 state.STM_TYP_LOSS_OF_SYNC 
+state.STM_TYP_LOSS_OF_SYNC 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_COMMA_1 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_COMMA_2 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_COMMA_3 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_ACQU_SYNC_1 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_ACQU_SYNC_2 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_1 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_2 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_3 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_4 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_2A 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_3A 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_4A 1 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:2:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_rx:U_RX|altera_tse_rx_encapsulation:U_FRM|state
+Name state.STM_TYP_EARLY_END_EXTEND3 state.STM_TYP_EARLY_END_EXTEND2 state.STM_TYP_EARLY_END_EXTEND1 state.STM_TYP_FRM_END_EXTEND2 state.STM_TYP_FRM_END_EXTEND1 state.STM_TYP_RX_FAULT state.STM_TYP_RX_INVAL state.STM_TYP_AN_CD state.STM_TYP_AN_CC state.STM_TYP_AN_CB state.STM_TYP_EARLY_END state.STM_TYP_FALSE_CAR state.STM_TYP_FRM_END2 state.STM_TYP_FRM_END1 state.STM_TYP_FRM state.STM_TYP_FRM_START state.STM_TYP_RX_K state.STM_TYP_IDLE_D state.STM_TYP_K_WAIT 
+state.STM_TYP_K_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_IDLE_D 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_RX_K 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_FRM_START 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_FRM 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_FRM_END1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_FRM_END2 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_FALSE_CAR 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CB 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CC 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CD 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_RX_INVAL 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_RX_FAULT 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_FRM_END_EXTEND1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_FRM_END_EXTEND2 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND3 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:2:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_autoneg:U_AUTONEG|state
+Name state.STM_TYP_NO_AN_LINK state.STM_TYP_LINK_OK state.STM_TYP_IDLE_DETECT state.STM_TYP_COMPLETE_ACK state.STM_TYP_ACK_DETECT state.STM_TYP_ABILITY_DETECT state.STM_TYP_AUTONEG_RESTART state.STM_TYP_AUTONEG_ENA 
+state.STM_TYP_AUTONEG_ENA 0 0 0 0 0 0 0 0 
+state.STM_TYP_AUTONEG_RESTART 0 0 0 0 0 0 1 1 
+state.STM_TYP_ABILITY_DETECT 0 0 0 0 0 1 0 1 
+state.STM_TYP_ACK_DETECT 0 0 0 0 1 0 0 1 
+state.STM_TYP_COMPLETE_ACK 0 0 0 1 0 0 0 1 
+state.STM_TYP_IDLE_DETECT 0 0 1 0 0 0 0 1 
+state.STM_TYP_LINK_OK 0 1 0 0 0 0 0 1 
+state.STM_TYP_NO_AN_LINK 1 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:3:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_pcs_control:U_REG|altera_tse_pcs_host_control:U_CTRL|state
+Name state.STM_TYPE_TX_READ state.STM_TYPE_RX_READ state.STM_TYPE_WAIT_CYCLE state.STM_TYPE_END_READ state.STM_TYPE_NEXT_CYCLE state.STM_TYPE_IDLE 
+state.STM_TYPE_IDLE 0 0 0 0 0 0 
+state.STM_TYPE_NEXT_CYCLE 0 0 0 0 1 1 
+state.STM_TYPE_END_READ 0 0 0 1 0 1 
+state.STM_TYPE_WAIT_CYCLE 0 0 1 0 0 1 
+state.STM_TYPE_RX_READ 0 1 0 0 0 1 
+state.STM_TYPE_TX_READ 1 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:3:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_tx:U_TX|altera_tse_tx_encapsulation:U_FRM|state
+Name state.STM_TYP_CF_C2D state.STM_TYP_CF_C2C state.STM_TYP_CF_C2B state.STM_TYP_CF_C2A state.STM_TYP_CF_C1D state.STM_TYP_CF_C1C state.STM_TYP_CF_C1B state.STM_TYP_CF_C1A state.STM_TYP_FRM_END3 state.STM_TYP_FRM_DATA_ERR state.STM_TYP_FRM_START_ERR state.STM_TYP_FRM_END2 state.STM_TYP_FRM_END state.STM_TYP_FRM state.STM_TYP_FRM_START state.STM_TYP_IDLE 
+state.STM_TYP_IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_FRM_START 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_FRM 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_FRM_END 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_FRM_END2 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_FRM_START_ERR 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_FRM_DATA_ERR 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_FRM_END3 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1A 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1B 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1C 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C1D 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2A 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2B 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2C 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_CF_C2D 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:3:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_rx:U_RX|altera_tse_rx_sync:U_SYNC|state
+Name state.STM_TYP_SYNC_ACQU_4A state.STM_TYP_SYNC_ACQU_3A state.STM_TYP_SYNC_ACQU_2A state.STM_TYP_SYNC_ACQU_4 state.STM_TYP_SYNC_ACQU_3 state.STM_TYP_SYNC_ACQU_2 state.STM_TYP_SYNC_ACQU_1 state.STM_TYP_ACQU_SYNC_2 state.STM_TYP_ACQU_SYNC_1 state.STM_TYP_COMMA_3 state.STM_TYP_COMMA_2 state.STM_TYP_COMMA_1 state.STM_TYP_LOSS_OF_SYNC 
+state.STM_TYP_LOSS_OF_SYNC 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_COMMA_1 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_COMMA_2 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_COMMA_3 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_ACQU_SYNC_1 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_ACQU_SYNC_2 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_1 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_2 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_3 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_4 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_2A 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_3A 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_SYNC_ACQU_4A 1 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:3:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_rx:U_RX|altera_tse_rx_encapsulation:U_FRM|state
+Name state.STM_TYP_EARLY_END_EXTEND3 state.STM_TYP_EARLY_END_EXTEND2 state.STM_TYP_EARLY_END_EXTEND1 state.STM_TYP_FRM_END_EXTEND2 state.STM_TYP_FRM_END_EXTEND1 state.STM_TYP_RX_FAULT state.STM_TYP_RX_INVAL state.STM_TYP_AN_CD state.STM_TYP_AN_CC state.STM_TYP_AN_CB state.STM_TYP_EARLY_END state.STM_TYP_FALSE_CAR state.STM_TYP_FRM_END2 state.STM_TYP_FRM_END1 state.STM_TYP_FRM state.STM_TYP_FRM_START state.STM_TYP_RX_K state.STM_TYP_IDLE_D state.STM_TYP_K_WAIT 
+state.STM_TYP_K_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STM_TYP_IDLE_D 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STM_TYP_RX_K 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STM_TYP_FRM_START 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STM_TYP_FRM 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STM_TYP_FRM_END1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STM_TYP_FRM_END2 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STM_TYP_FALSE_CAR 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CB 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CC 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_AN_CD 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_RX_INVAL 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_RX_FAULT 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_FRM_END_EXTEND1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_FRM_END_EXTEND2 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.STM_TYP_EARLY_END_EXTEND3 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |switch_top|transceivers:GEx4|tse:\gx:3:GE|altera_tse_pcs_pma:altera_tse_pcs_pma_inst|altera_tse_top_1000_base_x:altera_tse_top_1000_base_x_inst|altera_tse_top_pcs:U_PCS|altera_tse_top_autoneg:U_AUTONEG|state
+Name state.STM_TYP_NO_AN_LINK state.STM_TYP_LINK_OK state.STM_TYP_IDLE_DETECT state.STM_TYP_COMPLETE_ACK state.STM_TYP_ACK_DETECT state.STM_TYP_ABILITY_DETECT state.STM_TYP_AUTONEG_RESTART state.STM_TYP_AUTONEG_ENA 
+state.STM_TYP_AUTONEG_ENA 0 0 0 0 0 0 0 0 
+state.STM_TYP_AUTONEG_RESTART 0 0 0 0 0 0 1 1 
+state.STM_TYP_ABILITY_DETECT 0 0 0 0 0 1 0 1 
+state.STM_TYP_ACK_DETECT 0 0 0 0 1 0 0 1 
+state.STM_TYP_COMPLETE_ACK 0 0 0 1 0 0 0 1 
+state.STM_TYP_IDLE_DETECT 0 0 1 0 0 0 0 1 
+state.STM_TYP_LINK_OK 0 1 0 0 0 0 0 1 
+state.STM_TYP_NO_AN_LINK 1 0 0 0 0 0 0 1 

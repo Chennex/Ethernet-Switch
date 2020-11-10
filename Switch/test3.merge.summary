@@ -1,0 +1,20 @@
+Partition Merge Status : Successful - Wed Oct 21 13:16:11 2020
+Quartus Prime Version : 15.1.2 Build 193 02/01/2016 SJ Standard Edition
+Revision Name : test3
+Top-level Entity Name : switch_top
+Family : Stratix IV
+Logic utilization : N/A
+    Combinational ALUTs : 3,483
+    Memory ALUTs : 0
+    Dedicated logic registers : 5,725
+Total registers : 5725
+Total pins : 25
+Total virtual pins : 18
+Total block memory bits : 49,536
+DSP block 18-bit elements : 0
+Total GXB Receiver Channel PCS : 0
+Total GXB Receiver Channel PMA : 0
+Total GXB Transmitter Channel PCS : 0
+Total GXB Transmitter Channel PMA : 0
+Total PLLs : 9
+Total DLLs : 0

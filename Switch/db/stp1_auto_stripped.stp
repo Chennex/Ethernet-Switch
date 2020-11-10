@@ -1,0 +1,1103 @@
+<session jtag_chain="USB-Blaster [USB-0]" jtag_device="@1: EP4SGX230/ES (0x024090DD)" sof_file="">
+  <display_tree gui_logging_enabled="0">
+    <display_branch instance="auto_signaltap_0" log="USE_GLOBAL_TEMP" signal_set="USE_GLOBAL_TEMP" trigger="USE_GLOBAL_TEMP"/>
+  </display_tree>
+  <mnemonics/>
+  <static_plugin_mnemonics/>
+  <instance enabled="true" entity_name="sld_signaltap" is_auto_node="yes" is_expanded="true" name="auto_signaltap_0" source_file="sld_signaltap.vhd">
+    <node_ip_info instance_id="0" mfg_id="110" node_id="0" version="6"/>
+    <signal_set global_temp="1" is_expanded="true" name="signal_set: 2011/10/25 14:05:08  #0">
+      <clock name="transceivers:GEx4|clk_out" polarity="posedge" tap_mode="classic"/>
+      <config ram_type="AUTO" reserved_data_nodes="0" reserved_storage_qualifier_nodes="0" reserved_trigger_nodes="0" sample_depth="256" trigger_in_enable="yes" trigger_in_node="transceivers:GEx4|rx_ctrl_out[0]" trigger_in_tap_mode="classic" trigger_out_enable="no"/>
+      <top_entity/>
+      <signal_vec>
+        <trigger_input_vec>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[10]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[11]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[12]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[13]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[14]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[15]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[16]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[17]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[18]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[19]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[20]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[21]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[22]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[23]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[24]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[25]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[26]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[27]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[28]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[29]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[30]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[31]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[6]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[7]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[8]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[9]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[10]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[11]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[12]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[13]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[14]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[15]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[16]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[17]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[18]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[19]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[20]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[21]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[22]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[23]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[24]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[25]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[26]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[27]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[28]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[29]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[30]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[31]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[6]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[7]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[8]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[9]" tap_mode="classic" type="combinatorial"/>
+        </trigger_input_vec>
+        <data_input_vec>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[10]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[11]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[12]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[13]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[14]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[15]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[16]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[17]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[18]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[19]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[20]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[21]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[22]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[23]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[24]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[25]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[26]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[27]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[28]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[29]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[30]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[31]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[6]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[7]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[8]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[9]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[10]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[11]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[12]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[13]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[14]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[15]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[16]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[17]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[18]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[19]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[20]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[21]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[22]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[23]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[24]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[25]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[26]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[27]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[28]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[29]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[30]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[31]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[6]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[7]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[8]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[9]" tap_mode="classic" type="combinatorial"/>
+        </data_input_vec>
+        <storage_qualifier_input_vec>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:0:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:1:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:2:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:rx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|rdreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|clk_decoup:\decoup:3:tx|wrreq" tap_mode="classic" type="register"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_ctrl_out[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[10]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[11]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[12]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[13]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[14]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[15]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[16]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[17]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[18]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[19]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[20]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[21]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[22]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[23]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[24]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[25]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[26]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[27]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[28]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[29]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[30]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[31]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[6]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[7]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[8]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|rx_data_out[9]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_ctrl_in[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[0]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[10]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[11]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[12]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[13]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[14]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[15]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[16]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[17]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[18]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[19]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[1]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[20]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[21]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[22]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[23]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[24]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[25]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[26]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[27]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[28]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[29]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[2]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[30]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[31]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[3]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[4]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[5]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[6]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[7]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[8]" tap_mode="classic" type="combinatorial"/>
+          <wire name="transceivers:GEx4|tx_data_in[9]" tap_mode="classic" type="combinatorial"/>
+        </storage_qualifier_input_vec>
+      </signal_vec>
+      <presentation>
+        <data_view>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|rx_ctrl_out" order="msb_to_lsb" radix="bin" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_ctrl_out[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_ctrl_out[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_ctrl_out[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_ctrl_out[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|rx_data_out[31..24]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[31]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[30]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[29]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[28]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[27]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[26]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[25]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[24]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|rx_data_out[23..16]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[23]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[22]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[21]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[20]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[19]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[18]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[17]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[16]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|rx_data_out[15..8]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[15]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[14]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[13]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[12]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[11]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[10]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[9]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[8]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|rx_data_out[7..0]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[7]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[6]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|tx_ctrl_in" order="msb_to_lsb" radix="bin" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_ctrl_in[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_ctrl_in[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_ctrl_in[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_ctrl_in[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|tx_data_in[31..24]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[31]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[30]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[29]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[28]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[27]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[26]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[25]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[24]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|tx_data_in[23..16]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[23]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[22]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[21]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[20]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[19]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[18]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[17]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[16]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|tx_data_in[15..8]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[15]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[14]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[13]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[12]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[11]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[10]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[9]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[8]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|tx_data_in[7..0]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[7]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[6]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|rdreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|wrreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|rdreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|rdreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|rdreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|rdreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|rdreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|rdreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|rdreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|wrreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|wrreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|wrreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|wrreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|wrreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|wrreq"/>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|wrreq"/>
+        </data_view>
+        <setup_view>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|rx_ctrl_out" order="msb_to_lsb" radix="bin" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_ctrl_out[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_ctrl_out[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_ctrl_out[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_ctrl_out[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|rx_data_out[31..24]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[31]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[30]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[29]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[28]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[27]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[26]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[25]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[24]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|rx_data_out[23..16]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[23]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[22]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[21]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[20]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[19]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[18]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[17]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[16]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|rx_data_out[15..8]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[15]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[14]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[13]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[12]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[11]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[10]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[9]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[8]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|rx_data_out[7..0]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[7]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[6]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|rx_data_out[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|tx_ctrl_in" order="msb_to_lsb" radix="bin" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_ctrl_in[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_ctrl_in[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_ctrl_in[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_ctrl_in[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|tx_data_in[31..24]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[31]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[30]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[29]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[28]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[27]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[26]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[25]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[24]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|tx_data_in[23..16]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[23]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[22]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[21]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[20]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[19]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[18]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[17]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[16]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|tx_data_in[15..8]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[15]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[14]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[13]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[12]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[11]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[10]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[9]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[8]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|tx_data_in[7..0]" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[7]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[6]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|tx_data_in[0]"/>
+          </bus>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|rdreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:rx|wrreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|rdreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:0:tx|wrreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|rdreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:rx|wrreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|rdreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:1:tx|wrreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|rdreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:rx|wrreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|rdreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:2:tx|wrreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|rdreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:rx|wrreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|rdusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|rdreq"/>
+          <bus is_signal_inverted="no" link="all" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw" order="msb_to_lsb" radix="hex" state="collapse" type="combinatorial">
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[5]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[4]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[3]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[2]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[1]"/>
+            <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|clksync:fifo|wrusedw[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="transceivers:GEx4|clk_decoup:\decoup:3:tx|wrreq"/>
+        </setup_view>
+      </presentation>
+      <trigger CRC="52DB2A53" attribute_mem_mode="false" gap_record="true" global_temp="1" is_expanded="true" name="trigger: 2011/10/25 14:05:08  #1" position="pre" power_up_trigger_mode="false" record_data_gap="true" segment_size="256" storage_mode="off" storage_qualifier_disabled="no" storage_qualifier_port_is_pin="false" storage_qualifier_port_name="auto_stp_external_storage_qualifier" storage_qualifier_port_tap_mode="classic" trigger_in="rising edge" trigger_out="active high" trigger_type="circular">
+        <power_up_trigger position="pre" storage_qualifier_disabled="no" trigger_in="dont_care" trigger_out="active high"/>
+        <events use_custom_flow_control="no">
+          <level enabled="yes" name="condition1" type="basic">
+            <power_up enabled="yes">
+            </power_up>
+            <op_node/>
+          </level>
+        </events>
+        <storage_qualifier_events>
+          <transitional>1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+            <pwr_up_transitional>1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</pwr_up_transitional>
+          </transitional>
+          <storage_qualifier_level type="basic">
+            <power_up>
+            </power_up>
+            <op_node/>
+          </storage_qualifier_level>
+          <storage_qualifier_level type="basic">
+            <power_up>
+            </power_up>
+            <op_node/>
+          </storage_qualifier_level>
+          <storage_qualifier_level type="basic">
+            <power_up>
+            </power_up>
+            <op_node/>
+          </storage_qualifier_level>
+        </storage_qualifier_events>
+      </trigger>
+    </signal_set>
+    <position_info>
+      <single attribute="active tab" value="0"/>
+      <single attribute="data horizontal scroll position" value="231"/>
+      <single attribute="data vertical scroll position" value="0"/>
+      <single attribute="zoom level denominator" value="1"/>
+      <single attribute="zoom level numerator" value="1024"/>
+      <single attribute="zoom offset denominator" value="1024"/>
+      <single attribute="zoom offset numerator" value="114689"/>
+    </position_info>
+  </instance>
+  <global_info>
+    <single attribute="active instance" value="0"/>
+    <single attribute="config widget visible" value="1"/>
+    <single attribute="data log widget visible" value="1"/>
+    <single attribute="hierarchy widget visible" value="1"/>
+    <single attribute="instance widget visible" value="1"/>
+    <single attribute="jtag widget visible" value="1"/>
+    <multi attribute="column width" size="23" value="34,34,411,74,293,70,88,88,98,98,88,88,110,101,101,101,101,101,101,101,101,107,78"/>
+    <multi attribute="frame size" size="2" value="1680,1028"/>
+    <multi attribute="jtag widget size" size="2" value="334,120"/>
+  </global_info>
+</session>
