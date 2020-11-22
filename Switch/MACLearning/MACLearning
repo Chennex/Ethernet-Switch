@@ -1,0 +1,470 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+USE ieee.std_logic_unsigned.ALL;
+USE std.textio.ALL;
+
+ENTITY HASH IS
+    PORT (
+        input : IN std_logic_vector(47 DOWNTO 0);
+        q : OUT std_logic_vector(12 DOWNTO 0)
+    );
+END HASH;
+
+ARCHITECTURE HASH_arch OF HASH IS
+BEGIN
+    q <= input(47 DOWNTO 35) XOR input(34 DOWNTO 22) XOR input(21 DOWNTO 9) XOR (input(8 DOWNTO 0) & "0000");
+
+END ARCHITECTURE;
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+USE ieee.std_logic_unsigned.ALL;
+USE std.textio.ALL;
+
+ENTITY Timer IS
+    PORT (
+        clk : IN std_logic;
+        reset : IN std_logic;
+        minutestart : OUT std_logic;
+        q : OUT std_logic_vector(2 DOWNTO 0)
+    );
+END Timer;
+
+ARCHITECTURE Timer_arch OF Timer IS
+
+    CONSTANT clkfrequency : INTEGER := 125000000;
+    SIGNAL ticks : INTEGER RANGE 0 TO clkfrequency - 1;
+    SIGNAL seconds : INTEGER RANGE 0 TO 60 - 1;
+    SIGNAL minutes : std_logic_vector(2 DOWNTO 0) := "000";
+
+BEGIN
+    TIMER : PROCESS (clk)
+    BEGIN
+        IF (rising_edge(clk)) THEN
+            IF (ticks = 10) THEN
+                minutestart <= '0';
+            END IF;
+            IF (reset = '1') THEN
+                ticks <= 0;
+                seconds <= 0;
+                minutes <= (OTHERS => '0');
+                minutestart <= '0';
+
+                -- Counts 1 second
+            ELSIF (ticks = clkfrequency - 1) THEN
+                -- Counts 1 minute
+                ticks <= 0;
+                IF (seconds = 59) THEN
+                    seconds <= 0;
+                    minutes <= minutes + 1;
+                    minutestart <= '1';
+                ELSE
+                    seconds <= seconds + 1;
+                END IF;
+            ELSE
+                ticks <= ticks + 1;
+            END IF;
+        END IF;
+
+    END PROCESS;
+
+    q <= minutes;
+
+END ARCHITECTURE;
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+USE ieee.std_logic_unsigned.ALL;
+USE std.textio.ALL;
+ENTITY Scheduler IS
+    PORT (
+        clk : IN std_logic; -- system clock
+        reset : IN std_logic; -- asynchronous reset
+        src1 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 1
+        src2 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 2
+        src3 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 3
+        src4 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 4
+        dst1 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 1
+        dst2 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 2
+        dst3 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 3
+        dst4 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 4
+        read_port : IN std_logic_vector(3 DOWNTO 0); -- source ports
+        ack_port : IN std_logic_vector(3 DOWNTO 0);
+        source : OUT std_logic_vector(47 DOWNTO 0);
+        destination : OUT std_logic_vector(47 DOWNTO 0);
+        inport : OUT std_logic_vector(3 DOWNTO 0);
+        hasInput : OUT std_logic
+    );
+END Scheduler;
+
+ARCHITECTURE Scheduler_arch OF Scheduler IS
+    SIGNAL roundRobin : std_logic_vector(1 DOWNTO 0) := "00";
+    SIGNAL temp : std_logic;
+    SIGNAL s, d : std_logic_vector(47 DOWNTO 0);
+    SIGNAL ip, q : std_logic_vector(3 DOWNTO 0);
+BEGIN
+    inport <= q;
+
+    PROCESS (clk)
+    BEGIN
+        IF (rising_edge(clk)) THEN
+
+            roundRobin <= roundRobin + 1;
+            IF (ack_port = q) THEN
+                q <= "0000";
+                hasInput <= '0';
+                source <= (OTHERS => '0');
+                destination <= (OTHERS => '0');
+            ELSIF (temp = '1') THEN
+                hasInput <= temp;
+                source <= s;
+                destination <= d;
+                q <= ip;
+            END IF;
+        END IF;
+    END PROCESS;
+
+    Scheduler : PROCESS (src1, src2, src3, src4, dst1, dst2, dst3, dst4, read_port, roundRobin)
+    BEGIN
+        CASE roundRobin IS
+            WHEN "00" => 
+                ip <= "0001";
+                temp <= read_port(0);
+                s <= src1;
+                d <= dst1;
+            WHEN "01" => 
+                ip <= "0010";
+                temp <= read_port(1);
+                s <= src2;
+                d <= dst2;
+            WHEN "10" => 
+                ip <= "0100";
+                temp <= read_port(2);
+                s <= src3;
+                d <= dst3;
+            WHEN "11" => 
+                ip <= "1000";
+                temp <= read_port(3);
+                s <= src4;
+                d <= dst4;
+            WHEN OTHERS => 
+                ip <= read_port;
+                temp <= '0';
+                s <= (OTHERS => '-');
+                d <= (OTHERS => '-');
+        END CASE;
+ 
+
+    END PROCESS;
+
+END ARCHITECTURE;
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+USE ieee.std_logic_unsigned.ALL;
+USE std.textio.ALL;
+ENTITY MACLearning IS
+    PORT (
+        clk : IN std_logic; -- system clock
+        reset : IN std_logic; -- asynchronous reset
+        src1 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 1
+        src2 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 2
+        src3 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 3
+        src4 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 4
+        dst1 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 1
+        dst2 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 2
+        dst3 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 3
+        dst4 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 4
+        read_port : IN std_logic_vector(3 DOWNTO 0); -- source ports
+        write_port : OUT std_logic_vector(3 DOWNTO 0); -- destination ports
+        ack_port : OUT std_logic_vector(3 DOWNTO 0) -- sends ack to FCS
+    );
+END MACLearning;
+
+ARCHITECTURE MACLearning_arch OF MACLearning IS
+
+    -- Scheduler
+    SIGNAL hasInput : std_logic;
+    SIGNAL destination, source, d, s : std_logic_vector(47 DOWNTO 0);
+    --SIGNAL roundRobin : std_logic_vector(1 DOWNTO 0) := "00";
+    SIGNAL field : std_logic_vector(54 DOWNTO 0);
+    SIGNAL inport, ap : std_logic_vector(3 DOWNTO 0);
+
+    -- Timer
+    SIGNAL TTLActive, TTLStart : std_logic := '0';
+    SIGNAL minutes : std_logic_vector(2 DOWNTO 0) := "000";
+
+    -- State machine
+    TYPE l_states IS (init, hunt, check_dst, learn_src, updateTTL);
+    SIGNAL current_state, next_state : l_states;
+
+    -- RAM signals
+    SIGNAL waitRAM : std_logic := '0';
+    SIGNAL write_enable, read_enable : std_logic;
+    SIGNAL RAM_field_out, RAM_field_in : std_logic_vector(109 DOWNTO 0);
+    SIGNAL address1, address2 : std_logic_vector(54 DOWNTO 0);
+    SIGNAL read_address, write_address, hashedpointer, prev_read : std_logic_vector(12 DOWNTO 0);
+    SIGNAL updatePointer : std_logic_vector(12 DOWNTO 0) := "0000000000000";
+    SIGNAL hashing : std_logic_vector(47 DOWNTO 0);
+
+    COMPONENT MACRAM IS
+        PORT (
+            clock : IN STD_LOGIC;
+            data : IN STD_LOGIC_VECTOR (109 DOWNTO 0);
+            rdaddress : IN STD_LOGIC_VECTOR (12 DOWNTO 0);
+            rden : IN STD_LOGIC;
+            wraddress : IN STD_LOGIC_VECTOR (12 DOWNTO 0);
+            wren : IN STD_LOGIC := '0';
+            q : OUT STD_LOGIC_VECTOR (109 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    COMPONENT HASH IS
+        PORT (
+            input : IN std_logic_vector(47 DOWNTO 0);
+            q : OUT std_logic_vector(12 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    COMPONENT Timer IS
+        PORT (
+            clk : IN std_logic;
+            reset : IN std_logic;
+            minutestart : OUT std_logic;
+            q : OUT std_logic_vector(2 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    COMPONENT Scheduler IS
+        PORT (
+            clk : IN std_logic; -- system clock
+            reset : IN std_logic; -- asynchronous reset
+            src1 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 1
+            src2 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 2
+            src3 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 3
+            src4 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 4
+            dst1 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 1
+            dst2 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 2
+            dst3 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 3
+            dst4 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 4
+            read_port : IN std_logic_vector(3 DOWNTO 0); -- source ports
+            ack_port : IN std_logic_vector(3 DOWNTO 0);
+            source : OUT std_logic_vector(47 DOWNTO 0);
+            destination : OUT std_logic_vector(47 DOWNTO 0);
+            inport : OUT std_logic_vector(3 DOWNTO 0);
+            hasInput : OUT std_logic
+        );
+    END COMPONENT;
+BEGIN
+    ---------------------------------- RAM ----------------------------------
+
+    RAM : MACRAM
+    PORT MAP(
+        clock => clk, 
+        data => RAM_field_in, 
+        rdaddress => read_address, 
+        rden => read_enable, 
+        wraddress => write_address, 
+        wren => write_enable, 
+        q => RAM_field_out
+    );
+
+    address1 <= RAM_field_out(54 DOWNTO 0);
+    address2 <= RAM_field_out(109 DOWNTO 55);
+
+    HASHFunction : HASH
+    PORT MAP(
+        input => hashing, 
+        q => hashedpointer
+    );
+
+    ---------------------------------- TIMER ----------------------------------
+
+    TIMING : Timer
+    PORT MAP(
+        clk => clk, 
+        reset => reset, 
+        minutestart => TTLStart, 
+        q => minutes
+    );
+
+    -------------------------------- Scheduler --------------------------------
+
+    Schedule : Scheduler
+    PORT MAP(
+        clk => clk, 
+        reset => reset, 
+        src1 => src1, 
+        src2 => src2, 
+        src3 => src3, 
+        src4 => src4, 
+        dst1 => dst1, 
+        dst2 => dst2, 
+        dst3 => dst3, 
+        dst4 => dst4, 
+        read_port => read_port, 
+        ack_port => ap, 
+        source => s, 
+        destination => d, 
+        inport => inport, 
+        hasInput => hasInput
+    );
+
+    -------------------------------- Memory ----------------------------------
+
+    memory : PROCESS (clk)
+    BEGIN
+        IF (rising_edge(clk)) THEN
+	    IF (reset = '1') THEN
+		updatePointer <= (OTHERS => '0');
+		TTLActive <= '0';
+	    ELSE
+
+            IF (read_enable = '1') THEN
+                prev_read <= read_address;
+            END IF;
+
+            IF (TTLStart = '1') THEN
+                TTLActive <= '1';
+            ELSIF (updatePointer = "1111111111111") THEN
+                TTLActive <= '0';
+            END IF;
+
+            IF (hasInput = '1') THEN
+                source <= s;
+                destination <= d;
+                field <= minutes & inport & s;
+            END IF;
+
+            IF (current_state = updateTTL or current_state = init) THEN
+                updatePointer <= updatePointer + 1;
+            ELSIF (hasInput = '1' AND TTLActive = '1') THEN
+                updatePointer <= updatePointer - 1;
+            END IF;
+	    END IF;
+
+        END IF;
+    END PROCESS;
+
+    -------------------------------- State Machine ----------------------------------
+    ack_port <= ap;
+    State_Memory : PROCESS (clk)
+    BEGIN
+        IF (rising_edge(clk)) THEN
+            IF (reset = '1') THEN
+                current_state <= init;
+            ELSE
+                current_state <= next_state;
+            END IF;
+        END IF;
+    END PROCESS;
+
+    Next_State_Logic : PROCESS (current_state, hasInput, TTLActive, TTLStart, updatePointer)
+    BEGIN
+        CASE current_state IS
+	    WHEN init =>
+		IF(updatePointer = "1111111111111") THEN
+		    next_state <= hunt;
+		ELSE
+		    next_state <= init;
+		END IF;
+            WHEN hunt => 
+                IF (hasInput = '1') THEN
+                    next_state <= check_dst;
+                ELSIF ((TTLActive OR TTLStart) = '1') THEN
+                    next_state <= updateTTL;
+                ELSE
+                    next_state <= hunt;
+                END IF;
+            WHEN check_dst => 
+                next_state <= learn_src;
+            WHEN learn_src => 
+                next_state <= hunt;
+            WHEN updateTTL => 
+                next_state <= hunt;
+            WHEN OTHERS => next_state <= init;
+        END CASE;
+    END PROCESS;
+
+    Output_logic : PROCESS (current_state, d, hashedpointer, minutes, inport, address1, address2, hasInput, updatePointer, prev_read, source, destination, field)
+    BEGIN
+        hashing <= (OTHERS => '-');
+        read_enable <= '0';
+        read_address <= (OTHERS => '-');
+        ap <= x"0";
+        write_port <= x"0";
+        RAM_field_in <= (OTHERS => '-');
+        write_enable <= '0';
+        write_address <= (OTHERS => '-');
+
+        CASE current_state IS
+	    WHEN init =>
+		RAM_field_in <= (OTHERS => '0');
+		write_enable <= '1';
+		write_address <= updatePointer;
+
+            WHEN hunt => 
+                hashing <= d;
+                IF (hasInput = '1') THEN
+                    read_enable <= '1';
+                    ap <= inport;
+                END IF;
+
+                read_address <= hashedpointer;
+
+            WHEN check_dst => 
+                read_enable <= '1';
+                hashing <= source;
+                read_address <= hashedpointer;
+                IF (address1(47 DOWNTO 0) = destination) THEN
+                    write_port <= address1(51 DOWNTO 48);
+
+                ELSIF (address2(47 DOWNTO 0) = destination) THEN
+                    write_port <= address2(51 DOWNTO 48);
+
+                ELSE
+                    write_port <= "1111";
+                END IF;
+
+            WHEN learn_src => 
+                IF (address1(47 DOWNTO 0) = source) THEN
+                    RAM_field_in <= field & address2;
+                ELSIF (address2(47 DOWNTO 0) = source) THEN
+                    RAM_field_in <= field & address1;
+                ELSE
+                    IF (address1(54 DOWNTO 52) > address2(54 DOWNTO 52)) THEN
+                        RAM_field_in <= field & address1;
+                    ELSE
+                        RAM_field_in <= field & address2;
+                    END IF;
+                END IF;
+                write_enable <= '1';
+                write_address <= prev_read;
+
+            WHEN updateTTL => 
+                read_address <= updatePointer;
+                read_enable <= '1';
+ 
+                IF ((minutes + 8 - address1(54 DOWNTO 52)) = 5) THEN
+                    RAM_field_in(54 DOWNTO 0) <= (OTHERS => '0');
+                ELSE
+                    RAM_field_in(54 DOWNTO 0) <= address1;
+                END IF;
+
+                IF ((minutes + 8 - address2(54 DOWNTO 52)) = 5) THEN
+                    RAM_field_in(109 DOWNTO 55) <= (OTHERS => '0');
+                ELSE
+                    RAM_field_in(109 DOWNTO 55) <= address2;
+                END IF;
+
+                write_address <= prev_read;
+                write_enable <= '1';
+
+        END CASE;
+    END PROCESS;
+
+END ARCHITECTURE;
