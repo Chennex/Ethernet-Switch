@@ -11,9 +11,9 @@ inputA :	in std_logic_vector(7 downto 0);
 inputB : 	in std_logic_vector(7 downto 0);
 inputC : 	in std_logic_vector(7 downto 0);
 inputD : 	in std_logic_vector(7 downto 0);
-reset : 	in std_logic
+reset : 	in std_logic;
 --MAC Learning connections
-WportMAC : 	in std_logic_vector(3 downto 0);
+WportMAC : 	out std_logic_vector(3 downto 0);
 src1 : 		out std_logic_vector(47 downto 0);
 dst1 : 		out std_logic_vector(47 downto 0);
 src2 : 		out std_logic_vector(47 downto 0);
@@ -29,7 +29,7 @@ OutA : 			out std_logic_vector(8 downto 0);
 OutB : 			out std_logic_vector(8 downto 0);
 OutC : 			out std_logic_vector(8 downto 0);
 OutD : 			out std_logic_vector(8 downto 0);
-wportCross: 		out std_logic_vector(3 downto 0);
+wportCross: 		out std_logic_vector(3 downto 0)
 
 
 );
