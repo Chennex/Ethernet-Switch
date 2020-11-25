@@ -1,3 +1,82 @@
+-------------------------- Scheduler ------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+USE ieee.std_logic_unsigned.ALL;
+USE std.textio.ALL;
+ENTITY Scheduler IS
+    PORT (
+        clk : IN std_logic; -- system clock
+        reset : IN std_logic; -- asynchronous reset
+        src1 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 1
+        src2 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 2
+        src3 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 3
+        src4 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 4
+        dst1 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 1
+        dst2 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 2
+        dst3 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 3
+        dst4 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 4
+        read_port : IN std_logic_vector(3 DOWNTO 0); -- source ports
+        source : OUT std_logic_vector(47 DOWNTO 0);
+        destination : OUT std_logic_vector(47 DOWNTO 0);
+        inport : OUT std_logic_vector(3 DOWNTO 0);
+        hasInput : OUT std_logic
+    );
+END Scheduler;
+
+ARCHITECTURE Scheduler_arch OF Scheduler IS
+    SIGNAL roundRobin : std_logic_vector(1 DOWNTO 0) := "00";
+    SIGNAL s, d : std_logic_vector(47 DOWNTO 0);
+    SIGNAL ip, q : std_logic_vector(3 DOWNTO 0);
+BEGIN
+    inport <= ip;
+
+    PROCESS (clk)
+    BEGIN
+        IF (rising_edge(clk)) THEN
+
+            roundRobin <= roundRobin + 1;
+
+        END IF;
+    END PROCESS;
+
+    Scheduler : PROCESS (src1, src2, src3, src4, dst1, dst2, dst3, dst4, read_port, roundRobin)
+    BEGIN
+        CASE roundRobin IS
+            WHEN "00" => 
+                ip <= "0001";
+                hasInput <= read_port(0);
+                source <= src1;
+                destination <= dst1;
+            WHEN "01" => 
+                ip <= "0010";
+                hasInput <= read_port(1);
+                source <= src2;
+                destination <= dst2;
+            WHEN "10" => 
+                ip <= "0100";
+                hasInput <= read_port(2);
+                source <= src3;
+                destination <= dst3;
+            WHEN "11" => 
+                ip <= "1000";
+                hasInput <= read_port(3);
+                source <= src4;
+                destination <= dst4;
+            WHEN OTHERS => 
+                ip <= read_port;
+                hasInput <= '0';
+                source <= (OTHERS => '-');
+                destination <= (OTHERS => '-');
+        END CASE;
+
+    END PROCESS;
+
+END ARCHITECTURE;
+
+-------------------------- HASH function ------------------------------------
+
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -17,6 +96,8 @@ BEGIN
 
 END ARCHITECTURE;
 
+-------------------------- Timer ------------------------------------
+
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -34,7 +115,7 @@ END Timer;
 
 ARCHITECTURE Timer_arch OF Timer IS
 
-    CONSTANT clkfrequency : INTEGER := 125000000;
+    CONSTANT clkfrequency : INTEGER := 1000;--125000000;
     SIGNAL ticks : INTEGER RANGE 0 TO clkfrequency - 1;
     SIGNAL seconds : INTEGER RANGE 0 TO 60 - 1;
     SIGNAL minutes : std_logic_vector(2 DOWNTO 0) := "000";
@@ -74,93 +155,7 @@ BEGIN
 
 END ARCHITECTURE;
 
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;
-USE ieee.std_logic_unsigned.ALL;
-USE std.textio.ALL;
-ENTITY Scheduler IS
-    PORT (
-        clk : IN std_logic; -- system clock
-        reset : IN std_logic; -- asynchronous reset
-        src1 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 1
-        src2 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 2
-        src3 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 3
-        src4 : IN std_logic_vector(47 DOWNTO 0); -- source addresss port 4
-        dst1 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 1
-        dst2 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 2
-        dst3 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 3
-        dst4 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 4
-        read_port : IN std_logic_vector(3 DOWNTO 0); -- source ports
-        ack_port : IN std_logic_vector(3 DOWNTO 0);
-        source : OUT std_logic_vector(47 DOWNTO 0);
-        destination : OUT std_logic_vector(47 DOWNTO 0);
-        inport : OUT std_logic_vector(3 DOWNTO 0);
-        hasInput : OUT std_logic
-    );
-END Scheduler;
-
-ARCHITECTURE Scheduler_arch OF Scheduler IS
-    SIGNAL roundRobin : std_logic_vector(1 DOWNTO 0) := "00";
-    SIGNAL temp : std_logic;
-    SIGNAL s, d : std_logic_vector(47 DOWNTO 0);
-    SIGNAL ip, q : std_logic_vector(3 DOWNTO 0);
-BEGIN
-    inport <= q;
-
-    PROCESS (clk)
-    BEGIN
-        IF (rising_edge(clk)) THEN
-
-            roundRobin <= roundRobin + 1;
-            IF (ack_port = q) THEN
-                q <= "0000";
-                hasInput <= '0';
-                source <= (OTHERS => '0');
-                destination <= (OTHERS => '0');
-            ELSIF (temp = '1') THEN
-                hasInput <= temp;
-                source <= s;
-                destination <= d;
-                q <= ip;
-            END IF;
-        END IF;
-    END PROCESS;
-
-    Scheduler : PROCESS (src1, src2, src3, src4, dst1, dst2, dst3, dst4, read_port, roundRobin)
-    BEGIN
-        CASE roundRobin IS
-            WHEN "00" => 
-                ip <= "0001";
-                temp <= read_port(0);
-                s <= src1;
-                d <= dst1;
-            WHEN "01" => 
-                ip <= "0010";
-                temp <= read_port(1);
-                s <= src2;
-                d <= dst2;
-            WHEN "10" => 
-                ip <= "0100";
-                temp <= read_port(2);
-                s <= src3;
-                d <= dst3;
-            WHEN "11" => 
-                ip <= "1000";
-                temp <= read_port(3);
-                s <= src4;
-                d <= dst4;
-            WHEN OTHERS => 
-                ip <= read_port;
-                temp <= '0';
-                s <= (OTHERS => '-');
-                d <= (OTHERS => '-');
-        END CASE;
- 
-
-    END PROCESS;
-
-END ARCHITECTURE;
+-------------------------- MAC learning ------------------------------------
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -190,20 +185,18 @@ ARCHITECTURE MACLearning_arch OF MACLearning IS
     -- Scheduler
     SIGNAL hasInput : std_logic;
     SIGNAL destination, source, d, s : std_logic_vector(47 DOWNTO 0);
-    --SIGNAL roundRobin : std_logic_vector(1 DOWNTO 0) := "00";
     SIGNAL field : std_logic_vector(54 DOWNTO 0);
-    SIGNAL inport, ap : std_logic_vector(3 DOWNTO 0);
+    SIGNAL inport, tempport : std_logic_vector(3 DOWNTO 0);
 
     -- Timer
     SIGNAL TTLActive, TTLStart : std_logic := '0';
     SIGNAL minutes : std_logic_vector(2 DOWNTO 0) := "000";
 
     -- State machine
-    TYPE l_states IS (init, hunt, check_dst, learn_src, updateTTL);
+    TYPE l_states IS (init, idle, got_input, check_dst, learn_src, updateTTL);
     SIGNAL current_state, next_state : l_states;
 
     -- RAM signals
-    SIGNAL waitRAM : std_logic := '0';
     SIGNAL write_enable, read_enable : std_logic;
     SIGNAL RAM_field_out, RAM_field_in : std_logic_vector(109 DOWNTO 0);
     SIGNAL address1, address2 : std_logic_vector(54 DOWNTO 0);
@@ -252,7 +245,6 @@ ARCHITECTURE MACLearning_arch OF MACLearning IS
             dst3 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 3
             dst4 : IN std_logic_vector(47 DOWNTO 0); -- destination address port 4
             read_port : IN std_logic_vector(3 DOWNTO 0); -- source ports
-            ack_port : IN std_logic_vector(3 DOWNTO 0);
             source : OUT std_logic_vector(47 DOWNTO 0);
             destination : OUT std_logic_vector(47 DOWNTO 0);
             inport : OUT std_logic_vector(3 DOWNTO 0);
@@ -307,7 +299,6 @@ BEGIN
         dst3 => dst3, 
         dst4 => dst4, 
         read_port => read_port, 
-        ack_port => ap, 
         source => s, 
         destination => d, 
         inport => inport, 
@@ -324,26 +315,30 @@ BEGIN
 		TTLActive <= '0';
 	    ELSE
 
+	    -- Save previous read address
             IF (read_enable = '1') THEN
                 prev_read <= read_address;
             END IF;
 
+	    -- Save ttl state
             IF (TTLStart = '1') THEN
                 TTLActive <= '1';
             ELSIF (updatePointer = "1111111111111") THEN
                 TTLActive <= '0';
             END IF;
 
-            IF (hasInput = '1') THEN
+	    -- Save source, destination and field
+            IF (current_state = idle) THEN
                 source <= s;
                 destination <= d;
                 field <= minutes & inport & s;
+		tempport <= inport;
             END IF;
 
-            IF (current_state = updateTTL or current_state = init) THEN
-                updatePointer <= updatePointer + 1;
-            ELSIF (hasInput = '1' AND TTLActive = '1') THEN
+	    IF (hasInput = '1' AND TTLActive = '1') THEN
                 updatePointer <= updatePointer - 1;
+            ELSIF (current_state = updateTTL or current_state = init) THEN
+                updatePointer <= updatePointer + 1;
             END IF;
 	    END IF;
 
@@ -351,7 +346,6 @@ BEGIN
     END PROCESS;
 
     -------------------------------- State Machine ----------------------------------
-    ack_port <= ap;
     State_Memory : PROCESS (clk)
     BEGIN
         IF (rising_edge(clk)) THEN
@@ -368,38 +362,44 @@ BEGIN
         CASE current_state IS
 	    WHEN init =>
 		IF(updatePointer = "1111111111111") THEN
-		    next_state <= hunt;
+		    next_state <= idle;
 		ELSE
 		    next_state <= init;
 		END IF;
-            WHEN hunt => 
+            WHEN idle => 
                 IF (hasInput = '1') THEN
-                    next_state <= check_dst;
+                    next_state <= got_input;
                 ELSIF ((TTLActive OR TTLStart) = '1') THEN
                     next_state <= updateTTL;
                 ELSE
-                    next_state <= hunt;
+                    next_state <= idle;
                 END IF;
+	    WHEN got_input =>
+		next_state <= check_dst;
             WHEN check_dst => 
                 next_state <= learn_src;
             WHEN learn_src => 
-                next_state <= hunt;
+                next_state <= idle;
             WHEN updateTTL => 
-                next_state <= hunt;
+		if (hasInput = '1') THEN
+		    next_state <= got_input;
+		else
+                    next_state <= updateTTL;
+		end if;
             WHEN OTHERS => next_state <= init;
         END CASE;
     END PROCESS;
 
-    Output_logic : PROCESS (current_state, d, hashedpointer, minutes, inport, address1, address2, hasInput, updatePointer, prev_read, source, destination, field)
+    Output_logic : PROCESS (current_state, hashedpointer,tempport, minutes, inport, address1, address2, hasInput, updatePointer, prev_read, source, destination, field)
     BEGIN
-        hashing <= (OTHERS => '-');
+        hashing <= (OTHERS => '0');
         read_enable <= '0';
-        read_address <= (OTHERS => '-');
-        ap <= x"0";
+        read_address <= (OTHERS => '0');
+	ack_port <= x"0";
         write_port <= x"0";
-        RAM_field_in <= (OTHERS => '-');
+        RAM_field_in <= (OTHERS => '0');
         write_enable <= '0';
-        write_address <= (OTHERS => '-');
+        write_address <= (OTHERS => '0');
 
         CASE current_state IS
 	    WHEN init =>
@@ -407,12 +407,15 @@ BEGIN
 		write_enable <= '1';
 		write_address <= updatePointer;
 
-            WHEN hunt => 
-                hashing <= d;
-                IF (hasInput = '1') THEN
-                    read_enable <= '1';
-                    ap <= inport;
-                END IF;
+	    WHEN idle =>
+		read_address <= prev_read;
+		read_enable <= '1';
+		--wait for input
+
+            WHEN got_input => 
+                hashing <= destination;
+                read_enable <= '1';
+                ack_port <= tempport;
 
                 read_address <= hashedpointer;
 
