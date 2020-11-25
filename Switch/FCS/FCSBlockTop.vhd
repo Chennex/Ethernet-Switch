@@ -89,8 +89,8 @@ signal EoF : std_logic_vector(3 downto 0) := (others => '0');		--End of Frame Te
 --Error handling signals.
 signal fcs_error : std_logic_vector(3 downto 0) := (others => '0');	--Input to FCS error fifos.
 signal fcs_error_out : std_logic_vector(3 downto 0) := (others => '0');	--Output of FCS error fifos.
-signal wreqErr : std_logic_vector(3 downto 0) := (others => '0');	--Read enable signal for err Fifo
-signal rreqErr : std_logic_vector(3 downto 0) := (others => '0');
+signal wreqErr : std_logic_vector(3 downto 0) := (others => '0');	--Write enable signal for err Fifo
+signal rreqErr : std_logic_vector(3 downto 0) := (others => '0');	-- Read enable
 signal emptyErr : std_logic_vector(3 downto 0) := (others => '0');
 signal fullErr : std_logic_vector(3 downto 0) := (others => '0');
 signal uswedWErr : std_logic_vector(19 downto 0) := (others => '0');	-- number of used words.
@@ -114,9 +114,12 @@ signal MACActivePort : std_logic_vector(3 downto 0) := (others => '0');
 
 
 begin
+wreqErr <= EoF;	--Enable write if the end of frame is written.
 --Move data input into FIFO and FCS.
 
+
 --Read data out. Discard if FCS error (read from FCS FiFo) is high.
+
 
 
 
