@@ -115,7 +115,7 @@ END Timer;
 
 ARCHITECTURE Timer_arch OF Timer IS
 
-    CONSTANT clkfrequency : INTEGER := 1000;--125000000;
+    CONSTANT clkfrequency : INTEGER := 125000000;
     SIGNAL ticks : INTEGER RANGE 0 TO clkfrequency - 1;
     SIGNAL seconds : INTEGER RANGE 0 TO 60 - 1;
     SIGNAL minutes : std_logic_vector(2 DOWNTO 0) := "000";
