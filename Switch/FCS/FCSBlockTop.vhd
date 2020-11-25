@@ -41,21 +41,70 @@ port(
 	fcs_error      : OUT std_logic                      -- indicates an error.
 	);
 end component;
+
+component FiFoPacket
+	PORT
+	(
+		clock		: IN STD_LOGIC ;
+		data		: IN STD_LOGIC_VECTOR (8 DOWNTO 0);
+		rdreq		: IN STD_LOGIC ;
+		sclr		: IN STD_LOGIC ;
+		wrreq		: IN STD_LOGIC ;
+		empty		: OUT STD_LOGIC ;
+		full		: OUT STD_LOGIC ;
+		q		: OUT STD_LOGIC_VECTOR (8 DOWNTO 0);
+		usedw		: OUT STD_LOGIC_VECTOR (10 DOWNTO 0)
+	);
+end component;
+
+component FiFoErrors
+	PORT
+	(
+		clock		: IN STD_LOGIC ;
+		data		: IN STD_LOGIC_VECTOR (0 DOWNTO 0);
+		rdreq		: IN STD_LOGIC ;
+		sclr		: IN STD_LOGIC ;
+		wrreq		: IN STD_LOGIC ;
+		empty		: OUT STD_LOGIC ;
+		full		: OUT STD_LOGIC ;
+		q		: OUT STD_LOGIC_VECTOR (0 DOWNTO 0);
+		usedw		: OUT STD_LOGIC_VECTOR (4 DOWNTO 0)
+	);
+end component;
+
 --Signal assignments.--
 
---Component connection vectors.
+--Incoming signals.
 signal SoF : std_logic_vector(3 downto 0) := (others => '0');		--Start of Frame
 signal EoF : std_logic_vector(3 downto 0) := (others => '0');		--End of Frame
 signal data_in : std_logic_vector(31 downto 0) := (others => '0');
-signal fcs_error : std_logic_vector(3 downto 0) := (others => '0');
 
+
+--Error handling signals.
+signal fcs_error : std_logic_vector(3 downto 0) := (others => '0');	--Input to FCS error fifos.
+signal fcs_error_out : std_logic_vector(3 downto 0) := (others => '0');	--Output of FCS error fifos.
+signal wreqErr : std_logic_vector(3 downto 0) := (others => '0');	--Read enable signal for err Fifo
+signal rreqErr : std_logic_vector(3 downto 0) := (others => '0');
+signal emptyErr : std_logic_vector(3 downto 0) := (others => '0');
+signal fullErr : std_logic_vector(3 downto 0) := (others => '0');
+signal uswedWErr : std_logic_vector(19 downto 0) := (others => '0');	-- number of used words.
+
+--Packet Signals
+signal packetDoneFlag : std_logic_vector(3 downto 0) := (others => '0');
+signal emptyPack : std_logic_vector(3 downto 0) := (others => '0');
+signal fullPack : std_logic_vector(3 downto 0) := (others => '0');
+signal wrreqPack : std_logic_vector(3 downto 0) := (others => '0');
+signal rdreqPack : std_logic_vector(3 downto 0) := (others => '0');
+signal uswedWErr : std_logic_vector(43 downto 0) := (others => '0');
 begin
 
-
+--Read data out. Discard if FCS error (read from FCS FiFo) is high.
 
 
 
 --Port Mapping--
+
+--4 FCS modules.
 FCS1 : fcs_check_parallel
 port map(
 	clk => clk,
@@ -93,5 +142,108 @@ port map(
 	fcs_error => fcs_error(3)
 	);
 
+--4 FiFoPacket
+FiFoPack1 : FiFoPacket
+port map(
+	clock => clk,
+	data(7 downto 0) => data_in(7 downto 0),
+	data(8) => packetDoneFlag(0),
+	rdreq => rdreqPack(0),
+	sclr => reset,
+	wrreq => wrreqPack(0),
+	empty => emptyPack(0),
+	full => fullPack(0),
+	q(0) => fcs_error_out,
+	usedw => usedwPack(0)
+	);
+FiFoPack2 : FiFoPacket
+port map(
+	clock => clk,
+	data(7 downto 0) => data_in(7 downto 0),
+	data(8) => packetDoneFlag(0),
+	rdreq => rdreqPack(0),
+	sclr => reset,
+	wrreq => wrreqPack(0),
+	empty => emptyPack(0),
+	full => fullPack(0),
+	q(0) => fcs_error_out,
+	usedw => usedwPack(0)
+	);
+FiFoPack3 : FiFoPacket
+port map(
+	clock => clk,
+	data(7 downto 0) => data_in(7 downto 0),
+	data(8) => packetDoneFlag(0),
+	rdreq => rdreqPack(0),
+	sclr => reset,
+	wrreq => wrreqPack(0),
+	empty => emptyPack(0),
+	full => fullPack(0),
+	q(0) => fcs_error_out,
+	usedw => usedwPack(0)
+	);
+FiFoPack4 : FiFoPacket
+port map(
+	clock => clk,
+	data(7 downto 0) => data_in(7 downto 0),
+	data(8) => packetDoneFlag(0),
+	rdreq => rdreqPack(0),
+	sclr => reset,
+	wrreq => wrreqPack(0),
+	empty => emptyPack(0),
+	full => fullPack(0),
+	q(0) => fcs_error_out,
+	usedw => usedwPack(0)
+	);
+--TODO add 3 more after filling out all mapping.
+--4 FiFoErr
+FiFoErr1 : FiFoErrors
+port map(
+	clock => clk,
+	data(0) => fcsError(0),
+	rdreq => rreqErr(0),
+	sclr => reset,
+	wrreq => wreqErr(0),
+	empty => emptyErr(0),
+	full => fullErr(0),
+	q(0) => fcs_error_out(0),
+	usedw => usedWErr(4 downto 0)
+	);
+FiFoErr2 : FiFoErrors
+port map(
+	clock => clk,
+	data(0) => fcsError(0),
+	rdreq => rreqErr(0),
+	sclr => reset,
+	wrreq => wreqErr(0),
+	empty => emptyErr(0),
+	full => fullErr(0),
+	q(0) => fcs_error_out(0),
+	usedw => usedWErr(4 downto 0)
+	);
+FiFoErr3 : FiFoErrors
+port map(
+	clock => clk,
+	data(0) => fcsError(0),
+	rdreq => rreqErr(0),
+	sclr => reset,
+	wrreq => wreqErr(0),
+	empty => emptyErr(0),
+	full => fullErr(0),
+	q(0) => fcs_error_out(0),
+	usedw => usedWErr(4 downto 0)
+	);
+FiFoErr4 : FiFoErrors
+port map(
+	clock => clk,
+	data(0) => fcsError(0),
+	rdreq => rreqErr(0),
+	sclr => reset,
+	wrreq => wreqErr(0),
+	empty => emptyErr(0),
+	full => fullErr(0),
+	q(0) => fcs_error_out(0),
+	usedw => usedWErr(4 downto 0)
+	);
 end architecture;
 
