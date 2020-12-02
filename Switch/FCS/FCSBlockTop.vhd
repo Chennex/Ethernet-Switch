@@ -81,7 +81,7 @@ end component;
 
 --Signal assignments.--
 --Misc signals--
-signal counter : unsigned(7 downto 0) := (others => '1');
+signal counter : integer;
 --Incoming signals.
 signal SoF : std_logic_vector(3 downto 0) := (others => '0');		--Start of Frame Temp
 signal EoF : std_logic_vector(3 downto 0) := (others => '0');		--End of Frame Temp
@@ -94,7 +94,7 @@ signal wreqErr : std_logic_vector(3 downto 0) := (others => '0');	--Write enable
 signal rreqErr : std_logic_vector(3 downto 0) := (others => '0');	-- Read enable
 signal emptyErr : std_logic_vector(3 downto 0) := (others => '0');
 signal fullErr : std_logic_vector(3 downto 0) := (others => '0');
-signal uswedWErr : std_logic_vector(19 downto 0) := (others => '0');	-- number of used words.
+signal usedWErr : std_logic_vector(19 downto 0) := (others => '0');	-- number of used words.
 
 --Packet Signals
 signal packetDoneFlag : std_logic_vector(3 downto 0) := (others => '0');
@@ -102,7 +102,7 @@ signal emptyPack : std_logic_vector(3 downto 0) := (others => '0');
 signal fullPack : std_logic_vector(3 downto 0) := (others => '0');
 signal wrreqPack : std_logic_vector(3 downto 0) := (others => '0');
 signal rdreqPack : std_logic_vector(3 downto 0) := (others => '0');
-signal uswedWPack : std_logic_vector(43 downto 0) := (others => '0');
+signal usedWPack : std_logic_vector(43 downto 0) := (others => '0');
 signal readDataA : std_logic_vector(8 downto 0);
 signal readDataB : std_logic_vector(8 downto 0);
 signal readDataC : std_logic_vector(8 downto 0);
@@ -130,11 +130,6 @@ signal crossOutD : std_logic_vector(8 downto 0);
 begin
 wreqErr <= EoF;	--Enable write if the end of frame is written.
 
---Move data input into FIFO and FCS.
-acceptData : process (clk)
-begin
-	if rising_edge(clk) then
-		
 
 --Read data out. Discard if FCS error (read from FCS FiFo) is high.
 readOut : process (clk)
@@ -144,24 +139,29 @@ begin
 		rreqErr <= not emptyErr;
 		--FCS1
 		if(fcs_error_out(0) = '0') then
-			rdreqPack <= '1';
+			rdreqPack(0) <= '1';
 			crossOutA <= readDataA;
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
-				MACReadOut1(8 * counter - 8 downto 1 * counter) -8) <= readDataA;
+				MACReadOut1(8 * counter - 8 downto 1 * counter -8) <= readDataA;
 			end if;
 			if counter >= 14 AND counter <= 20 then
-				MACReadOut1S(8 * counter - 15 downto 1 * counter) -15) <= readDataA;
+				MACReadOut1S(8 * counter - 15 downto 1 * counter -15) <= readDataA;
 			end if;
-			
+		end if;
+	end if;
+end process;
 
 
 
-counter : process (clk)
+counterProc : process (clk)
 begin
 	if rising_edge(clk) then
 		counter <= counter + 1;
-	if counter = 20 then	--MAC source address ends at byte 20. 
-		counter <= 0;
+		if counter = 20 then	--MAC source address ends at byte 20. 
+			counter <= 0;
+		end if;
+	end if;
+end process;
 --Port Mapping--
 
 --4 FCS modules.
@@ -214,7 +214,7 @@ port map(
 	empty => emptyPack(0),
 	full => fullPack(0),
 	q => readDataA(8 downto 0),
-	usedw => usedwPack(0)
+	usedw => usedwPack(10 downto 0)
 	);
 FiFoPack2 : FiFoPacket
 port map(
@@ -227,7 +227,7 @@ port map(
 	empty => emptyPack(0),
 	full => fullPack(0),
 	q => readDataB(8 downto 0),
-	usedw => usedwPack(0)
+	usedw => usedwPack(21 downto 11)
 	);
 FiFoPack3 : FiFoPacket
 port map(
@@ -240,7 +240,7 @@ port map(
 	empty => emptyPack(0),
 	full => fullPack(0),
 	q => readDataC(8 downto 0),
-	usedw => usedwPack(0)
+	usedw => usedwPack(32 downto 22)
 	);
 FiFoPack4 : FiFoPacket
 port map(
@@ -253,14 +253,14 @@ port map(
 	empty => emptyPack(0),
 	full => fullPack(0),
 	q => readDataD(8 downto 0),
-	usedw => usedwPack(0)
+	usedw => usedwPack(43 downto 23)
 	);
 --TODO add 3 more after filling out all mapping.
 --4 FiFoErr
 FiFoErr1 : FiFoErrors
 port map(
 	clock => clk,
-	data(0) => fcsError(0),
+	data(0) => fcs_error(0),
 	rdreq => rreqErr(0),
 	sclr => reset,
 	wrreq => wreqErr(0),
@@ -272,7 +272,7 @@ port map(
 FiFoErr2 : FiFoErrors
 port map(
 	clock => clk,
-	data(0) => fcsError(0),
+	data(0) => fcs_error(0),
 	rdreq => rreqErr(0),
 	sclr => reset,
 	wrreq => wreqErr(0),
@@ -284,7 +284,7 @@ port map(
 FiFoErr3 : FiFoErrors
 port map(
 	clock => clk,
-	data(0) => fcsError(0),
+	data(0) => fcs_error(0),
 	rdreq => rreqErr(0),
 	sclr => reset,
 	wrreq => wreqErr(0),
@@ -296,7 +296,7 @@ port map(
 FiFoErr4 : FiFoErrors
 port map(
 	clock => clk,
-	data(0) => fcsError(0),
+	data(0) => fcs_error(0),
 	rdreq => rreqErr(0),
 	sclr => reset,
 	wrreq => wreqErr(0),
