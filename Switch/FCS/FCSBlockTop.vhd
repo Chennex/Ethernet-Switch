@@ -101,7 +101,7 @@ signal emptyPack : std_logic_vector(3 downto 0) := (others => '0');
 signal fullPack : std_logic_vector(3 downto 0) := (others => '0');
 signal wrreqPack : std_logic_vector(3 downto 0) := (others => '0');
 signal rdreqPack : std_logic_vector(3 downto 0) := (others => '0');
-signal uswedWErr : std_logic_vector(43 downto 0) := (others => '0');
+signal uswedWPack : std_logic_vector(43 downto 0) := (others => '0');
 
 --Outgoing Singals
 --Signals towards MAC Learning
@@ -174,7 +174,7 @@ port map(
 	wrreq => wrreqPack(0),
 	empty => emptyPack(0),
 	full => fullPack(0),
-	q(0) => fcs_error_out,
+	q(0) => fcs_error_out(0),
 	usedw => usedwPack(0)
 	);
 FiFoPack2 : FiFoPacket
@@ -187,7 +187,7 @@ port map(
 	wrreq => wrreqPack(0),
 	empty => emptyPack(0),
 	full => fullPack(0),
-	q(0) => fcs_error_out,
+	q(0) => fcs_error_out(1),
 	usedw => usedwPack(0)
 	);
 FiFoPack3 : FiFoPacket
@@ -200,7 +200,7 @@ port map(
 	wrreq => wrreqPack(0),
 	empty => emptyPack(0),
 	full => fullPack(0),
-	q(0) => fcs_error_out,
+	q(0) => fcs_error_out(2),
 	usedw => usedwPack(0)
 	);
 FiFoPack4 : FiFoPacket
@@ -213,7 +213,7 @@ port map(
 	wrreq => wrreqPack(0),
 	empty => emptyPack(0),
 	full => fullPack(0),
-	q(0) => fcs_error_out,
+	q(0) => fcs_error_out(3),
 	usedw => usedwPack(0)
 	);
 --TODO add 3 more after filling out all mapping.
