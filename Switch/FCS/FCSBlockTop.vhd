@@ -147,10 +147,10 @@ begin
 			rdreqPack <= '1';
 			crossOutA <= readDataA;
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
-				MACReadOut1(8 * counter - 1 downto 1 * counter) -1) <= readDataA;
+				MACReadOut1(8 * counter - 8 downto 1 * counter) -8) <= readDataA;
 			end if;
 			if counter >= 14 AND counter <= 20 then
-				MACReadOut1(8 * counter - 1 downto 1 * counter) -1) <= readDataA;
+				MACReadOut1S(8 * counter - 15 downto 1 * counter) -15) <= readDataA;
 			end if;
 			
 
