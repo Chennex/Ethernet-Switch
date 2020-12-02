@@ -80,7 +80,8 @@ component FiFoErrors
 end component;
 
 --Signal assignments.--
-
+--Misc signals--
+signal counter : unsigned(7 downto 0) := (others => '1');
 --Incoming signals.
 signal SoF : std_logic_vector(3 downto 0) := (others => '0');		--Start of Frame Temp
 signal EoF : std_logic_vector(3 downto 0) := (others => '0');		--End of Frame Temp
@@ -102,6 +103,10 @@ signal fullPack : std_logic_vector(3 downto 0) := (others => '0');
 signal wrreqPack : std_logic_vector(3 downto 0) := (others => '0');
 signal rdreqPack : std_logic_vector(3 downto 0) := (others => '0');
 signal uswedWPack : std_logic_vector(43 downto 0) := (others => '0');
+signal readDataA : std_logic_vector(8 downto 0);
+signal readDataB : std_logic_vector(8 downto 0);
+signal readDataC : std_logic_vector(8 downto 0);
+signal readDataD : std_logic_vector(8 downto 0);
 
 --Outgoing Singals
 --Signals towards MAC Learning
@@ -111,18 +116,52 @@ signal MACReadOut3 : std_logic_vector(47 downto 0) := (others => '0');
 signal MACReadOut4 : std_logic_vector(47 downto 0) := (others => '0');
 signal MACActivePort : std_logic_vector(3 downto 0) := (others => '0');
 
+signal MACReadOut1S : std_logic_vector(47 downto 0) := (others => '0');
+signal MACReadOut2S : std_logic_vector(47 downto 0) := (others => '0');
+signal MACReadOut3S : std_logic_vector(47 downto 0) := (others => '0');
+signal MACReadOut4S : std_logic_vector(47 downto 0) := (others => '0');	
 
+--Signals towards Crossbar
+signal crossOutA : std_logic_vector(8 downto 0);
+signal crossOutB : std_logic_vector(8 downto 0);
+signal crossOutC : std_logic_vector(8 downto 0);
+signal crossOutD : std_logic_vector(8 downto 0);
 
 begin
 wreqErr <= EoF;	--Enable write if the end of frame is written.
---Move data input into FIFO and FCS.
 
+--Move data input into FIFO and FCS.
+acceptData : process (clk)
+begin
+	if rising_edge(clk) then
+		
 
 --Read data out. Discard if FCS error (read from FCS FiFo) is high.
+readOut : process (clk)
+begin
+	if rising_edge(clk) then
+		--Enable error list read if not empty
+		rreqErr <= not emptyErr;
+		--FCS1
+		if(fcs_error_out(0) = '0') then
+			rdreqPack <= '1';
+			crossOutA <= readDataA;
+			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
+				MACReadOut1(8 * counter - 1 downto 1 * counter) -1) <= readDataA;
+			end if;
+			if counter >= 14 AND counter <= 20 then
+				MACReadOut1(8 * counter - 1 downto 1 * counter) -1) <= readDataA;
+			end if;
+			
 
 
 
-
+counter : process (clk)
+begin
+	if rising_edge(clk) then
+		counter <= counter + 1;
+	if counter = 20 then	--MAC source address ends at byte 20. 
+		counter <= 0;
 --Port Mapping--
 
 --4 FCS modules.
@@ -174,7 +213,7 @@ port map(
 	wrreq => wrreqPack(0),
 	empty => emptyPack(0),
 	full => fullPack(0),
-	q(0) => fcs_error_out(0),
+	q => readDataA(8 downto 0),
 	usedw => usedwPack(0)
 	);
 FiFoPack2 : FiFoPacket
@@ -187,7 +226,7 @@ port map(
 	wrreq => wrreqPack(0),
 	empty => emptyPack(0),
 	full => fullPack(0),
-	q(0) => fcs_error_out(1),
+	q => readDataB(8 downto 0),
 	usedw => usedwPack(0)
 	);
 FiFoPack3 : FiFoPacket
@@ -200,7 +239,7 @@ port map(
 	wrreq => wrreqPack(0),
 	empty => emptyPack(0),
 	full => fullPack(0),
-	q(0) => fcs_error_out(2),
+	q => readDataC(8 downto 0),
 	usedw => usedwPack(0)
 	);
 FiFoPack4 : FiFoPacket
@@ -213,7 +252,7 @@ port map(
 	wrreq => wrreqPack(0),
 	empty => emptyPack(0),
 	full => fullPack(0),
-	q(0) => fcs_error_out(3),
+	q => readDataD(8 downto 0),
 	usedw => usedwPack(0)
 	);
 --TODO add 3 more after filling out all mapping.
