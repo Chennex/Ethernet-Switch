@@ -253,7 +253,7 @@ port map(
 	empty => emptyPack(0),
 	full => fullPack(0),
 	q => readDataD(8 downto 0),
-	usedw => usedwPack(43 downto 23)
+	usedw => usedwPack(43 downto 33)
 	);
 --TODO add 3 more after filling out all mapping.
 --4 FiFoErr
@@ -279,7 +279,7 @@ port map(
 	empty => emptyErr(0),
 	full => fullErr(0),
 	q(0) => fcs_error_out(0),
-	usedw => usedWErr(4 downto 0)
+	usedw => usedWErr(9 downto 5)
 	);
 FiFoErr3 : FiFoErrors
 port map(
@@ -291,7 +291,7 @@ port map(
 	empty => emptyErr(0),
 	full => fullErr(0),
 	q(0) => fcs_error_out(0),
-	usedw => usedWErr(4 downto 0)
+	usedw => usedWErr(14 downto 10)
 	);
 FiFoErr4 : FiFoErrors
 port map(
@@ -303,7 +303,7 @@ port map(
 	empty => emptyErr(0),
 	full => fullErr(0),
 	q(0) => fcs_error_out(0),
-	usedw => usedWErr(4 downto 0)
+	usedw => usedWErr(19 downto 15)
 	);
 end architecture;
 
