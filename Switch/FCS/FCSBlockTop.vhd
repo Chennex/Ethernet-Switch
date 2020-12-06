@@ -82,14 +82,16 @@ end component;
 --Signal assignments.--
 --Misc signals--
 signal counter : integer;
+signal errorWriteEnable : std_logic_vector(3 downto 0) := (others => '0');
 --Incoming signals.
-signal SoF : std_logic_vector(3 downto 0) := (others => '0');		--Start of Frame Temp
-signal EoF : std_logic_vector(3 downto 0) := (others => '0');		--End of Frame Temp
+signal SoF : std_logic_vector(3 downto 0) := (others => '0');		--Start of Frame FCS needs to be changed to not need this.
+signal EoF : std_logic_vector(3 downto 0) := (others => '0');		--End of Frame FCS needs to be changed to not need this.
 
 
 --Error handling signals.
 signal fcs_error : std_logic_vector(3 downto 0) := (others => '0');	--Input to FCS error fifos.
 signal fcs_error_out : std_logic_vector(3 downto 0) := (others => '0');	--Output of FCS error fifos.
+
 signal wreqErr : std_logic_vector(3 downto 0) := (others => '0');	--Write enable signal for err Fifo
 signal rreqErr : std_logic_vector(3 downto 0) := (others => '0');	-- Read enable
 signal emptyErr : std_logic_vector(3 downto 0) := (others => '0');
@@ -146,6 +148,36 @@ begin
 			end if;
 			if counter >= 14 AND counter <= 20 then
 				MACReadOut1S(8 * counter - 15 downto 1 * counter -15) <= readDataA;
+			end if;
+		end if;
+		if(fcs_error_out(1) = '1') then
+			rdreqPack(1) <= '1';
+			crossOutB <= readDataB;
+			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
+				MACReadOut2(8 * counter - 8 downto 1 * counter -8) <= readDataB;
+			end if;
+			if counter >= 14 AND counter <= 20 then
+				MACReadOut2S(8 * counter - 15 downto 1 * counter -15) <= readDataB;
+			end if;
+		end if;
+		if(fcs_error_out(2) = '0') then
+			rdreqPack(2) <= '1';
+			crossOutC <= readDataC;
+			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
+				MACReadOut3(8 * counter - 8 downto 1 * counter -8) <= readDataC;
+			end if;
+			if counter >= 14 AND counter <= 20 then
+				MACReadOut3S(8 * counter - 15 downto 1 * counter -15) <= readDataC;
+			end if;
+		end if;
+		if(fcs_error_out(3) = '0') then
+			rdreqPack(3) <= '1';
+			crossOutD <= readDataD;
+			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
+				MACReadOut4(8 * counter - 8 downto 1 * counter -8) <= readDataD;
+			end if;
+			if counter >= 14 AND counter <= 20 then
+				MACReadOut4S(8 * counter - 15 downto 1 * counter -15) <= readDataD;
 			end if;
 		end if;
 	end if;
