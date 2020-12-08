@@ -92,7 +92,7 @@ END IF;
 --for testing = 1
 -- is it a integer or all 1?
 
-IF (rotdiv(31 DOWNTO 0) = '11111111111111111111111111111111') THEN
+IF (rotdiv(31 DOWNTO 0) = "11111111111111111111111111111111") THEN
 fcs_error <= '0';
 write_enable <= '1';
 ELSE
