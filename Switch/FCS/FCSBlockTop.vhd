@@ -84,6 +84,7 @@ end component;
 --Misc signals--
 signal counter : integer;
 signal errorWriteEnable : std_logic_vector(3 downto 0) := (others => '0');
+signal startWriting :std_logic_vector(3 downto 0) := (others => '0');
 --Incoming signals.
 signal SoF : std_logic_vector(3 downto 0);		--Start of Frame FCS needs to be changed to not need this.
 signal EoF : std_logic_vector(3 downto 0) := (others => '0');		--End of Frame FCS needs to be changed to not need this.
@@ -138,10 +139,11 @@ SoF <= linkSync;
 readOut : process (clk)
 begin
 	if rising_edge(clk) then
-		--Enable error list read if not empty
-		rreqErr <= not emptyErr;
+		--Enable error list read if not empty, or current packet is not done.
+		rreqErr <= not emptyErr and not startWriting;
+		startWriting <= not packetDoneFlag;
 		--FCS1
-		if(fcs_error_out(0) = '0') then
+		if(fcs_error_out(0) = '0' and startWriting(0) = '1') then
 			rdreqPack(0) <= '1';
 			wportCross(0) <= '1';
 			outA <= readDataA;
@@ -152,7 +154,7 @@ begin
 				src1(8 * counter - 15 downto 1 * counter -15) <= readDataA;
 			end if;
 		end if;
-		if(fcs_error_out(1) = '1') then
+		if(fcs_error_out(1) = '0' and startWriting(1) = '1') then
 			rdreqPack(1) <= '1';
 			wportCross(1) <= '1';
 			outB <= readDataB;
@@ -163,7 +165,7 @@ begin
 				src2(8 * counter - 15 downto 1 * counter -15) <= readDataB;
 			end if;
 		end if;
-		if(fcs_error_out(2) = '0') then
+		if(fcs_error_out(2) = '0' and startWriting(2) = '1') then
 			rdreqPack(2) <= '1';
 			wportCross(2) <= '1';
 			outC <= readDataC;
@@ -174,7 +176,7 @@ begin
 				src3(8 * counter - 15 downto 1 * counter -15) <= readDataC;
 			end if;
 		end if;
-		if(fcs_error_out(3) = '0') then
+		if(fcs_error_out(3) = '0' and startWriting(3) = '1') then
 			rdreqPack(3) <= '1';
 			wportCross(3) <= '1';
 			outD <= readDataD;
