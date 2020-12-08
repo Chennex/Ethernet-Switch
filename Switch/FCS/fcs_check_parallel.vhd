@@ -9,9 +9,9 @@ PORT (
 clk            : IN std_logic;                      -- system clock
 reset          : IN std_logic;                      -- asynchronous reset
 start_of_frame : IN std_logic;                      -- arrival of the first bit.
-end_of_frame   : IN std_logic;                      -- arrival of the first bit in FCS.
 data_in        : IN std_logic_vector(7 DOWNTO 0);   -- serial input data.
-fcs_error      : OUT std_logic                     -- indicates an error.
+fcs_error      : OUT std_logic;                     -- indicates an error.
+write_enable   : OUT std_logic	                  -- indicated if ready to write.
 --data_out       : OUT std_logic_vector(31 DOWNTO 0)  -- outputs the polynomial string - only for testing purposes
 );
 END fcs_check_parallel;
@@ -19,14 +19,14 @@ END fcs_check_parallel;
 ARCHITECTURE fcs_check_parallel_arch OF fcs_check_parallel IS
 
 SIGNAL div_in  : std_logic_vector(7 DOWNTO 0)  := x"00";
-SIGNAL counter : std_logic_vector(1 DOWNTO 0)  := "11";
+SIGNAL counter : std_logic_vector(2 DOWNTO 0)  := "000";
 SIGNAL rotdiv  : std_logic_vector(31 DOWNTO 0) := x"00000000";
 
 BEGIN
 
-PROCESS (counter, start_of_frame, end_of_frame, data_in)
+PROCESS ( counter, start_of_frame, data_in)
 BEGIN
-IF start_of_frame = '1' OR end_of_frame = '1' OR counter < 3 THEN
+IF start_of_frame = '1' or counter < 4 THEN
 div_in <= NOT data_in;
 ELSE
 div_in <= data_in;
@@ -38,11 +38,12 @@ BEGIN
 IF rising_edge(clk) THEN
 
 fcs_error <= '0';
+write_enable <= '0';
 
 -------------------------------------- Counter ------------------------------------------
-IF start_of_frame = '1' OR end_of_frame = '1' THEN
-counter <= "00";
-ELSIF (counter < 3) THEN
+IF start_of_frame = '1' THEN
+counter <= "000";
+ELSIF (counter < 4) THEN
 counter <= counter + 1;
 ELSE
 counter <= counter;
@@ -87,17 +88,23 @@ rotdiv(30) <= rotdiv(22) XOR rotdiv(28) XOR rotdiv(31);
 rotdiv(31) <= rotdiv(23) XOR rotdiv(29);
 END IF;
 
+
+--for testing = 1
+-- is it a integer or all 1?
+
 IF (rotdiv(31 DOWNTO 0) = 0) THEN
 fcs_error <= '0';
+write_enable <= '1';
 ELSE
 fcs_error <= '1';
+write_enable <= '1';
 END IF;
 
 --data_out <= rotdiv;
 
 -------------------------------------- RESET ------------------------------------------
 IF reset = '1' THEN
-counter <= "11";
+counter <= "000";
 rotdiv  <= x"00000000";
 END IF;
 END IF;

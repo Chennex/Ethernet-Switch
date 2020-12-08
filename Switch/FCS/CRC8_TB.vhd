@@ -18,18 +18,18 @@ ARCHITECTURE fcs_check_parallel_arch OF CRC8_TB IS
 			clk            : IN std_logic;                      -- system clock
 			reset          : IN std_logic;                      -- asynchronous reset
 			start_of_frame : IN std_logic;                      -- arrival of the first bit.
-			end_of_frame   : IN std_logic;                      -- arrival of the first bit in FCS.
 			data_in        : IN std_logic_vector(7 DOWNTO 0);   -- serial input data.
-			fcs_error      : OUT std_logic                     -- indicates an error.
+			fcs_error      : OUT std_logic;                     -- indicates an error.
+			write_enable   : OUT std_logic	                  -- indicated if ready to write.
 			--data_out       : OUT std_logic_vector(31 DOWNTO 0)  -- outputs the polynomial string - only for testing purposes
 		);
 	END COMPONENT;
 
-	SIGNAL clk_TB, start_TB, end_TB, fcs_error_TB : std_logic                    := '0';
-	SIGNAL data_in_TB                             : std_logic_vector(7 DOWNTO 0) := x"00";
-	SIGNAL fcs_counter                            : INTEGER                      := 0;
-	SIGNAL reset_TB                               : std_logic                    := '1';
-	SIGNAL data_out_TB                            : std_logic_vector(31 DOWNTO 0);
+	SIGNAL clk_TB, start_TB, fcs_error_TB, write_enable_TB : std_logic                    := '0';
+	SIGNAL data_in_TB                             				      : std_logic_vector(7 DOWNTO 0) := x"00";
+	SIGNAL fcs_counter                             					   : INTEGER                      := 0;
+	SIGNAL reset_TB                             	  					   : std_logic                    := '1';
+	SIGNAL data_out_TB                         	  				    	: std_logic_vector(31 DOWNTO 0);							
 
 BEGIN
 
@@ -38,9 +38,9 @@ BEGIN
 		clk            => clk_TB,
 		reset          => reset_TB,
 		start_of_frame => start_TB,
-		end_of_frame   => end_TB,
 		data_in        => data_in_TB,
-		fcs_error      => fcs_error_TB
+		fcs_error      => fcs_error_TB,
+		write_enable   => write_enable_TB
 		--data_out       => data_out_TB
 	);
 
@@ -121,9 +121,8 @@ BEGIN
 			IF fcs_counter = 0 THEN
 				start_TB <= '1';
 			ELSIF fcs_counter = 60 THEN
-				end_TB <= '1';
+				start_TB <= '0';
 			ELSE
-				end_TB   <= '0';
 				start_TB <= '0';
 			END IF;
 
