@@ -87,8 +87,7 @@ signal errorWriteEnable : std_logic_vector(3 downto 0) := (others => '0');
 signal startWriting :std_logic_vector(3 downto 0) := (others => '0');
 --Incoming signals.
 signal SoF : std_logic_vector(3 downto 0);		--Start of Frame FCS needs to be changed to not need this.
-signal EoF : std_logic_vector(3 downto 0) := (others => '0');		--End of Frame FCS needs to be changed to not need this.
-
+signal EoF : std_logic_vector(3 downto 0);
 
 --Error handling signals.
 signal fcs_error : std_logic_vector(3 downto 0) := (others => '0');	--Input to FCS error fifos.
@@ -112,6 +111,10 @@ signal readDataB : std_logic_vector(8 downto 0);
 signal readDataC : std_logic_vector(8 downto 0);
 signal readDataD : std_logic_vector(8 downto 0);
 
+signal regA : std_logic_vector(7 downto 0);
+signal regB : std_logic_vector(7 downto 0);
+signal regC : std_logic_vector(7 downto 0);
+signal regD : std_logic_vector(7 downto 0);
 --Outgoing Singals
 --Signals towards MAC Learning
 signal MACReadOut1 : std_logic_vector(47 downto 0) := (others => '0');
@@ -133,8 +136,41 @@ signal crossOutD : std_logic_vector(8 downto 0);
 
 begin
 wreqErr <= EoF;	--Enable write if the end of frame is written.
-SoF <= linkSync;
+--Start of frame logic.
+SoFDeterminer : process( linkSync )
+begin
+	if rising_edge(linkSync(0)) then
+		SoF(0) <= linkSync(0);
+	else
+		SoF(0) <= '0';
+	end if;
+	if rising_edge(linkSync(1)) then
+		SoF(1) <= linkSync(1);
+	else
+		SoF(1) <= '0';
+	end if;
+	if rising_edge(linkSync(2)) then
+		SoF(2) <= linkSync(2);
+	else
+		SoF(2) <= '0';
+	end if;
+	if rising_edge(linkSync(3)) then
+		SoF(3) <= linkSync(3);
+	else
+		SoF(3) <= '0';
+	end if;
+end process ; -- SoFDeterminer
 
+--PacketDone logic.
+--Packet is finished once the sync signal goes to 0. Given the last 1 comes together with the last packet,
+--data needs to be delayed by one cycle to match know packet is done.
+packetDelay : process( clk )
+begin
+	regA <= inputA;
+	regB <= inputB;
+	regC <= inputC;
+	regD <= inputD;
+end process ; -- packetDelay
 --Read data out. Discard if FCS error (read from FCS FiFo) is high.
 readOut : process (clk)
 begin
@@ -210,7 +246,7 @@ port map(
 	reset => reset,
 	start_of_frame => SoF(0),
 	end_of_frame => EoF(0),
-	data_in => inputA,
+	data_in => regA,
 	fcs_error => fcs_error(0)
 	);
 FCS2 : fcs_check_parallel
@@ -219,7 +255,7 @@ port map(
 	reset => reset,
 	start_of_frame => SoF(1),
 	end_of_frame => EoF(1),
-	data_in => inputB,
+	data_in => regB,
 	fcs_error => fcs_error(1)
 	);
 FCS3 : fcs_check_parallel
@@ -228,7 +264,7 @@ port map(
 	reset => reset,
 	start_of_frame => SoF(2),
 	end_of_frame => EoF(2),
-	data_in => inputC,
+	data_in => regC,
 	fcs_error => fcs_error(2)
 	);
 FCS4 : fcs_check_parallel
@@ -237,7 +273,7 @@ port map(
 	reset => reset,
 	start_of_frame => SoF(3),
 	end_of_frame => EoF(3),
-	data_in => inputD,
+	data_in => regD,
 	fcs_error => fcs_error(3)
 	);
 
