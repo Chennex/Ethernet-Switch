@@ -44,7 +44,7 @@ port(
 	clk            : IN std_logic;                      -- system clock
 	reset          : IN std_logic;                      -- asynchronous reset
 	start_of_frame : IN std_logic;                      -- arrival of the first bit.
-	end_of_frame   : IN std_logic;                      -- arrival of the first bit in FCS.
+	write_enable   : OUT std_logic;                     -- Data on output
 	data_in        : IN std_logic_vector(7 DOWNTO 0);   -- serial input data.
 	fcs_error      : OUT std_logic                      -- indicates an error.
 	);
@@ -60,7 +60,7 @@ component FiFoPacket
 		wrreq		: IN STD_LOGIC ;
 		empty		: OUT STD_LOGIC ;
 		full		: OUT STD_LOGIC ;
-		q		: OUT STD_LOGIC_VECTOR (8 DOWNTO 0);
+		q			: OUT STD_LOGIC_VECTOR (8 DOWNTO 0);
 		usedw		: OUT STD_LOGIC_VECTOR (10 DOWNTO 0)
 	);
 end component;
@@ -75,14 +75,14 @@ component FiFoErrors
 		wrreq		: IN STD_LOGIC ;
 		empty		: OUT STD_LOGIC ;
 		full		: OUT STD_LOGIC ;
-		q		: OUT STD_LOGIC_VECTOR (0 DOWNTO 0);
+		q			: OUT STD_LOGIC_VECTOR (0 DOWNTO 0);
 		usedw		: OUT STD_LOGIC_VECTOR (4 DOWNTO 0)
 	);
 end component;
 
 --Signal assignments.--
 --Misc signals--
-signal counter : integer;
+signal counter : integer := 0;
 signal errorWriteEnable : std_logic_vector(3 downto 0) := (others => '0');
 signal startWriting :std_logic_vector(3 downto 0) := (others => '0');
 --Incoming signals.
@@ -189,6 +189,9 @@ begin
 			if counter >= 14 AND counter <= 20 then
 				src1(8 * counter - 15 downto 1 * counter -15) <= readDataA;
 			end if;
+			else
+			rdreqPack(0) <= '0';
+			wportCross(0) <= '0';
 		end if;
 		if(fcs_error_out(1) = '0' and startWriting(1) = '1') then
 			rdreqPack(1) <= '1';
@@ -200,6 +203,9 @@ begin
 			if counter >= 14 AND counter <= 20 then
 				src2(8 * counter - 15 downto 1 * counter -15) <= readDataB;
 			end if;
+			else
+			rdreqPack(1) <= '0';
+			wportCross(1) <= '0';
 		end if;
 		if(fcs_error_out(2) = '0' and startWriting(2) = '1') then
 			rdreqPack(2) <= '1';
@@ -211,6 +217,9 @@ begin
 			if counter >= 14 AND counter <= 20 then
 				src3(8 * counter - 15 downto 1 * counter -15) <= readDataC;
 			end if;
+			else
+			rdreqPack(2) <= '0';
+			wportCross(2) <= '0';
 		end if;
 		if(fcs_error_out(3) = '0' and startWriting(3) = '1') then
 			rdreqPack(3) <= '1';
@@ -222,6 +231,9 @@ begin
 			if counter >= 14 AND counter <= 20 then
 				src4(8 * counter - 15 downto 1 * counter -15) <= readDataD;
 			end if;
+			else
+			rdreqPack(3) <= '0';
+			wportCross(3) <= '0';
 		end if;
 	end if;
 end process;
@@ -245,7 +257,7 @@ port map(
 	clk => clk,
 	reset => reset,
 	start_of_frame => SoF(0),
-	end_of_frame => EoF(0),
+	write_enable => EoF(0),
 	data_in => regA,
 	fcs_error => fcs_error(0)
 	);
@@ -254,7 +266,7 @@ port map(
 	clk => clk,
 	reset => reset,
 	start_of_frame => SoF(1),
-	end_of_frame => EoF(1),
+	write_enable => EoF(1),
 	data_in => regB,
 	fcs_error => fcs_error(1)
 	);
@@ -263,7 +275,7 @@ port map(
 	clk => clk,
 	reset => reset,
 	start_of_frame => SoF(2),
-	end_of_frame => EoF(2),
+	write_enable => EoF(2),
 	data_in => regC,
 	fcs_error => fcs_error(2)
 	);
@@ -272,7 +284,7 @@ port map(
 	clk => clk,
 	reset => reset,
 	start_of_frame => SoF(3),
-	end_of_frame => EoF(3),
+	write_enable => EoF(3),
 	data_in => regD,
 	fcs_error => fcs_error(3)
 	);
