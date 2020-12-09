@@ -439,10 +439,10 @@ BEGIN
                 ELSIF (address2(47 DOWNTO 0) = source) THEN
                     RAM_field_in <= field & address1;
                 ELSE
-                    IF (address1(54 DOWNTO 52) > address2(54 DOWNTO 52)) THEN
-                        RAM_field_in <= field & address1;
-                    ELSE
+                    IF (unsigned(minutes - address2(54 DOWNTO 52)) mod 8) < (unsigned(minutes - address1(54 DOWNTO 52)) mod 8) THEN
                         RAM_field_in <= field & address2;
+                    ELSE
+                        RAM_field_in <= field & address1;
                     END IF;
                 END IF;
                 write_enable <= '1';
@@ -452,13 +452,13 @@ BEGIN
                 read_address <= updatePointer;
                 read_enable <= '1';
  
-                IF ((minutes + 8 - address1(54 DOWNTO 52)) = 5) THEN
+                IF (unsigned(minutes + 8 - address1(54 DOWNTO 52)) mod 8 = 5) THEN
                     RAM_field_in(54 DOWNTO 0) <= (OTHERS => '0');
                 ELSE
                     RAM_field_in(54 DOWNTO 0) <= address1;
                 END IF;
 
-                IF ((minutes + 8 - address2(54 DOWNTO 52)) = 5) THEN
+                IF (unsigned(minutes + 8 - address2(54 DOWNTO 52)) mod 8 = 5) THEN
                     RAM_field_in(109 DOWNTO 55) <= (OTHERS => '0');
                 ELSE
                     RAM_field_in(109 DOWNTO 55) <= address2;
@@ -466,7 +466,7 @@ BEGIN
 
                 write_address <= prev_read;
                 write_enable <= '1';
-
+		
         END CASE;
     END PROCESS;
 
