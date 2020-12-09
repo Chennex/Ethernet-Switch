@@ -84,7 +84,7 @@ begin
                               OutC       => OutC,
                               OutD       => OutD,
                               wportCross => wportCross );
-  linkSync(0) <= '1';
+  linkSync <= "0001";
   
   stimulus: process
       FILE file_in                 : text OPEN read_mode IS "input.txt";
@@ -102,9 +102,9 @@ begin
       VARIABLE F                   : std_logic_vector(7 DOWNTO 0);
   begin
   	inputA <= x"AA";
-    inputB <= x"0";
-    inputC <= x"0";
-    inputD <= x"0";
+    inputB <= x"00";
+    inputC <= x"00";
+    inputD <= x"00";
 
     -- Put test bench stimulus code here
     if rising_edge(clk) then

@@ -165,11 +165,19 @@ end process ; -- SoFDeterminer
 --Packet is finished once the sync signal goes to 0. Given the last 1 comes together with the last packet,
 --data needs to be delayed by one cycle to match know packet is done.
 packetDelay : process( clk )
-begin
-	regA <= inputA;
-	regB <= inputB;
-	regC <= inputC;
-	regD <= inputD;
+begin	
+		if(linkSync(0) = '1') then
+			regA <= inputA;
+		end if;
+		if(linkSync(1) = '1') then
+			regB <= inputB;
+		end if;
+		if(linkSync(2) = '1') then
+			regB <= inputC;
+		end if;
+		if(linkSync(3) = '1') then
+			regB <= inputD;
+		end if;
 end process ; -- packetDelay
 --Read data out. Discard if FCS error (read from FCS FiFo) is high.
 readOut : process (clk)
