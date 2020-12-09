@@ -11,10 +11,11 @@ inputA :	in std_logic_vector(7 downto 0);
 inputB : 	in std_logic_vector(7 downto 0);
 inputC : 	in std_logic_vector(7 downto 0);
 inputD : 	in std_logic_vector(7 downto 0);
-linkSync : in std_logic_vector(3 downto 0);
+linkSync :  in std_logic_vector(3 downto 0);
 reset : 	in std_logic;
 --MAC Learning connections
 WportMAC : 	out std_logic_vector(3 downto 0);
+
 src1 : 		out std_logic_vector(47 downto 0);
 dst1 : 		out std_logic_vector(47 downto 0);
 src2 : 		out std_logic_vector(47 downto 0);
@@ -45,7 +46,7 @@ port(
 	reset          : IN std_logic;                      -- asynchronous reset
 	start_of_frame : IN std_logic;                      -- arrival of the first bit.
 	write_enable   : OUT std_logic;                     -- Data on output
-	data_in        : IN std_logic_vector(7 DOWNTO 0);   -- serial input data.
+	data_in        : IN std_logic_vector(8 DOWNTO 0);   -- serial input data.
 	fcs_error      : OUT std_logic                      -- indicates an error.
 	);
 end component;
@@ -136,6 +137,7 @@ signal crossOutD : std_logic_vector(8 downto 0);
 
 begin
 wreqErr <= EoF;	--Enable write if the end of frame is written.
+wrreqPack <= linkSync;
 --Start of frame logic.
 SoFDeterminer : process( linkSync )
 begin
@@ -173,11 +175,12 @@ begin
 			regB <= inputB;
 		end if;
 		if(linkSync(2) = '1') then
-			regB <= inputC;
+			regC <= inputC;
 		end if;
 		if(linkSync(3) = '1') then
-			regB <= inputD;
+			regD <= inputD;
 		end if;
+
 end process ; -- packetDelay
 --Read data out. Discard if FCS error (read from FCS FiFo) is high.
 readOut : process (clk)
@@ -185,7 +188,7 @@ begin
 	if rising_edge(clk) then
 		--Enable error list read if not empty, or current packet is not done.
 		rreqErr <= not emptyErr and not startWriting;
-		startWriting <= not packetDoneFlag;
+		startWriting <= not packetDoneFlag and not emptyPack;
 		--FCS1
 		if(fcs_error_out(0) = '0' and startWriting(0) = '1') then
 			rdreqPack(0) <= '1';
@@ -266,7 +269,8 @@ port map(
 	reset => reset,
 	start_of_frame => SoF(0),
 	write_enable => EoF(0),
-	data_in => regA,
+	data_in(7 downto 0) => regA,
+	data_in(8) => linkSync(0),
 	fcs_error => fcs_error(0)
 	);
 FCS2 : fcs_check_parallel
@@ -275,7 +279,8 @@ port map(
 	reset => reset,
 	start_of_frame => SoF(1),
 	write_enable => EoF(1),
-	data_in => regB,
+	data_in(7 downto 0) => regB,
+	data_in(8) => linkSync(1),
 	fcs_error => fcs_error(1)
 	);
 FCS3 : fcs_check_parallel
@@ -284,7 +289,8 @@ port map(
 	reset => reset,
 	start_of_frame => SoF(2),
 	write_enable => EoF(2),
-	data_in => regC,
+	data_in(7 downto 0) => regC,
+	data_in(8) => linkSync(2),
 	fcs_error => fcs_error(2)
 	);
 FCS4 : fcs_check_parallel
@@ -293,7 +299,8 @@ port map(
 	reset => reset,
 	start_of_frame => SoF(3),
 	write_enable => EoF(3),
-	data_in => regD,
+	data_in(7 downto 0) => regD,
+	data_in(8) => linkSync(3),
 	fcs_error => fcs_error(3)
 	);
 
@@ -301,7 +308,7 @@ port map(
 FiFoPack1 : FiFoPacket
 port map(
 	clock => clk,
-	data(7 downto 0) => inputA,
+	data(7 downto 0) => regA,
 	data(8) => packetDoneFlag(0),
 	rdreq => rdreqPack(0),
 	sclr => reset,
@@ -314,7 +321,7 @@ port map(
 FiFoPack2 : FiFoPacket
 port map(
 	clock => clk,
-	data(7 downto 0) => inputB,
+	data(7 downto 0) => regB,
 	data(8) => packetDoneFlag(0),
 	rdreq => rdreqPack(0),
 	sclr => reset,
@@ -327,7 +334,7 @@ port map(
 FiFoPack3 : FiFoPacket
 port map(
 	clock => clk,
-	data(7 downto 0) => inputC,
+	data(7 downto 0) => regC,
 	data(8) => packetDoneFlag(0),
 	rdreq => rdreqPack(0),
 	sclr => reset,
@@ -340,7 +347,7 @@ port map(
 FiFoPack4 : FiFoPacket
 port map(
 	clock => clk,
-	data(7 downto 0) => inputD,
+	data(7 downto 0) => regD,
 	data(8) => packetDoneFlag(0),
 	rdreq => rdreqPack(0),
 	sclr => reset,
