@@ -1,3 +1,5 @@
+
+
 -------------------------- Scheduler ------------------------------------
 
 LIBRARY ieee;
@@ -27,8 +29,8 @@ END Scheduler;
 
 ARCHITECTURE Scheduler_arch OF Scheduler IS
     SIGNAL roundRobin : std_logic_vector(1 DOWNTO 0) := "00";
-    SIGNAL s, d : std_logic_vector(47 DOWNTO 0);
-    SIGNAL ip, q : std_logic_vector(3 DOWNTO 0);
+    SIGNAL s, d : std_logic_vector(47 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL ip, q : std_logic_vector(3 DOWNTO 0) := (OTHERS => '0');
 BEGIN
     inport <= ip;
 
@@ -108,7 +110,7 @@ ENTITY Timer IS
     PORT (
         clk : IN std_logic;
         reset : IN std_logic;
-        minutestart : OUT std_logic;
+        minutestart : OUT std_logic := '0';
         q : OUT std_logic_vector(2 DOWNTO 0)
     );
 END Timer;
@@ -124,7 +126,7 @@ BEGIN
     TIMER : PROCESS (clk)
     BEGIN
         IF (rising_edge(clk)) THEN
-            IF (ticks = 10) THEN
+            IF (ticks = 50) THEN
                 minutestart <= '0';
             END IF;
             IF (reset = '1') THEN
@@ -162,6 +164,7 @@ USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 USE ieee.std_logic_unsigned.ALL;
 USE std.textio.ALL;
+
 ENTITY MACLearning IS
     PORT (
         clk : IN std_logic; -- system clock
@@ -184,9 +187,9 @@ ARCHITECTURE MACLearning_arch OF MACLearning IS
 
     -- Scheduler
     SIGNAL hasInput : std_logic;
-    SIGNAL destination, source, d, s : std_logic_vector(47 DOWNTO 0);
-    SIGNAL field : std_logic_vector(54 DOWNTO 0);
-    SIGNAL inport, tempport : std_logic_vector(3 DOWNTO 0);
+    SIGNAL destination, source, d, s : std_logic_vector(47 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL field : std_logic_vector(54 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL inport, tempport : std_logic_vector(3 DOWNTO 0) := "0000";
 
     -- Timer
     SIGNAL TTLActive, TTLStart : std_logic := '0';
@@ -200,7 +203,7 @@ ARCHITECTURE MACLearning_arch OF MACLearning IS
     SIGNAL write_enable, read_enable : std_logic;
     SIGNAL RAM_field_out, RAM_field_in : std_logic_vector(109 DOWNTO 0);
     SIGNAL address1, address2 : std_logic_vector(54 DOWNTO 0);
-    SIGNAL read_address, write_address, hashedpointer, prev_read : std_logic_vector(12 DOWNTO 0);
+    SIGNAL read_address, write_address, hashedpointer, prev_read : std_logic_vector(12 DOWNTO 0) := "0000000000000";
     SIGNAL updatePointer : std_logic_vector(12 DOWNTO 0) := "0000000000000";
     SIGNAL hashing : std_logic_vector(47 DOWNTO 0);
 
@@ -310,37 +313,37 @@ BEGIN
     memory : PROCESS (clk)
     BEGIN
         IF (rising_edge(clk)) THEN
-	    IF (reset = '1') THEN
-		updatePointer <= (OTHERS => '0');
-		TTLActive <= '0';
-	    ELSE
-
-	    -- Save previous read address
-            IF (read_enable = '1') THEN
-                prev_read <= read_address;
-            END IF;
-
-	    -- Save ttl state
-            IF (TTLStart = '1') THEN
-                TTLActive <= '1';
-            ELSIF (updatePointer = "1111111111111") THEN
+            IF (reset = '1') THEN
+                updatePointer <= (OTHERS => '0');
                 TTLActive <= '0';
-            END IF;
+            ELSE
 
-	    -- Save source, destination and field
-            IF (current_state = idle) THEN
-                source <= s;
-                destination <= d;
-                field <= minutes & inport & s;
-		tempport <= inport;
-            END IF;
+                -- Save previous read address
+                IF (read_enable = '1') THEN
+                    prev_read <= read_address;
+                END IF;
 
-	    IF (hasInput = '1' AND TTLActive = '1') THEN
-                updatePointer <= updatePointer - 1;
-            ELSIF (current_state = updateTTL or current_state = init) THEN
-                updatePointer <= updatePointer + 1;
+                -- Save ttl state
+                IF (TTLStart = '1') THEN
+                    TTLActive <= '1';
+                ELSIF (updatePointer = "1111111111111" AND hasInput = '0') THEN
+                    TTLActive <= '0';
+                END IF;
+
+                -- Save source, destination and field
+                IF (current_state = idle) THEN
+                    source <= s;
+                    destination <= d;
+                    field <= minutes & inport & s;
+                    tempport <= inport;
+                END IF;
+
+                IF (hasInput = '1' AND TTLActive = '1') THEN
+                    updatePointer <= updatePointer - 1;
+                ELSIF (current_state = updateTTL OR current_state = init) THEN
+                    updatePointer <= updatePointer + 1;
+                END IF;
             END IF;
-	    END IF;
 
         END IF;
     END PROCESS;
@@ -360,12 +363,12 @@ BEGIN
     Next_State_Logic : PROCESS (current_state, hasInput, TTLActive, TTLStart, updatePointer)
     BEGIN
         CASE current_state IS
-	    WHEN init =>
-		IF(updatePointer = "1111111111111") THEN
-		    next_state <= idle;
-		ELSE
-		    next_state <= init;
-		END IF;
+            WHEN init => 
+                IF (updatePointer = "1111111111111") THEN
+                    next_state <= idle;
+                ELSE
+                    next_state <= init;
+                END IF;
             WHEN idle => 
                 IF (hasInput = '1') THEN
                     next_state <= got_input;
@@ -374,43 +377,45 @@ BEGIN
                 ELSE
                     next_state <= idle;
                 END IF;
-	    WHEN got_input =>
-		next_state <= check_dst;
+            WHEN got_input => 
+                next_state <= check_dst;
             WHEN check_dst => 
                 next_state <= learn_src;
             WHEN learn_src => 
                 next_state <= idle;
             WHEN updateTTL => 
-		if (hasInput = '1') THEN
-		    next_state <= got_input;
-		else
+                IF (hasInput = '1') THEN
+                    next_state <= got_input;
+                ELSIF (updatePointer = "1111111111111") THEN
+                    next_state <= idle;
+                ELSE
                     next_state <= updateTTL;
-		end if;
+                END IF;
             WHEN OTHERS => next_state <= init;
         END CASE;
     END PROCESS;
 
-    Output_logic : PROCESS (current_state, hashedpointer,tempport, minutes, inport, address1, address2, hasInput, updatePointer, prev_read, source, destination, field)
+    Output_logic : PROCESS (current_state, tempport, hashedpointer, minutes, address1, address2, hasInput, updatePointer, prev_read, source, destination, field)
     BEGIN
         hashing <= (OTHERS => '0');
         read_enable <= '0';
         read_address <= (OTHERS => '0');
-	ack_port <= x"0";
+        ack_port <= x"0";
         write_port <= x"0";
         RAM_field_in <= (OTHERS => '0');
         write_enable <= '0';
         write_address <= (OTHERS => '0');
 
         CASE current_state IS
-	    WHEN init =>
-		RAM_field_in <= (OTHERS => '0');
-		write_enable <= '1';
-		write_address <= updatePointer;
+            WHEN init => 
+                RAM_field_in <= (OTHERS => '0');
+                write_enable <= '1';
+                write_address <= updatePointer;
 
-	    WHEN idle =>
-		read_address <= prev_read;
-		read_enable <= '1';
-		--wait for input
+            WHEN idle => 
+                read_address <= prev_read;
+                read_enable <= '1';
+                --wait for input
 
             WHEN got_input => 
                 hashing <= destination;
@@ -439,7 +444,7 @@ BEGIN
                 ELSIF (address2(47 DOWNTO 0) = source) THEN
                     RAM_field_in <= field & address1;
                 ELSE
-                    IF (unsigned(minutes - address1(54 DOWNTO 52)) mod 8) < (unsigned(minutes - address2(54 DOWNTO 52)) mod 8) THEN
+                    IF (unsigned(minutes - address1(54 DOWNTO 52)) MOD 8) < (unsigned(minutes - address2(54 DOWNTO 52)) MOD 8) THEN
                         RAM_field_in <= field & address1;
                     ELSE
                         RAM_field_in <= field & address2;
@@ -451,14 +456,14 @@ BEGIN
             WHEN updateTTL => 
                 read_address <= updatePointer;
                 read_enable <= '1';
- 
-                IF (unsigned(minutes + 8 - address1(54 DOWNTO 52)) mod 8 = 5) THEN
+
+                IF (unsigned(minutes + 8 - address1(54 DOWNTO 52)) MOD 8 > 4) THEN
                     RAM_field_in(54 DOWNTO 0) <= (OTHERS => '0');
                 ELSE
                     RAM_field_in(54 DOWNTO 0) <= address1;
                 END IF;
 
-                IF (unsigned(minutes + 8 - address2(54 DOWNTO 52)) mod 8 = 5) THEN
+                IF (unsigned(minutes + 8 - address2(54 DOWNTO 52)) MOD 8 > 4) THEN
                     RAM_field_in(109 DOWNTO 55) <= (OTHERS => '0');
                 ELSE
                     RAM_field_in(109 DOWNTO 55) <= address2;
@@ -466,7 +471,7 @@ BEGIN
 
                 write_address <= prev_read;
                 write_enable <= '1';
-		
+
         END CASE;
     END PROCESS;
 
