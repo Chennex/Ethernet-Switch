@@ -439,10 +439,10 @@ BEGIN
                 ELSIF (address2(47 DOWNTO 0) = source) THEN
                     RAM_field_in <= field & address1;
                 ELSE
-                    IF (unsigned(minutes - address2(54 DOWNTO 52)) mod 8) < (unsigned(minutes - address1(54 DOWNTO 52)) mod 8) THEN
-                        RAM_field_in <= field & address2;
-                    ELSE
+                    IF (unsigned(minutes - address1(54 DOWNTO 52)) mod 8) < (unsigned(minutes - address2(54 DOWNTO 52)) mod 8) THEN
                         RAM_field_in <= field & address1;
+                    ELSE
+                        RAM_field_in <= field & address2;
                     END IF;
                 END IF;
                 write_enable <= '1';
