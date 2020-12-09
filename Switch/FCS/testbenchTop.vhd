@@ -16,7 +16,7 @@ architecture bench of FCSBlockTop_tb is
   inputB : 	in std_logic_vector(7 downto 0);
   inputC : 	in std_logic_vector(7 downto 0);
   inputD : 	in std_logic_vector(7 downto 0);
-  linkSync : in std_logic_vector(3 downto 0);
+  linkSyncA : in std_logic_vector(3 downto 0);
   reset : 	in std_logic;
   WportMAC : 	out std_logic_vector(3 downto 0);
   src1 : 		out std_logic_vector(47 downto 0);
@@ -40,7 +40,7 @@ architecture bench of FCSBlockTop_tb is
   signal inputB: std_logic_vector(7 downto 0);
   signal inputC: std_logic_vector(7 downto 0);
   signal inputD: std_logic_vector(7 downto 0);
-  signal linkSync: std_logic_vector(3 downto 0);
+  signal linkSyncA: std_logic_vector(3 downto 0);
   signal reset: std_logic;
   signal WportMAC: std_logic_vector(3 downto 0);
   signal src1: std_logic_vector(47 downto 0);
@@ -68,7 +68,7 @@ begin
                               inputB     => inputB,
                               inputC     => inputC,
                               inputD     => inputD,
-                              linkSync   => linkSync,
+                              linkSyncA   => linkSyncA,
                               reset      => reset,
                               WportMAC   => WportMAC,
                               src1       => src1,
@@ -84,7 +84,7 @@ begin
                               OutC       => OutC,
                               OutD       => OutD,
                               wportCross => wportCross );
-  linkSync <= "0001";
+  linkSyncA <= "0001";
   
   stimulus: process
       FILE file_in                 : text OPEN read_mode IS "input.txt";

@@ -11,7 +11,7 @@ inputA :	in std_logic_vector(7 downto 0);
 inputB : 	in std_logic_vector(7 downto 0);
 inputC : 	in std_logic_vector(7 downto 0);
 inputD : 	in std_logic_vector(7 downto 0);
-linkSync :  in std_logic_vector(3 downto 0);
+linkSyncA :  in std_logic_vector(3 downto 0);
 reset : 	in std_logic;
 --MAC Learning connections
 WportMAC : 	out std_logic_vector(3 downto 0);
@@ -86,10 +86,11 @@ end component;
 signal counter : integer := 0;
 signal errorWriteEnable : std_logic_vector(3 downto 0) := (others => '0');
 signal startWriting :std_logic_vector(3 downto 0) := (others => '0');
+signal linkSync : std_logic_vector(3 downto 0) := (others => '0');
+signal linkSyncB : std_logic_vector(3 downto 0) := (others => '0');
 --Incoming signals.
 signal SoF : std_logic_vector(3 downto 0);		--Start of Frame FCS needs to be changed to not need this.
 signal EoF : std_logic_vector(3 downto 0);
-
 --Error handling signals.
 signal fcs_error : std_logic_vector(3 downto 0) := (others => '0');	--Input to FCS error fifos.
 signal fcs_error_out : std_logic_vector(3 downto 0) := (others => '0');	--Output of FCS error fifos.
@@ -138,6 +139,10 @@ signal crossOutD : std_logic_vector(8 downto 0);
 begin
 wreqErr <= EoF;	--Enable write if the end of frame is written.
 wrreqPack <= linkSync;
+packetDoneFlag(0) <= readDataA(8);
+packetDoneFlag(1) <= readDataB(8);
+packetDoneFlag(2) <= readDataC(8);
+packetDoneFlag(3) <= readDataD(8);
 --Start of frame logic.
 SoFDeterminer : process( linkSync )
 begin
@@ -166,20 +171,26 @@ end process ; -- SoFDeterminer
 --PacketDone logic.
 --Packet is finished once the sync signal goes to 0. Given the last 1 comes together with the last packet,
 --data needs to be delayed by one cycle to match know packet is done.
+
 packetDelay : process( clk )
 begin	
-		if(linkSync(0) = '1') then
-			regA <= inputA;
+		if(rising_edge(clk)) then
+			linkSyncB <= linkSyncA;
+			linkSync <= linkSyncB;
+			if(linkSyncB(0) = '1') then
+				regA <= inputA;
+			end if;
+			if(linkSync(1) = '1') then
+				regB <= inputB;
+			end if;
+			if(linkSync(2) = '1') then
+				regC <= inputC;
+			end if;
+			if(linkSync(3) = '1') then
+				regD <= inputD;
+			end if;
 		end if;
-		if(linkSync(1) = '1') then
-			regB <= inputB;
-		end if;
-		if(linkSync(2) = '1') then
-			regC <= inputC;
-		end if;
-		if(linkSync(3) = '1') then
-			regD <= inputD;
-		end if;
+		
 
 end process ; -- packetDelay
 --Read data out. Discard if FCS error (read from FCS FiFo) is high.
@@ -309,7 +320,7 @@ FiFoPack1 : FiFoPacket
 port map(
 	clock => clk,
 	data(7 downto 0) => regA,
-	data(8) => packetDoneFlag(0),
+	data(8) => linkSyncA(0),
 	rdreq => rdreqPack(0),
 	sclr => reset,
 	wrreq => wrreqPack(0),
@@ -322,7 +333,7 @@ FiFoPack2 : FiFoPacket
 port map(
 	clock => clk,
 	data(7 downto 0) => regB,
-	data(8) => packetDoneFlag(0),
+	data(8) => linkSyncA(1),
 	rdreq => rdreqPack(0),
 	sclr => reset,
 	wrreq => wrreqPack(0),
@@ -335,7 +346,7 @@ FiFoPack3 : FiFoPacket
 port map(
 	clock => clk,
 	data(7 downto 0) => regC,
-	data(8) => packetDoneFlag(0),
+	data(8) => linkSyncA(2),
 	rdreq => rdreqPack(0),
 	sclr => reset,
 	wrreq => wrreqPack(0),
@@ -348,7 +359,7 @@ FiFoPack4 : FiFoPacket
 port map(
 	clock => clk,
 	data(7 downto 0) => regD,
-	data(8) => packetDoneFlag(0),
+	data(8) => linkSyncA(3),
 	rdreq => rdreqPack(0),
 	sclr => reset,
 	wrreq => wrreqPack(0),
