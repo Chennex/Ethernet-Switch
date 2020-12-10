@@ -96,7 +96,7 @@ begin
   begin
     if rising_edge(clk) then
       counter <= counter + 1;
-      if counter > 5 then
+      if counter > 63 then
         linkSyncA <= "0000";
         else 
         linkSyncA <= "0001";
@@ -109,7 +109,6 @@ begin
     inputB <= x"00";
     inputC <= x"00";
     inputD <= x"00";
-    inputA <= x"AF";
     portWrEn <= "1111";
     portIn <= "1111";
     -- Put test bench stimulus code here
@@ -117,6 +116,67 @@ begin
     --stop_the_clock <= true;
     wait;
   end process;
+
+  main : process( clk )
+  FILE file_in                 : text OPEN read_mode IS "input.txt";
+		FILE out1bit                 : text OPEN read_mode IS "output1bit.txt";
+		FILE file_out                : text OPEN write_mode IS "comparison.txt";
+
+		VARIABLE current_read_line   : line;
+		VARIABLE current_read_field1 : STRING(2 DOWNTO 1);
+		VARIABLE current_read_field2 : INTEGER;
+		VARIABLE current_read_field3 : std_logic_vector(31 DOWNTO 0);
+
+		VARIABLE space               : CHARACTER := ' ';
+
+		VARIABLE current_write_line  : line;
+		VARIABLE F                   : std_logic_vector(7 DOWNTO 0);
+  begin
+    IF rising_edge(clk) THEN
+			readline(file_in, current_read_line);
+			read(current_read_line, current_read_field1);
+			CASE(current_read_field1(2 DOWNTO 2)) IS
+				WHEN "0"    => F(7 DOWNTO 4)    := x"0";
+				WHEN "1"    => F(7 DOWNTO 4)    := x"1";
+				WHEN "2"    => F(7 DOWNTO 4)    := x"2";
+				WHEN "3"    => F(7 DOWNTO 4)    := x"3";
+				WHEN "4"    => F(7 DOWNTO 4)    := x"4";
+				WHEN "5"    => F(7 DOWNTO 4)    := x"5";
+				WHEN "6"    => F(7 DOWNTO 4)    := x"6";
+				WHEN "7"    => F(7 DOWNTO 4)    := x"7";
+				WHEN "8"    => F(7 DOWNTO 4)    := x"8";
+				WHEN "9"    => F(7 DOWNTO 4)    := x"9";
+				WHEN "A"    => F(7 DOWNTO 4)    := x"A";
+				WHEN "B"    => F(7 DOWNTO 4)    := x"B";
+				WHEN "C"    => F(7 DOWNTO 4)    := x"C";
+				WHEN "D"    => F(7 DOWNTO 4)    := x"D";
+				WHEN "E"    => F(7 DOWNTO 4)    := x"E";
+				WHEN "F"    => F(7 DOWNTO 4)    := x"F";
+				WHEN OTHERS => F(7 DOWNTO 4) := x"0";
+			END CASE;
+
+			CASE(current_read_field1(1 DOWNTO 1)) IS
+				WHEN "0"    => F(3 DOWNTO 0)    := x"0";
+				WHEN "1"    => F(3 DOWNTO 0)    := x"1";
+				WHEN "2"    => F(3 DOWNTO 0)    := x"2";
+				WHEN "3"    => F(3 DOWNTO 0)    := x"3";
+				WHEN "4"    => F(3 DOWNTO 0)    := x"4";
+				WHEN "5"    => F(3 DOWNTO 0)    := x"5";
+				WHEN "6"    => F(3 DOWNTO 0)    := x"6";
+				WHEN "7"    => F(3 DOWNTO 0)    := x"7";
+				WHEN "8"    => F(3 DOWNTO 0)    := x"8";
+				WHEN "9"    => F(3 DOWNTO 0)    := x"9";
+				WHEN "A"    => F(3 DOWNTO 0)    := x"A";
+				WHEN "B"    => F(3 DOWNTO 0)    := x"B";
+				WHEN "C"    => F(3 DOWNTO 0)    := x"C";
+				WHEN "D"    => F(3 DOWNTO 0)    := x"D";
+				WHEN "E"    => F(3 DOWNTO 0)    := x"E";
+				WHEN "F"    => F(3 DOWNTO 0)    := x"F";
+				WHEN OTHERS => F(3 DOWNTO 0) := x"0";
+      END CASE;
+      inputA <= F;
+      end if;
+  end process ; -- main
 
   clocking: process
   begin
