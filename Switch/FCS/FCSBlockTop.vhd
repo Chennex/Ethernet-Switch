@@ -144,7 +144,7 @@ signal crossOutD : std_logic_vector(8 downto 0) := (others => '0');
 begin
 wreqErr <= EoF;	--Enable write if the end of frame is written.
 wrreqPack <= linkSync;
-
+wportCross <= portIn;
 
 
 
@@ -200,20 +200,22 @@ begin
 end process ; -- packetDelay
 
 --Error Detection.
-errorDetect : process( EoF )
+errorDetect : process( clk )
 begin
-	if rising_edge(EoF(0)) then
-		packetErrorState(0) <= fcs_error_out(0);
-	end if ;
-	if rising_edge(EoF(1)) then
-		packetErrorState(1) <= fcs_error_out(1);
-	end if ; 
-	if rising_edge(EoF(2)) then
-		packetErrorState(2) <= fcs_error_out(2);
-	end if ; 
-	if rising_edge(EoF(3)) then
-		packetErrorState(3) <= fcs_error_out(3);
-	end if ; 
+	if(rising_edge(clk)) then
+		if EoF(0) = '1' then
+			packetErrorState(0) <= fcs_error_out(0);
+		end if ;
+		if EoF(1) = '1' then
+			packetErrorState(1) <= fcs_error_out(1);
+		end if ; 
+		if EoF(2) = '1' then
+			packetErrorState(2) <= fcs_error_out(2);
+		end if ; 
+		if EoF(3) = '1' then
+			packetErrorState(3) <= fcs_error_out(3);
+		end if ; 
+	end if;
 end process ; -- errorDetect
 --Read data out. Discard if FCS error (read from FCS FiFo) is high.
 readOut : process (clk)
@@ -225,63 +227,54 @@ begin
 		--FCS1
 		if(packetErrorState(0) = '0' and startWriting(0) = '1' and EoF(0) = '1' and portWrEn(0) = '1') then
 			rdreqPack(0) <= '1';
-			wportCross <= portIn;
 			outA <= readDataA;
 			packetDoneFlag(0) <= readDataA(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
-				dst1(8 * counter - 8 downto 1 * counter -8) <= readDataA;
+				--dst1(counter downto 0) <= readDataA;
 			end if;
 			if counter >= 14 AND counter <= 20 then
-				src1(8 * counter - 15 downto 1 * counter -15) <= readDataA;
+				--src1(counter downto 0) <= readDataA;
 			end if;
 			else
 			rdreqPack(0) <= '0';
-			wportCross(0) <= '0';
 		end if;
 		if(packetErrorState(1) = '0' and startWriting(1) = '1' and EoF(1) = '1' and portWrEn(1) = '1') then
 			rdreqPack(1) <= '1';
-			wportCross <= portIn;
 			outB <= readDataB;
 			packetDoneFlag(1) <= readDataB(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
-				dst2(8 * counter - 8 downto 1 * counter -8) <= readDataB;
+				--dst2(counter downto 0) <= readDataB;
 			end if;
 			if counter >= 14 AND counter <= 20 then
-				src2(8 * counter - 15 downto 1 * counter -15) <= readDataB;
+				--src2(counter downto 0) <= readDataB;
 			end if;
 			else
 			rdreqPack(1) <= '0';
-			wportCross(1) <= '0';
 		end if;
 		if(packetErrorState(2) = '0' and startWriting(2) = '1' and EoF(2) = '1' and portWrEn(2) = '1') then
 			rdreqPack(2) <= '1';
-			wportCross <= portIn;
 			outC <= readDataC;
 			packetDoneFlag(2) <= readDataC(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
-				dst3(8 * counter - 8 downto 1 * counter -8) <= readDataC;
+				--dst3(counter downto 0) <= readDataC;
 			end if;
 			if counter >= 14 AND counter <= 20 then
-				src3(8 * counter - 15 downto 1 * counter -15) <= readDataC;
+				--src3(counter downto 0) <= readDataC;
 			end if;
 			else
-			rdreqPack(2) <= '0';
-			wportCross(2) <= '0';
-		end if;
+			rdreqPack(2) <= '0';		end if;
 		if(packetErrorState(3) = '0' and startWriting(3) = '1' and EoF(3) = '1' and portWrEn(3) = '1') then
 			rdreqPack(3) <= '1';
-			wportCross <= portIn;
 			outD <= readDataD;
 			packetDoneFlag(3) <= readDataD(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
-				dst4(8 * counter - 8 downto 1 * counter -8) <= readDataD;
+				--dst4(8 * counter - 8 downto 1 * counter -8) <= readDataD;
 			end if;
 			if counter >= 14 AND counter <= 20 then
-				src4(8 * counter - 15 downto 1 * counter -15) <= readDataD;
+				--src4(8 * counter - 15 downto 1 * counter -15) <= readDataD;
 			end if;
 			else
 			rdreqPack(3) <= '0';
-			wportCross(3) <= '0';
 			end if;
 	end if;
 end process;

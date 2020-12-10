@@ -1,0 +1,48 @@
+# Current time Thu Dec 10 14:27:50 2020
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vish
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+
+Exception c0000005 has occurred at address 66579e6f. Traceback:
+# 0    0x66579e6f: 'Tcl_GetString + 0xf'
+# 1    0x66561f5a: 'TclListObjSetElement + 0x31a'
+# 2    0x664d3a49: 'TclNRRunCallbacks + 0x49'
+StackWalk failed 299
+# End of Stack Trace
+
+# Current time Thu Dec 10 14:28:17 2020
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vish
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+
+Exception c0000005 has occurred at address 73702507. Traceback:
+# 0    0x73702507: '<unknown (@0x73702507)>'
+# 1    0x769a7be5: 'GetClassLongW + 0x495'
+# 2    0x769a39f9: 'GetWindowLongW + 0x269'
+# 3    0x769a38b7: 'GetWindowLongW + 0x127'
+# 4    0x745f98f9: 'OpenThemeData + 0x2809'
+# 5    0x75816fb4: 'vsnwprintf_l + 0x94'
+StackWalk failed 299
+# End of Stack Trace
+
+# Current time Thu Dec 10 15:22:38 2020
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vish
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+
+Exception c0000005 has occurred at address 66579e6f. Traceback:
+# 0    0x66579e6f: 'Tcl_GetString + 0xf'
+# 1    0x66561f5a: 'TclListObjSetElement + 0x31a'
+# 2    0x664d3a49: 'TclNRRunCallbacks + 0x49'
+StackWalk failed 299
+# End of Stack Trace
+
