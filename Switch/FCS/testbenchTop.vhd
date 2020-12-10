@@ -105,7 +105,7 @@ begin
     inputB <= x"00";
     inputC <= x"00";
     inputD <= x"00";
-
+    inputA <= x"00";
     -- Put test bench stimulus code here
     if rising_edge(clk) then
       readline(file_in, current_read_line);
@@ -150,7 +150,7 @@ begin
 				WHEN OTHERS => F(3 DOWNTO 0) := x"0";
       END CASE;
       
-      inputA <= F;
+      
 
       
     end if;

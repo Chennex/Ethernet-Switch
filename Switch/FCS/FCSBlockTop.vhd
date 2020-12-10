@@ -44,7 +44,7 @@ component fcs_check_parallel
 port(
 	clk            : IN std_logic;                      -- system clock
 	reset          : IN std_logic;                      -- asynchronous reset
-	start_of_frame : IN std_logic;                      -- arrival of the first bit.
+	act : IN std_logic;                      -- arrival of the first bit.
 	write_enable   : OUT std_logic;                     -- Data on output
 	data_in        : IN std_logic_vector(8 DOWNTO 0);   -- serial input data.
 	fcs_error      : OUT std_logic                      -- indicates an error.
@@ -104,6 +104,7 @@ signal emptyErr : std_logic_vector(3 downto 0) := (others => '0');
 signal fullErr : std_logic_vector(3 downto 0) := (others => '0');
 signal usedWErr : std_logic_vector(19 downto 0) := (others => '0');	-- number of used words.
 
+signal packetErrorState : std_logic_vector(3 downto 0) := (others => '0'); --Switches to 1 for whole packet if erred.
 --Packet Signals
 signal packetDoneFlag : std_logic_vector(3 downto 0) := (others => '0');
 signal emptyPack : std_logic_vector(3 downto 0) := (others => '0');
@@ -196,6 +197,23 @@ begin
 		
 
 end process ; -- packetDelay
+
+--Error Detection.
+errorDetect : process( EoF )
+begin
+	if rising_edge(EoF(0)) then
+		packetErrorState(0) <= fcs_error_out(0);
+	end if ;
+	if rising_edge(EoF(1)) then
+		packetErrorState(1) <= fcs_error_out(1);
+	end if ; 
+	if rising_edge(EoF(2)) then
+		packetErrorState(2) <= fcs_error_out(2);
+	end if ; 
+	if rising_edge(EoF(3)) then
+		packetErrorState(3) <= fcs_error_out(3);
+	end if ; 
+end process ; -- errorDetect
 --Read data out. Discard if FCS error (read from FCS FiFo) is high.
 readOut : process (clk)
 begin
@@ -204,7 +222,7 @@ begin
 		rreqErr <= not emptyErr and not startWriting;
 		startWriting <= not packetDoneFlag and not emptyPack;
 		--FCS1
-		if(fcs_error_out(0) = '0' and startWriting(0) = '1' and EoF(0) = '1') then
+		if(packetErrorState(0) = '0' and startWriting(0) = '1' and EoF(0) = '1') then
 			rdreqPack(0) <= '1';
 			wportCross(0) <= '1';
 			outA <= readDataA;
@@ -219,7 +237,7 @@ begin
 			rdreqPack(0) <= '0';
 			wportCross(0) <= '0';
 		end if;
-		if(fcs_error_out(1) = '0' and startWriting(1) = '1' and EoF(1) = '1') then
+		if(packetErrorState(1) = '0' and startWriting(1) = '1' and EoF(1) = '1') then
 			rdreqPack(1) <= '1';
 			wportCross(1) <= '1';
 			outB <= readDataB;
@@ -234,7 +252,7 @@ begin
 			rdreqPack(1) <= '0';
 			wportCross(1) <= '0';
 		end if;
-		if(fcs_error_out(2) = '0' and startWriting(2) = '1' and EoF(2) = '1') then
+		if(packetErrorState(2) = '0' and startWriting(2) = '1' and EoF(2) = '1') then
 			rdreqPack(2) <= '1';
 			wportCross(2) <= '1';
 			outC <= readDataC;
@@ -249,7 +267,7 @@ begin
 			rdreqPack(2) <= '0';
 			wportCross(2) <= '0';
 		end if;
-		if(fcs_error_out(3) = '0' and startWriting(3) = '1' and EoF(3) = '1') then
+		if(packetErrorState(3) = '0' and startWriting(3) = '1' and EoF(3) = '1') then
 			rdreqPack(3) <= '1';
 			wportCross(3) <= '1';
 			outD <= readDataD;
@@ -270,22 +288,22 @@ end process;
 trashErredData : process( clk )
 begin
 	if rising_edge(clk) then
-		if(fcs_error_out(0) = '1' and EoF(0) = '1' and packetDoneFlag(0) = '0') then
+		if(packetErrorState(0) = '1' and EoF(0) = '1' and packetDoneFlag(0) = '0') then
 			rdreqPack(0) <= '1';
 			deadEnd <= readDataA;
 			packetDoneFlag(0) <= readDataA(8);
 		end if;
-		if(fcs_error_out(1) = '1' and EoF(1) = '1' and packetDoneFlag(1) = '0') then
+		if(packetErrorState(1) = '1' and EoF(1) = '1' and packetDoneFlag(1) = '0') then
 			rdreqPack(1) <= '1';
 			deadEnd <= readDataB;
 			packetDoneFlag(1) <= readDataB(8);
 		end if;
-		if(fcs_error_out(2) = '1' and EoF(2) = '1' and packetDoneFlag(2) = '0') then
+		if(packetErrorState(2) = '1' and EoF(2) = '1' and packetDoneFlag(2) = '0') then
 			rdreqPack(2) <= '1';
 			deadEnd <= readDataC;
 			packetDoneFlag(2) <= readDataC(8);
 		end if;
-		if(fcs_error_out(3) = '1' and EoF(3) = '1' and packetDoneFlag(3) = '0') then
+		if(packetErrorState(3) = '1' and EoF(3) = '1' and packetDoneFlag(3) = '0') then
 			rdreqPack(3) <= '1';
 			deadEnd <= readDataD;
 			packetDoneFlag(3) <= readDataD(8);
@@ -311,7 +329,7 @@ FCS1 : fcs_check_parallel
 port map(
 	clk => clk,
 	reset => reset,
-	start_of_frame => SoF(0),
+	act => SoF(0),
 	write_enable => EoF(0),
 	data_in(7 downto 0) => regA,
 	data_in(8) => linkSync(0),
@@ -321,7 +339,7 @@ FCS2 : fcs_check_parallel
 port map(
 	clk => clk,
 	reset => reset,
-	start_of_frame => SoF(1),
+	act => SoF(1),
 	write_enable => EoF(1),
 	data_in(7 downto 0) => regB,
 	data_in(8) => linkSync(1),
@@ -331,7 +349,7 @@ FCS3 : fcs_check_parallel
 port map(
 	clk => clk,
 	reset => reset,
-	start_of_frame => SoF(2),
+	act => SoF(2),
 	write_enable => EoF(2),
 	data_in(7 downto 0) => regC,
 	data_in(8) => linkSync(2),
@@ -341,7 +359,7 @@ FCS4 : fcs_check_parallel
 port map(
 	clk => clk,
 	reset => reset,
-	start_of_frame => SoF(3),
+	act => SoF(3),
 	write_enable => EoF(3),
 	data_in(7 downto 0) => regD,
 	data_in(8) => linkSync(3),
