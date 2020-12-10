@@ -101,13 +101,15 @@ begin
       VARIABLE current_write_line  : line;
       VARIABLE F                   : std_logic_vector(7 DOWNTO 0);
   begin
-  	inputA <= x"AA";
+  	
     inputB <= x"00";
     inputC <= x"00";
     inputD <= x"00";
 
     -- Put test bench stimulus code here
     if rising_edge(clk) then
+      readline(file_in, current_read_line);
+			read(current_read_line, current_read_field1);
       CASE(current_read_field1(2 DOWNTO 2)) IS
 				WHEN "0"    => F(7 DOWNTO 4)    := x"0";
 				WHEN "1"    => F(7 DOWNTO 4)    := x"1";
@@ -148,6 +150,8 @@ begin
 				WHEN OTHERS => F(3 DOWNTO 0) := x"0";
       END CASE;
       
+      inputA <= F;
+
       
     end if;
     --stop_the_clock <= true;

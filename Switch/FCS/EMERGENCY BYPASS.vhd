@@ -101,7 +101,7 @@ begin
 			outA(7 downto 0) <= inputA;
 			outA(8) <= linkSync(0);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
-				dst1(7 * (counter - 7) downto 0 * (counter - 7)) <= inputA;
+				dst1(8 * (counter -6) downto counter - 6) <= inputA;
 			end if;
 			if counter >= 14 AND counter <= 20 then
 				src1 <= inputA;

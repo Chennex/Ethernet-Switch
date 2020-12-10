@@ -88,9 +88,12 @@ signal errorWriteEnable : std_logic_vector(3 downto 0) := (others => '0');
 signal startWriting :std_logic_vector(3 downto 0) := (others => '0');
 signal linkSync : std_logic_vector(3 downto 0) := (others => '0');
 signal linkSyncB : std_logic_vector(3 downto 0) := (others => '0');
+
+signal deadEnd : std_logic_vector(8 downto 0);
+signal stop : std_logic_vector(3 downto 0) := (others => '0');
 --Incoming signals.
-signal SoF : std_logic_vector(3 downto 0);		--Start of Frame FCS needs to be changed to not need this.
-signal EoF : std_logic_vector(3 downto 0);
+signal SoF : std_logic_vector(3 downto 0) := (others => '0');		--Start of Frame FCS needs to be changed to not need this.
+signal EoF : std_logic_vector(3 downto 0) := (others => '0');
 --Error handling signals.
 signal fcs_error : std_logic_vector(3 downto 0) := (others => '0');	--Input to FCS error fifos.
 signal fcs_error_out : std_logic_vector(3 downto 0) := (others => '0');	--Output of FCS error fifos.
@@ -108,15 +111,15 @@ signal fullPack : std_logic_vector(3 downto 0) := (others => '0');
 signal wrreqPack : std_logic_vector(3 downto 0) := (others => '0');
 signal rdreqPack : std_logic_vector(3 downto 0) := (others => '0');
 signal usedWPack : std_logic_vector(43 downto 0) := (others => '0');
-signal readDataA : std_logic_vector(8 downto 0);
-signal readDataB : std_logic_vector(8 downto 0);
-signal readDataC : std_logic_vector(8 downto 0);
-signal readDataD : std_logic_vector(8 downto 0);
+signal readDataA : std_logic_vector(8 downto 0) := (others => '0');
+signal readDataB : std_logic_vector(8 downto 0) := (others => '0');
+signal readDataC : std_logic_vector(8 downto 0) := (others => '0');
+signal readDataD : std_logic_vector(8 downto 0) := (others => '0');
 
-signal regA : std_logic_vector(7 downto 0);
-signal regB : std_logic_vector(7 downto 0);
-signal regC : std_logic_vector(7 downto 0);
-signal regD : std_logic_vector(7 downto 0);
+signal regA : std_logic_vector(7 downto 0) := (others => '0');
+signal regB : std_logic_vector(7 downto 0) := (others => '0');
+signal regC : std_logic_vector(7 downto 0) := (others => '0');
+signal regD : std_logic_vector(7 downto 0) := (others => '0');
 --Outgoing Singals
 --Signals towards MAC Learning
 signal MACReadOut1 : std_logic_vector(47 downto 0) := (others => '0');
@@ -131,18 +134,18 @@ signal MACReadOut3S : std_logic_vector(47 downto 0) := (others => '0');
 signal MACReadOut4S : std_logic_vector(47 downto 0) := (others => '0');	
 
 --Signals towards Crossbar
-signal crossOutA : std_logic_vector(8 downto 0);
-signal crossOutB : std_logic_vector(8 downto 0);
-signal crossOutC : std_logic_vector(8 downto 0);
-signal crossOutD : std_logic_vector(8 downto 0);
+signal crossOutA : std_logic_vector(8 downto 0) := (others => '0');
+signal crossOutB : std_logic_vector(8 downto 0) := (others => '0');
+signal crossOutC : std_logic_vector(8 downto 0) := (others => '0');
+signal crossOutD : std_logic_vector(8 downto 0) := (others => '0');
 
 begin
 wreqErr <= EoF;	--Enable write if the end of frame is written.
 wrreqPack <= linkSync;
-packetDoneFlag(0) <= readDataA(8);
-packetDoneFlag(1) <= readDataB(8);
-packetDoneFlag(2) <= readDataC(8);
-packetDoneFlag(3) <= readDataD(8);
+
+
+
+
 --Start of frame logic.
 SoFDeterminer : process( linkSync )
 begin
@@ -201,10 +204,11 @@ begin
 		rreqErr <= not emptyErr and not startWriting;
 		startWriting <= not packetDoneFlag and not emptyPack;
 		--FCS1
-		if(fcs_error_out(0) = '0' and startWriting(0) = '1') then
+		if(fcs_error_out(0) = '0' and startWriting(0) = '1' and EoF(0) = '1') then
 			rdreqPack(0) <= '1';
 			wportCross(0) <= '1';
 			outA <= readDataA;
+			packetDoneFlag(0) <= readDataA(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
 				dst1(8 * counter - 8 downto 1 * counter -8) <= readDataA;
 			end if;
@@ -215,10 +219,11 @@ begin
 			rdreqPack(0) <= '0';
 			wportCross(0) <= '0';
 		end if;
-		if(fcs_error_out(1) = '0' and startWriting(1) = '1') then
+		if(fcs_error_out(1) = '0' and startWriting(1) = '1' and EoF(1) = '1') then
 			rdreqPack(1) <= '1';
 			wportCross(1) <= '1';
 			outB <= readDataB;
+			packetDoneFlag(1) <= readDataB(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
 				dst2(8 * counter - 8 downto 1 * counter -8) <= readDataB;
 			end if;
@@ -229,10 +234,11 @@ begin
 			rdreqPack(1) <= '0';
 			wportCross(1) <= '0';
 		end if;
-		if(fcs_error_out(2) = '0' and startWriting(2) = '1') then
+		if(fcs_error_out(2) = '0' and startWriting(2) = '1' and EoF(2) = '1') then
 			rdreqPack(2) <= '1';
 			wportCross(2) <= '1';
 			outC <= readDataC;
+			packetDoneFlag(2) <= readDataC(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
 				dst3(8 * counter - 8 downto 1 * counter -8) <= readDataC;
 			end if;
@@ -243,10 +249,11 @@ begin
 			rdreqPack(2) <= '0';
 			wportCross(2) <= '0';
 		end if;
-		if(fcs_error_out(3) = '0' and startWriting(3) = '1') then
+		if(fcs_error_out(3) = '0' and startWriting(3) = '1' and EoF(3) = '1') then
 			rdreqPack(3) <= '1';
 			wportCross(3) <= '1';
 			outD <= readDataD;
+			packetDoneFlag(3) <= readDataD(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
 				dst4(8 * counter - 8 downto 1 * counter -8) <= readDataD;
 			end if;
@@ -256,10 +263,36 @@ begin
 			else
 			rdreqPack(3) <= '0';
 			wportCross(3) <= '0';
-		end if;
+			end if;
 	end if;
 end process;
 
+trashErredData : process( clk )
+begin
+	if rising_edge(clk) then
+		if(fcs_error_out(0) = '1' and EoF(0) = '1' and packetDoneFlag(0) = '0') then
+			rdreqPack(0) <= '1';
+			deadEnd <= readDataA;
+			packetDoneFlag(0) <= readDataA(8);
+		end if;
+		if(fcs_error_out(1) = '1' and EoF(1) = '1' and packetDoneFlag(1) = '0') then
+			rdreqPack(1) <= '1';
+			deadEnd <= readDataB;
+			packetDoneFlag(1) <= readDataB(8);
+		end if;
+		if(fcs_error_out(2) = '1' and EoF(2) = '1' and packetDoneFlag(2) = '0') then
+			rdreqPack(2) <= '1';
+			deadEnd <= readDataC;
+			packetDoneFlag(2) <= readDataC(8);
+		end if;
+		if(fcs_error_out(3) = '1' and EoF(3) = '1' and packetDoneFlag(3) = '0') then
+			rdreqPack(3) <= '1';
+			deadEnd <= readDataD;
+			packetDoneFlag(3) <= readDataD(8);
+		end if;
+	end if ;
+	
+end process ; -- trashErredData
 
 
 counterProc : process (clk)
@@ -336,9 +369,9 @@ port map(
 	data(8) => linkSyncA(1),
 	rdreq => rdreqPack(0),
 	sclr => reset,
-	wrreq => wrreqPack(0),
-	empty => emptyPack(0),
-	full => fullPack(0),
+	wrreq => wrreqPack(1),
+	empty => emptyPack(1),
+	full => fullPack(1),
 	q => readDataB(8 downto 0),
 	usedw => usedwPack(21 downto 11)
 	);
@@ -349,9 +382,9 @@ port map(
 	data(8) => linkSyncA(2),
 	rdreq => rdreqPack(0),
 	sclr => reset,
-	wrreq => wrreqPack(0),
-	empty => emptyPack(0),
-	full => fullPack(0),
+	wrreq => wrreqPack(2),
+	empty => emptyPack(2),
+	full => fullPack(2),
 	q => readDataC(8 downto 0),
 	usedw => usedwPack(32 downto 22)
 	);
@@ -362,9 +395,9 @@ port map(
 	data(8) => linkSyncA(3),
 	rdreq => rdreqPack(0),
 	sclr => reset,
-	wrreq => wrreqPack(0),
-	empty => emptyPack(0),
-	full => fullPack(0),
+	wrreq => wrreqPack(3),
+	empty => emptyPack(3),
+	full => fullPack(3),
 	q => readDataD(8 downto 0),
 	usedw => usedwPack(43 downto 33)
 	);
@@ -385,37 +418,37 @@ port map(
 FiFoErr2 : FiFoErrors
 port map(
 	clock => clk,
-	data(0) => fcs_error(0),
-	rdreq => rreqErr(0),
+	data(0) => fcs_error(1),
+	rdreq => rreqErr(1),
 	sclr => reset,
-	wrreq => wreqErr(0),
-	empty => emptyErr(0),
-	full => fullErr(0),
-	q(0) => fcs_error_out(0),
+	wrreq => wreqErr(1),
+	empty => emptyErr(1),
+	full => fullErr(1),
+	q(0) => fcs_error_out(1),
 	usedw => usedWErr(9 downto 5)
 	);
 FiFoErr3 : FiFoErrors
 port map(
 	clock => clk,
-	data(0) => fcs_error(0),
-	rdreq => rreqErr(0),
+	data(0) => fcs_error(2),
+	rdreq => rreqErr(2),
 	sclr => reset,
-	wrreq => wreqErr(0),
-	empty => emptyErr(0),
-	full => fullErr(0),
-	q(0) => fcs_error_out(0),
+	wrreq => wreqErr(2),
+	empty => emptyErr(2),
+	full => fullErr(2),
+	q(0) => fcs_error_out(2),
 	usedw => usedWErr(14 downto 10)
 	);
 FiFoErr4 : FiFoErrors
 port map(
 	clock => clk,
-	data(0) => fcs_error(0),
-	rdreq => rreqErr(0),
+	data(0) => fcs_error(3),
+	rdreq => rreqErr(3),
 	sclr => reset,
-	wrreq => wreqErr(0),
-	empty => emptyErr(0),
-	full => fullErr(0),
-	q(0) => fcs_error_out(0),
+	wrreq => wreqErr(3),
+	empty => emptyErr(3),
+	full => fullErr(3),
+	q(0) => fcs_error_out(3),
 	usedw => usedWErr(19 downto 15)
 	);
 end architecture;
