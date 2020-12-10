@@ -14,6 +14,8 @@ inputD : 	in std_logic_vector(7 downto 0);
 linkSyncA :  in std_logic_vector(3 downto 0);
 reset : 	in std_logic;
 --MAC Learning connections
+portIn : in std_logic_vector(3 downto 0);
+portWrEn : in std_logic_vector(3 downto 0);
 WportMAC : 	out std_logic_vector(3 downto 0);
 
 src1 : 		out std_logic_vector(47 downto 0);
@@ -221,9 +223,9 @@ begin
 		rreqErr <= not emptyErr and not startWriting;
 		startWriting <= not packetDoneFlag and not emptyPack;
 		--FCS1
-		if(packetErrorState(0) = '0' and startWriting(0) = '1' and EoF(0) = '1') then
+		if(packetErrorState(0) = '0' and startWriting(0) = '1' and EoF(0) = '1' and portWrEn(0) = '1') then
 			rdreqPack(0) <= '1';
-			wportCross(0) <= '1';
+			wportCross <= portIn;
 			outA <= readDataA;
 			packetDoneFlag(0) <= readDataA(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
@@ -236,9 +238,9 @@ begin
 			rdreqPack(0) <= '0';
 			wportCross(0) <= '0';
 		end if;
-		if(packetErrorState(1) = '0' and startWriting(1) = '1' and EoF(1) = '1') then
+		if(packetErrorState(1) = '0' and startWriting(1) = '1' and EoF(1) = '1' and portWrEn(1) = '1') then
 			rdreqPack(1) <= '1';
-			wportCross(1) <= '1';
+			wportCross <= portIn;
 			outB <= readDataB;
 			packetDoneFlag(1) <= readDataB(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
@@ -251,9 +253,9 @@ begin
 			rdreqPack(1) <= '0';
 			wportCross(1) <= '0';
 		end if;
-		if(packetErrorState(2) = '0' and startWriting(2) = '1' and EoF(2) = '1') then
+		if(packetErrorState(2) = '0' and startWriting(2) = '1' and EoF(2) = '1' and portWrEn(2) = '1') then
 			rdreqPack(2) <= '1';
-			wportCross(2) <= '1';
+			wportCross <= portIn;
 			outC <= readDataC;
 			packetDoneFlag(2) <= readDataC(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
@@ -266,9 +268,9 @@ begin
 			rdreqPack(2) <= '0';
 			wportCross(2) <= '0';
 		end if;
-		if(packetErrorState(3) = '0' and startWriting(3) = '1' and EoF(3) = '1') then
+		if(packetErrorState(3) = '0' and startWriting(3) = '1' and EoF(3) = '1' and portWrEn(3) = '1') then
 			rdreqPack(3) <= '1';
-			wportCross(3) <= '1';
+			wportCross <= portIn;
 			outD <= readDataD;
 			packetDoneFlag(3) <= readDataD(8);
 			if(counter >= 7 AND counter <= 13) then --Dest MAC is from bytes 7 to 13.
