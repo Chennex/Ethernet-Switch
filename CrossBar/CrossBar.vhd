@@ -84,7 +84,7 @@ architecture behavioral of CrossBar is
 	END COMPONENT out_mux;
 -----------------------Crossbar Layout--------------------------------
 --	
---	FIFO Naming convention: FIFO<Column><Row>
+--	FIFO Naming convention: FIFO<Row><Column>
 --	--FIFO00-----FIFO01-------FIFO02-------FIFO03 |
 --	---|-----------|------------|-----------|---- |
 --	--FIFO10-----FIFO11-------FIFO12-------FIFO13 |
