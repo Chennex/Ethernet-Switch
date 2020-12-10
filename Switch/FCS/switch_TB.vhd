@@ -17,7 +17,6 @@ ARCHITECTURE fcs_check_parallel_arch OF switch_TB IS
         PORT (
             clk : IN std_logic; -- system clock
             reset : IN std_logic; -- asynchronous reset
-            act : IN std_logic; -- arrival of the first bit.
             data_in : IN std_logic_vector(8 DOWNTO 0); -- serial input data.
             fcs_error : OUT std_logic; -- indicates an error.
             write_enable : OUT std_logic -- Write enable
@@ -37,7 +36,6 @@ BEGIN
     PORT MAP(
         clk => clk_TB, 
         reset => reset_TB, 
-        act => start_TB, 
         data_in => data_in_TB, 
         fcs_error => fcs_error_TB, 
         write_enable => write_enable_TB
@@ -115,11 +113,11 @@ BEGIN
             END CASE;
 
             IF fcs_counter = 0 THEN
-                start_TB <= '1';
-            ELSIF fcs_counter = 63 THEN
                 data_in_TB(8) <= '1';
-            ELSE
+            ELSIF fcs_counter = 63 THEN
                 data_in_TB(8) <= '0';
+            ELSE
+                --data_in_TB(8) <= '0';
                 --start_TB <= '0';
             END IF;
 
