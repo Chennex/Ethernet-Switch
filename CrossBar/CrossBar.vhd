@@ -100,7 +100,7 @@ architecture behavioral of CrossBar is
 	SIGNAL wrreq00,wrreq01,wrreq02,wrreq03,wrreq10,wrreq11,wrreq12,wrreq13,wrreq20,wrreq21,wrreq22,wrreq23,wrreq30,wrreq31,wrreq32,wrreq33 : std_logic;
 	--SIGNAL FIFO00_d, FIFO01_d, FIFO02_d, FIFO03_d, FIFO10_d, FIFO11_d, FIFO12_d, FIFO13_d, FIFO20_d, FIFO21_d, FIFO22_d, FIFO23_d, FIFO30_d, FIFO31_d, FIFO32_d, FIFO33_d: STD_LOGIC_VECTOR(8 DOWNTO 0);
 	SIGNAL rreq00, sclr00,rreq01, sclr01,rreq02, sclr02,rreq03, sclr03,rreq10, sclr10,rreq11, sclr11,rreq12, sclr12,rreq13, sclr13,rreq20, sclr20,rreq21, sclr21,rreq22, sclr22,rreq23, sclr23,rreq30, sclr30,rreq31, sclr31,rreq32, sclr32,rreq33, sclr33 : STD_LOGIC:='0';
-	SIGNAL FIFO_empty00, full00,FIFO_empty01, full01,FIFO_empty02, full02,FIFO_empty03, full03,FIFO_empty10, full10,FIFO_empty11, full11,FIFO_empty12, full12,FIFO_empty13, full13,FIFO_empty20, full20,FIFO_empty21, full21,FIFO_empty22, full22,FIFO_empty23, full23,FIFO_empty30, full30,FIFO_empty31, full31,FIFO_empty32, full32,FIFO_empty33, full33: STD_LOGIC;
+	SIGNAL FIFO_empty00, full00,FIFO_empty01, full01,FIFO_empty02, full02,FIFO_empty03, full03,FIFO_empty10, full10,FIFO_empty11, full11,FIFO_empty12, full12,FIFO_empty13, full13,FIFO_empty20, full20,FIFO_empty21, full21,FIFO_empty22, full22,FIFO_empty23, full23,FIFO_empty30, full30,FIFO_empty31, full31,FIFO_empty32, full32,FIFO_empty33, full33: STD_LOGIC:='0';
 	SIGNAL FIFO_Out00, FIFO_Out01, FIFO_Out02, FIFO_Out03, FIFO_Out10, FIFO_Out11, FIFO_Out12, FIFO_Out13, FIFO_Out20, FIFO_Out21, FIFO_Out22, FIFO_Out23, FIFO_Out30, FIFO_Out31, FIFO_Out32, FIFO_Out33: STD_LOGIC_VECTOR(8 DOWNTO 0);
 	SIGNAL port_select0, port_select1, port_select2, port_select3 : STD_LOGIC_VECTOR(1 DOWNTO 0);
 	--signal packet1,packet2,packet3,packet4,output1,output2,output3,output4: std_logic_vector(8 downto 0);
@@ -159,7 +159,7 @@ architecture behavioral of CrossBar is
 	FSMx0: FSM PORT MAP(clk, FIFO_Out00(8),FIFO_empty00,rreq00, FIFO_Out10(8),FIFO_empty10,rreq10, FIFO_Out20(8),FIFO_empty20,rreq20, FIFO_Out30(8),FIFO_empty30,rreq30, port_select0);
 	FSMx1: FSM PORT MAP(clk, FIFO_Out01(8),FIFO_empty01,rreq01, FIFO_Out11(8),FIFO_empty11,rreq11, FIFO_Out21(8),FIFO_empty21,rreq21, FIFO_Out31(8),FIFO_empty31,rreq31, port_select1);
 	FSMx2: FSM PORT MAP(clk, FIFO_Out02(8),FIFO_empty02,rreq02, FIFO_Out12(8),FIFO_empty12,rreq12, FIFO_Out22(8),FIFO_empty22,rreq22, FIFO_Out32(8),FIFO_empty32,rreq32, port_select2);
-	FSMx3: FSM PORT MAP(clk, FIFO_Out03(8),FIFO_empty03,rreq03, FIFO_Out13(8),FIFO_empty13,rreq13, FIFO_Out23(8),FIFO_empty23,rreq32, FIFO_Out33(8),FIFO_empty33,rreq33, port_select3);
+	FSMx3: FSM PORT MAP(clk, FIFO_Out03(8),FIFO_empty03,rreq03, FIFO_Out13(8),FIFO_empty13,rreq13, FIFO_Out23(8),FIFO_empty23,rreq23, FIFO_Out33(8),FIFO_empty33,rreq33, port_select3);
 
 	--Output mux declarations--
 	out_mux0: out_mux PORT MAP(FIFO_Out00(7 DOWNTO 0), FIFO_Out10(7 DOWNTO 0), FIFO_Out20(7 DOWNTO 0), FIFO_Out30(7 DOWNTO 0), output1, port_select0);
