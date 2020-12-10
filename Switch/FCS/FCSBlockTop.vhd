@@ -44,7 +44,6 @@ component fcs_check_parallel
 port(
 	clk            : IN std_logic;                      -- system clock
 	reset          : IN std_logic;                      -- asynchronous reset
-	act : IN std_logic;                      -- arrival of the first bit.
 	write_enable   : OUT std_logic;                     -- Data on output
 	data_in        : IN std_logic_vector(8 DOWNTO 0);   -- serial input data.
 	fcs_error      : OUT std_logic                      -- indicates an error.
@@ -329,7 +328,6 @@ FCS1 : fcs_check_parallel
 port map(
 	clk => clk,
 	reset => reset,
-	act => SoF(0),
 	write_enable => EoF(0),
 	data_in(7 downto 0) => regA,
 	data_in(8) => linkSync(0),
@@ -339,7 +337,6 @@ FCS2 : fcs_check_parallel
 port map(
 	clk => clk,
 	reset => reset,
-	act => SoF(1),
 	write_enable => EoF(1),
 	data_in(7 downto 0) => regB,
 	data_in(8) => linkSync(1),
@@ -349,7 +346,6 @@ FCS3 : fcs_check_parallel
 port map(
 	clk => clk,
 	reset => reset,
-	act => SoF(2),
 	write_enable => EoF(2),
 	data_in(7 downto 0) => regC,
 	data_in(8) => linkSync(2),
@@ -359,7 +355,6 @@ FCS4 : fcs_check_parallel
 port map(
 	clk => clk,
 	reset => reset,
-	act => SoF(3),
 	write_enable => EoF(3),
 	data_in(7 downto 0) => regD,
 	data_in(8) => linkSync(3),
