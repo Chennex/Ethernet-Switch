@@ -19,6 +19,8 @@ architecture bench of FCSBlockTop_tb is
   linkSyncA : in std_logic_vector(3 downto 0);
   reset : 	in std_logic;
   WportMAC : 	out std_logic_vector(3 downto 0);
+  portIn : in std_logic_vector(3 downto 0);
+  portWrEn : in std_logic_vector(3 downto 0);
   src1 : 		out std_logic_vector(47 downto 0);
   dst1 : 		out std_logic_vector(47 downto 0);
   src2 : 		out std_logic_vector(47 downto 0);
@@ -43,6 +45,8 @@ architecture bench of FCSBlockTop_tb is
   signal linkSyncA: std_logic_vector(3 downto 0);
   signal reset: std_logic;
   signal WportMAC: std_logic_vector(3 downto 0);
+  signal portIn : std_logic_vector(3 downto 0);
+  signal portWrEn : std_logic_vector(3 downto 0);
   signal src1: std_logic_vector(47 downto 0);
   signal dst1: std_logic_vector(47 downto 0);
   signal src2: std_logic_vector(47 downto 0);
@@ -71,6 +75,8 @@ begin
                               linkSyncA   => linkSyncA,
                               reset      => reset,
                               WportMAC   => WportMAC,
+			      portIn	=> portIn,
+			      portWrEn   => portWrEn,
                               src1       => src1,
                               dst1       => dst1,
                               src2       => src2,
@@ -106,6 +112,8 @@ begin
     inputC <= x"00";
     inputD <= x"00";
     inputA <= x"00";
+    portWrEn <= "1111";
+    portIn <= "0001";
     -- Put test bench stimulus code here
     if rising_edge(clk) then
       readline(file_in, current_read_line);
