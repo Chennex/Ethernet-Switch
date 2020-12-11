@@ -17,6 +17,7 @@ ENTITY CrossBar is
 		output1: out std_logic_vector(7 downto 0);
 		output2: out std_logic_vector(7 downto 0);
 		output3: out std_logic_vector(7 downto 0);
+		reset: in std_logic;
 		output4: out std_logic_vector(7 downto 0)
 		--j: out std_logic_vector(1 downto 0)
 	);
