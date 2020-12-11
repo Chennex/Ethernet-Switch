@@ -109,10 +109,15 @@ ARCHITECTURE arch OF FCSBlockTop IS
     SIGNAL wrreqPack : std_logic_vector(3 DOWNTO 0) := (OTHERS => '0');
     SIGNAL rdreqPack : std_logic_vector(3 DOWNTO 0) := (OTHERS => '0');
     SIGNAL usedWPack : std_logic_vector(43 DOWNTO 0) := (OTHERS => '0');
-    SIGNAL readDataA : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL readDataA : std_logic_vector(8 DOWNTO 0) := "100000000";
     SIGNAL readDataB : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
     SIGNAL readDataC : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
     SIGNAL readDataD : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
+
+    SIGNAL aPOut : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL bPOut : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL cPOut : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL dPOut : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
 
     SIGNAL regA : std_logic_vector(7 DOWNTO 0) := (OTHERS => '0');
     SIGNAL regB : std_logic_vector(7 DOWNTO 0) := (OTHERS => '0');
@@ -197,12 +202,14 @@ BEGIN
     readOut : PROCESS (clk)
     BEGIN
         IF rising_edge(clk) THEN
+            readDataA <= aPOut;
             --Enable error list read if not empty, or current packet is not done.
             rreqErr <= NOT emptyErr AND NOT startWriting;
-            startWriting <= NOT packetDoneFlag AND NOT emptyPack;
+            startWriting <= (packetDoneFlag AND NOT emptyPack) or EOF;
             --FCS1
             IF (packetErrorState(0) = '0' AND startWriting(0) = '1' AND portWrEn(0) = '1' and waitForError(0) = '1') THEN
                 rdreqPack(0) <= '1';
+                readDataA <= aPOut;
                 outA <= readDataA;
                 packetDoneFlag(0) <= readDataA(8);
                 IF (counterA >= 7 AND counterA <= 13) THEN --Dest MAC is from bytes 7 to 13.
@@ -221,9 +228,11 @@ BEGIN
                 END IF;
             ELSE
                 rdreqPack(0) <= '0';
+                packetDoneFlag(0) <= '0';
             END IF;
             IF (packetErrorState(1) = '0' AND startWriting(1) = '1' AND portWrEn(1) = '1' and waitForError(1) = '1') THEN
                 rdreqPack(1) <= '1';
+                readDataB <= dPOut;
                 outB <= readDataB;
                 packetDoneFlag(1) <= readDataB(8);
                 IF (counterB >= 7 AND counterB <= 13) THEN --Dest MAC is from bytes 7 to 13.
@@ -242,9 +251,11 @@ BEGIN
                 END IF;
             ELSE
                 rdreqPack(1) <= '0';
+                packetDoneFlag(1) <= '0';
             END IF;
             IF (packetErrorState(2) = '0' AND startWriting(2) = '1' AND portWrEn(2) = '1' and waitForError(2) = '1') THEN
                 rdreqPack(2) <= '1';
+                readDataC <= cPOut;
                 outC <= readDataC;
                 packetDoneFlag(2) <= readDataC(8);
                 IF (counterC >= 7 AND counterC <= 13) THEN --Dest MAC is from bytes 7 to 13.
@@ -263,9 +274,11 @@ BEGIN
                 END IF;
             ELSE
                 rdreqPack(2) <= '0';
+                packetDoneFlag(2) <= '0';
             END IF;
             IF (packetErrorState(3) = '0' AND startWriting(3) = '1' AND portWrEn(3) = '1' and waitForError(3) = '1') THEN
                 rdreqPack(3) <= '1';
+                readDataD <= dPOut;
                 outD <= readDataD;
                 packetDoneFlag(3) <= readDataD(8);
                 IF (counterD >= 7 AND counterD <= 13) THEN --Dest MAC is from bytes 7 to 13.
@@ -284,6 +297,7 @@ BEGIN
                 END IF;
             ELSE
                 rdreqPack(3) <= '0';
+                packetDoneFlag(3) <= '0';
             END IF;
         END IF;
     END PROCESS;
@@ -291,22 +305,22 @@ BEGIN
     trashErredData : PROCESS (clk)
     BEGIN
         IF rising_edge(clk) THEN
-            IF (packetErrorState(0) = '1' AND EoF(0) = '1' AND packetDoneFlag(0) = '0') THEN
+            IF (packetErrorState(0) = '1' AND EoF(0) = '1' AND packetDoneFlag(0) = '1') THEN
                 rdreqPack(0) <= '1';
                 deadEnd <= readDataA;
                 packetDoneFlag(0) <= readDataA(8);
             END IF;
-            IF (packetErrorState(1) = '1' AND EoF(1) = '1' AND packetDoneFlag(1) = '0') THEN
+            IF (packetErrorState(1) = '1' AND EoF(1) = '1' AND packetDoneFlag(1) = '1') THEN
                 rdreqPack(1) <= '1';
                 deadEnd <= readDataB;
                 packetDoneFlag(1) <= readDataB(8);
             END IF;
-            IF (packetErrorState(2) = '1' AND EoF(2) = '1' AND packetDoneFlag(2) = '0') THEN
+            IF (packetErrorState(2) = '1' AND EoF(2) = '1' AND packetDoneFlag(2) = '1') THEN
                 rdreqPack(2) <= '1';
                 deadEnd <= readDataC;
                 packetDoneFlag(2) <= readDataC(8);
             END IF;
-            IF (packetErrorState(3) = '1' AND EoF(3) = '1' AND packetDoneFlag(3) = '0') THEN
+            IF (packetErrorState(3) = '1' AND EoF(3) = '1' AND packetDoneFlag(3) = '1') THEN
                 rdreqPack(3) <= '1';
                 deadEnd <= readDataD;
                 packetDoneFlag(3) <= readDataD(8);
@@ -319,28 +333,28 @@ BEGIN
         IF rising_edge(clk) THEN
             IF startWriting(0) = '1' THEN
                 counterA <= counterA + 1;
-                IF packetDoneFlag(0) = '1' THEN
+                IF packetDoneFlag(0) = '0' THEN
                     counterA <= 0;
                 END IF;
             END IF;
 
             IF startWriting(1) = '1' THEN
                 counterB <= counterB + 1;
-                IF packetDoneFlag(0) = '1' THEN
+                IF packetDoneFlag(1) = '0' THEN
                     counterB <= 0;
                 END IF;
             END IF;
 
             IF startWriting(2) = '1' THEN
                 counterC <= counterC + 1;
-                IF packetDoneFlag(0) = '1' THEN
+                IF packetDoneFlag(2) = '0' THEN
                     counterC <= 0;
                 END IF;
             END IF;
 
             IF startWriting(3) = '1' THEN
                 counterD <= counterD + 1;
-                IF packetDoneFlag(0) = '1' THEN
+                IF packetDoneFlag(3) = '0' THEN
                     counterD <= 0;
                 END IF;
             END IF;
@@ -398,7 +412,7 @@ BEGIN
             wrreq => wrreqPack(0), 
             empty => emptyPack(0), 
             full => fullPack(0), 
-            q => readDataA(8 DOWNTO 0), 
+            q => aPOut(8 DOWNTO 0), 
             usedw => usedwPack(10 DOWNTO 0)
         );
         FiFoPack2 : FiFoPacket
@@ -411,7 +425,7 @@ BEGIN
             wrreq => wrreqPack(1), 
             empty => emptyPack(1), 
             full => fullPack(1), 
-            q => readDataB(8 DOWNTO 0), 
+            q => bPOut(8 DOWNTO 0), 
             usedw => usedwPack(21 DOWNTO 11)
         );
         FiFoPack3 : FiFoPacket
@@ -424,7 +438,7 @@ BEGIN
             wrreq => wrreqPack(2), 
             empty => emptyPack(2), 
             full => fullPack(2), 
-            q => readDataC(8 DOWNTO 0), 
+            q => cPOut(8 DOWNTO 0), 
             usedw => usedwPack(32 DOWNTO 22)
         );
         FiFoPack4 : FiFoPacket
@@ -437,7 +451,7 @@ BEGIN
             wrreq => wrreqPack(3), 
             empty => emptyPack(3), 
             full => fullPack(3), 
-            q => readDataD(8 DOWNTO 0), 
+            q => dPOut(8 DOWNTO 0), 
             usedw => usedwPack(43 DOWNTO 33)
         );
         --TODO add 3 more after filling out all mapping.
