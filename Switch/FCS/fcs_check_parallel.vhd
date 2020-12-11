@@ -26,14 +26,21 @@ ARCHITECTURE fcs_check_parallel_arch OF fcs_check_parallel IS
 BEGIN
     PROCESS (data_in(8), regA)
     BEGIN
+
+        write_enable <= '0';
+        start_of_frame <= '0';
+
         IF (data_in(8) = '1' AND regA = '0') THEN
             start_of_frame <= '1';
-        ELSE
-            start_of_frame <= '0';
         END IF;
+
+        IF (regA = '1' AND data_in(8) = '0') THEN
+            write_enable <= '1';
+        END IF;
+
     END PROCESS;
 
-    PROCESS (counter, start_of_frame, data_in)
+    PROCESS (counter, start_of_frame, data_in(7 DOWNTO 0))
     BEGIN
         IF start_of_frame = '1' OR counter < 3 THEN
             div_in <= NOT data_in(7 DOWNTO 0);
@@ -62,12 +69,6 @@ BEGIN
         IF rising_edge(clk) THEN
 
             regA <= data_in(8);
-
-            IF (regA = '1' AND data_in(8) = '0') THEN
-                write_enable <= '1';
-            ELSE
-                write_enable <= '0';
-            END IF;
 
             -------------------------------------- Counter ------------------------------------------
             IF start_of_frame = '1' THEN
